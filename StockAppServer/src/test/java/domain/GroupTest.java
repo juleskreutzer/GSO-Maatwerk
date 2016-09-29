@@ -21,10 +21,10 @@ import static org.junit.Assert.fail;
  */
 public class GroupTest {
 
-    List<User> users = new ArrayList<>();
+    static List<User> users = new ArrayList<>();
 
     @BeforeClass
-    public void setup() {
+    public static void set_up() {
         User user1 = User.createUser("Useranme", "password", "me@mail.com");
         User user2 = User.createUser("Username 2", "password", "me@mail.com");
         User user3 = User.createUser("Username 3", "password" ,"me@mail.com");
@@ -44,8 +44,18 @@ public class GroupTest {
         try{
             Group group = new Group("", users);
             fail("An empty groupname isn't allowed");
-            throw new NullPointerException();
         } catch( IllegalArgumentException e) { }
+
+        try{
+            Group group = new Group(null, users);
+            fail("Null is not allowed as groupName");
+        } catch (IllegalArgumentException e) { }
+
+        try{
+            List<User> tempList = new ArrayList<>();
+            Group group = new Group("groupname", tempList);
+            fail("An empty list of users is not allowed");
+        } catch (IllegalArgumentException e) { }
     }
 
     @Test

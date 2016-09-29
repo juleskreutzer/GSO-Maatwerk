@@ -27,6 +27,8 @@ public class Group implements Serializable {
         for(User u : users) {
             this.users.add((u));
         }
+
+        this.name = name;
     }
 
     public String getName() {
