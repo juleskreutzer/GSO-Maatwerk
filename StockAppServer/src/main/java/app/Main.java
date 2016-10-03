@@ -12,7 +12,6 @@ import java.rmi.registry.Registry;
 public class Main {
 
     public static void main(String[] args) throws UnknownHostException {
-	// write your code here
 
         InetAddress IP= InetAddress.getLocalHost();
         System.out.println("IP of my system is := "+IP.getHostAddress());

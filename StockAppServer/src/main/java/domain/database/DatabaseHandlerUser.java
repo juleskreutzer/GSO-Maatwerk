@@ -30,6 +30,7 @@ public class DatabaseHandlerUser extends DatabaseHandler {
     }
 
     public void createUser(User user) {
+
         //TODO: Store user object in database
     }
 
