@@ -4,6 +4,8 @@ import org.bson.types.ObjectId;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -40,6 +42,15 @@ public class StockTest {
     @Test
     public void test_ctor() throws Exception {
         Date d = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        Date newDate = null;
+
+        try{
+            newDate = formatter.parse(formatter.format(d));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         Stock s = new Stock("Facebook, Inc.", "FB", 1.0, 2.0, values, "USD", d);
         assertEquals("Facebook, Inc." , s.getName());
         assertEquals("FB", s.getCode());
@@ -47,7 +58,7 @@ public class StockTest {
         assertEquals(2.0, s.getMaximum(), 0.0);
         assertEquals(values, s.getValues());
         assertEquals("USD", s.getCurrency());
-        assertEquals(d, s.getDate());
+        assertEquals(newDate, s.getDate());
 
         try{
             Stock s2 = new Stock(null, "FB", 1.0, 2.0, values, "USD", d);

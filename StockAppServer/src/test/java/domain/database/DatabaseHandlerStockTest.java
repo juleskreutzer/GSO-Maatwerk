@@ -1,6 +1,7 @@
 package domain.database;
 
 import domain.Stock;
+import exceptions.InvalidStockCodeException;
 import exceptions.StockIsNullException;
 import exceptions.StockNotFoundException;
 import org.jongo.MongoCollection;
@@ -9,6 +10,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -38,7 +41,11 @@ public class DatabaseHandlerStockTest {
     }
 
     @Before
-    public void setup() {
+    public void setup() throws ParseException {
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        Date formattedDate = formatter.parse(formatter.format(date));
+
         values.clear();
         values.put("1", 1.0);
         values.put("2", 1.1);
@@ -47,14 +54,17 @@ public class DatabaseHandlerStockTest {
         values.put("5", 1.4);
         values.put("6", 1.5);
 
-        stock = Stock.createNewStock("Apple, Inc.", "AAPL", 1.0, 2.0, values, "USD", date);
+        stock = Stock.createNewStock("Apple, Inc.", "AAPL", 1.0, 2.0, values, "USD", formattedDate);
     }
 
     @Test
     public void addStock() throws Exception {
         DatabaseHandlerStock.getInstance().addStock(stock);
 
-        MongoCursor<Stock> stockCursor = stockCollection.find("{ code: #, date: # }", "AAPL", date).as(Stock.class);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        Date formattedDate = formatter.parse(formatter.format(date));
+
+        MongoCursor<Stock> stockCursor = stockCollection.find("{ code: #, date: # }", "AAPL", formattedDate).as(Stock.class);
 
         if(stockCursor.count() < 1) {
             fail("Cursor should have at least 1 document");
@@ -65,7 +75,7 @@ public class DatabaseHandlerStockTest {
             assertEquals(s.getMinimum(), 1.0, 0.0);
             assertEquals(s.getMaximum(), 2.0, 0.0);
             assertEquals(s.getCurrency(), "USD");
-            assertEquals(s.getDate(), date);
+            assertEquals(s.getDate(), formattedDate);
             assertEquals(s.getValues(), values);
         }
 
@@ -79,22 +89,26 @@ public class DatabaseHandlerStockTest {
 
     @Test
     public void getStock() throws Exception {
-        Stock s = DatabaseHandlerStock.getInstance().getStock(date, "AAPL");
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        Date formattedDate = formatter.parse(formatter.format(date));
+
+        Stock s = DatabaseHandlerStock.getInstance().getStock(formattedDate, "AAPL");
 
         assertNotNull(s);
 
         assertEquals(s.getCode(), "AAPL");
         assertEquals(s.getName(), "Apple, Inc.");
-        assertEquals(s.getDate(), date);
+        assertEquals(s.getDate(), formattedDate);
         assertEquals(s.getValues(), values);
         assertEquals(s.getCurrency(), "USD");
         assertEquals(s.getMinimum(), 1.0, 0.0);
         assertEquals(s.getMaximum(), 2.0, 0.0);
 
         try{
-            Stock stek = DatabaseHandlerStock.getInstance().getStock(date, "");
+            Stock stek = DatabaseHandlerStock.getInstance().getStock(formattedDate, "");
             fail("Not allowed to have an empty code");
-        } catch (IllegalArgumentException e) { }
+        } catch (InvalidStockCodeException e) { }
 
         try{
             Stock stek = DatabaseHandlerStock.getInstance().getStock(null, "FB");
@@ -102,7 +116,7 @@ public class DatabaseHandlerStockTest {
         } catch (IllegalArgumentException e) { }
 
         try{
-            Stock stek = DatabaseHandlerStock.getInstance().getStock(date, "FB");
+            Stock stek = DatabaseHandlerStock.getInstance().getStock(formattedDate, "FB");
             fail("There shouldn't be any stock with code \"FB\'");
         } catch (StockNotFoundException e) { }
     }

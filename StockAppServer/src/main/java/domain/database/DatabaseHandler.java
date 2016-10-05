@@ -5,6 +5,8 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import domain.Stock;
 import domain.User;
+import exceptions.MultipleFoundException;
+import exceptions.NotFoundException;
 import org.bson.types.ObjectId;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
@@ -59,7 +61,7 @@ public abstract class DatabaseHandler {
      *         When amount is not null:
      *              true when records of the same amount as the param amount are found, false if not
      */
-    public boolean checkExistence(String tableName, String fieldName, String value, Integer amount) throws Exception {
+    public boolean checkExistence(String tableName, String fieldName, String value, Integer amount) throws NotFoundException, MultipleFoundException {
         MongoCollection collection = jongo.getCollection(tableName);
         MongoCursor cursor;
 
@@ -81,7 +83,7 @@ public abstract class DatabaseHandler {
                 }
                 break;
             default:
-                throw new Exception("tableName not found");
+                throw new NotFoundException("tableName " + tableName + " not found");
         }
 
         int count = cursor.count();
@@ -95,10 +97,10 @@ public abstract class DatabaseHandler {
         if(amount == null) {
 
             if (count > 1) {
-                throw new Exception("Multiple documents found");
+                throw new MultipleFoundException("Multiple documents found with given " + fieldName);
             }
             if (count < 1) {
-                throw new Exception("No documents found.");
+                throw new NotFoundException("No documents found with given " + fieldName);
             }
 
             return true;

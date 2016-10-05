@@ -3,6 +3,8 @@ package domain;
 import org.bson.types.ObjectId;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -40,13 +42,22 @@ public class Stock implements Serializable {
         if(currency == null || currency.equals("")) { throw new IllegalArgumentException("Currency may not be empty"); }
         if(date == null) { throw new IllegalArgumentException("Date may not be null"); }
 
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        Date newDate = null;
+
+        try{
+             newDate = formatter.parse(formatter.format(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         this.name = name;
         this.code = code;
         this.minimum = minimum;
         this.maximum = maximum;
         this.values = values;
         this.currency = currency;
-        this.date = date;
+        this.date = newDate;
     }
 
     public ObjectId get_id() {
@@ -145,6 +156,15 @@ public class Stock implements Serializable {
         if(currency == null || currency.equals("")) { throw new IllegalArgumentException("Currency may not be empty"); }
         if(date == null) { throw new IllegalArgumentException("Date may not be null"); }
 
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        Date newDate = null;
+
+        try{
+            newDate = formatter.parse(formatter.format(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         Stock stock = new Stock();
         stock.setName(name);
         stock.setCode(code);
@@ -152,7 +172,7 @@ public class Stock implements Serializable {
         stock.setMinimum(minimum);
         stock.setValues(values);
         stock.setCurrency(currency);
-        stock.setDate(date);
+        stock.setDate(newDate);
 
         return stock;
 

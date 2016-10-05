@@ -3,6 +3,7 @@ package interfaces;
 import domain.Stock;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -21,12 +22,12 @@ public interface IStockReceive extends Remote {
      * the stock in the UI of the client
      * @param stock Stock object containing the values that are needed to draw the graph
      */
-    public void receiveStockToDraw(Stock stock);
+    public void receiveStockToDraw(Stock stock) throws RemoteException;
 
     /**
      * When this method is called on the client, the client will fetch the latest stock values from the Markit on Demand API in order to create the stock object.
      * The client will than read the fields of the stock object in order to create a graph and will then display the stock in the UI of the client
      * @param code Unique code to identify the stock (https://en.wikipedia.org/wiki/Ticker_symbol)
      */
-    public void receiveStockToDrawAndSearch(String code);
+    public void receiveStockToDrawAndSearch(String code) throws RemoteException;
 }

@@ -7,6 +7,7 @@ import exceptions.InvalidCredentialsException;
 import exceptions.UserNotFoundException;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -28,7 +29,7 @@ public interface IUserHandling extends Remote {
      * @param user User object containing the credentials of the new user
      * @return True if the user isn't registered, false if user is registered
      */
-    public boolean registerUser(User user);
+    public boolean registerUser(User user) throws RemoteException;
 
     /**
      * Check the given credentials of the user object with the credentials that are stored in the database.
@@ -37,7 +38,7 @@ public interface IUserHandling extends Remote {
      * @throws UserNotFoundException Thrown when there is no user found with the given username
      * @throws InvalidCredentialsException Thrown when the password of the User object doesn't match with the password in the database
      */
-    public boolean loginUser(User user) throws UserNotFoundException, InvalidCredentialsException;
+    public boolean loginUser(User user) throws UserNotFoundException, InvalidCredentialsException, RemoteException;
 
     /**
      * Create a new group on the server. A user can then send a stock to this group
@@ -46,7 +47,7 @@ public interface IUserHandling extends Remote {
      * @return Return true if the group has been created, false if not
      * @throws GroupNameAlreadyExistsException Thrown when the given groupName is already registered with another group
      */
-    public String createGroup(String groupName, User user) throws GroupNameAlreadyExistsException;
+    public String createGroup(String groupName, User user) throws GroupNameAlreadyExistsException, RemoteException;
 
     /**
      * Join a group so that the user can receive stock objects that are sent to the group
@@ -55,7 +56,7 @@ public interface IUserHandling extends Remote {
      * @return Returns true when the user has joined the group, false if not
      * @throws GroupNameNotFoundException Thrown when there can't be found any group with the given groupName
      */
-    public boolean joinGroup(String groupName, User user) throws GroupNameNotFoundException;
+    public boolean joinGroup(String groupName, User user) throws GroupNameNotFoundException, RemoteException;
 
     /**
      * Create a new notification with the server so the user will get an email when a stock reaches the desired value
@@ -65,5 +66,5 @@ public interface IUserHandling extends Remote {
      * @param maximum Maximum desired value of the stock
      * @return returns true when the notification is created, false if not
      */
-    public boolean createNotification(String code, String email, Double minimum, Double maximum);
+    public boolean createNotification(String code, String email, Double minimum, Double maximum) throws RemoteException;
 }

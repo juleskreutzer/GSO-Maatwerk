@@ -25,13 +25,13 @@ public class RequestHandler {
     private static String QUOTE = "http://dev.markitondemand.com/api/v2/quote/json";
     private static String INTERACTIVECHART = "http://dev.markitondemand.com/api/v2/interactivechart";
 
-    public static JSONArray sendGet(REQUEST_TYPE type) throws IOException, HTTPException {
+    public static JSONArray sendGet(REQUEST_TYPE type, String params) throws IOException, HTTPException {
         try{
             URL obj = null;
 
             switch(type) {
                 case LOOKUP:
-                    obj = new URL(LOOKUP);
+                    obj = new URL(LOOKUP + "?input=" + params);
                     break;
                 case STOCK_QUOTE:
                     obj = new URL(QUOTE);

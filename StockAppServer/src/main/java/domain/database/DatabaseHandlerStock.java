@@ -35,7 +35,7 @@ public class DatabaseHandlerStock extends DatabaseHandler {
         return _instance == null ? new DatabaseHandlerStock() : _instance;
     }
 
-    public void addStock(Stock stock) throws StockIsNullException, StockAlreadyExistsException, Exception {
+    public void addStock(Stock stock) throws StockIsNullException, StockAlreadyExistsException {
         if(stock == null) { throw new StockIsNullException("Not allowed to provide null as stock object"); }
         if(stock.getCode().equals("")) { throw new IllegalArgumentException("Not allowed to have empty code"); }
         if(stock.getDate() == null) { throw new IllegalArgumentException("Not allowed to have null as date"); }

@@ -4,6 +4,7 @@ import domain.Stock;
 import domain.User;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.Date;
 
 /**
@@ -26,7 +27,7 @@ public interface IStockSend extends Remote {
      * @param groupName Name of the group the user wants to send the graph to
      * @param user User sending the graph
      */
-    public void sendToGroup(Stock stock, String groupName, User user);
+    public void sendToGroup(Stock stock, String groupName, User user) throws RemoteException;
 
     /**
      * Send the stock code to a group. The group has to retrieve the latest stock values from the Markit on Demand API.
@@ -36,7 +37,7 @@ public interface IStockSend extends Remote {
      * @param groupName Name of the group the user wants to send the code to
      * @param user User sending the code
      */
-    public void sendToGroupByStockCode(String code, String groupName, User user);
+    public void sendToGroupByStockCode(String code, String groupName, User user) throws RemoteException;
 
     /**
      * Send the stock graph to a user
@@ -46,7 +47,7 @@ public interface IStockSend extends Remote {
      * @param username Name of the desired user to send the stock to
      * @param user User sending the graph
      */
-    public void sendToUser(Stock stock, String username, User user);
+    public void sendToUser(Stock stock, String username, User user) throws RemoteException;
 
     /**
      * Send the stock code to a group. THe group has to retrieve the latest stock values from the Markit on Demand API.
@@ -56,7 +57,7 @@ public interface IStockSend extends Remote {
      * @param username Name of the desired user to send the stock code to
      * @param user User sending the code
      */
-    public void sendToUserByStockCode(String code, String username, User user);
+    public void sendToUserByStockCode(String code, String username, User user) throws RemoteException;
 
     /**
      * Send the stock graph to a group for a stock that is stored in the database
@@ -67,7 +68,7 @@ public interface IStockSend extends Remote {
      * @param groupName Name of the group the user wants to send the stock to
      * @param user User sending the request
      */
-    public void sendToGroupFromHistory(Date date, String code, String groupName, User user);
+    public void sendToGroupFromHistory(Date date, String code, String groupName, User user) throws RemoteException;
 
     /**
      * Send the stock graph to a user for a stock that is stored in the database
@@ -78,7 +79,7 @@ public interface IStockSend extends Remote {
      * @param username Name of the desired user to send the stock to
      * @param user User sending the request
      */
-    public void sendToUserFromHistory(Date date, String code, String username, User user);
+    public void sendToUserFromHistory(Date date, String code, String username, User user) throws RemoteException;
 
 
 }

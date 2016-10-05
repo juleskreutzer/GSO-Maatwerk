@@ -6,6 +6,7 @@ import exceptions.InvalidCredentialsException;
 import exceptions.UserNotFoundException;
 import interfaces.IStockSend;
 import interfaces.IUserHandling;
+import util.RequestTickerSymbols;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -26,6 +27,9 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
 
     private StockAppServer() throws RemoteException {
         _instance = this;
+
+        // Start execution to fetch stocks each day at 23:30
+        FetchStocks.getInstance().execute(RequestTickerSymbols.requestTickerSymbols());
     }
 
     public static StockAppServer getInstance() {
