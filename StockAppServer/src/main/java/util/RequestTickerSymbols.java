@@ -2,7 +2,10 @@ package util;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -21,21 +24,16 @@ public class RequestTickerSymbols {
     private static String[] chars = new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     private static Set<String> symbols = new HashSet<>();
 
-    private final CountDownLatch latch;
-    private final RequestTickerSymbolsRunnable[] childs;
+    private ExecutorService service;
+    private Set<Future<Set<String>>> set;
 
 
-    public RequestTickerSymbols(CountDownLatch latch) {
-        this.latch = latch;
-        this.childs = new RequestTickerSymbolsRunnable[26];
 
-        for(int x = 0; x < childs.length; x++)
-        {
-            childs[x] = new RequestTickerSymbolsRunnable(chars[x], this.latch);
-        }
+    public RequestTickerSymbols() {
+        service = Executors.newFixedThreadPool(26);
+        set = new HashSet<>();
+
     }
-
-
 
     /**
      * Request available ticker symbols from the Markit on Demand API
@@ -43,34 +41,22 @@ public class RequestTickerSymbols {
      * Symbols will be
      * @return
      */
-    public Set<String> requestTickerSymbols() {
-        Set<String> symbols = new HashSet<>();
-
-        startChilcThreads();
-        waitForThreadsToComplete();
-
-        return null;
-
-    }
-
-    private void startChilcThreads() {
-        Thread[] threads = new Thread[childs.length];
-
-        for(int i = 0; i < threads.length; i++)
-        {
-            RequestTickerSymbolsRunnable runner = childs[i];
-            threads[i] = new Thread(runner);
-            threads[i].start();
-        }
-    }
-
-    private void waitForThreadsToComplete() {
+    public synchronized Set<String> requestTickerSymbols() {
         try {
-            latch.await();
-            System.out.println("All child threads have completed.");
-        } catch (InterruptedException e) {
+            for (String c : chars) {
+                RequestTickerSymbolsCallable callable = new RequestTickerSymbolsCallable(c);
+                Future<Set<String>> future = service.submit(callable);
+                set.add(future);
+                wait(10000);
+            }
+
+            for (Future<Set<String>> f : set) {
+                symbols.addAll(f.get());
+            }
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
-    }
 
+        return symbols;
+    }
 }

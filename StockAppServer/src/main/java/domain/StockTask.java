@@ -1,5 +1,10 @@
 package domain;
 
+import org.json.JSONArray;
+import util.REQUEST_TYPE;
+import util.RequestHandler;
+
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
@@ -30,5 +35,23 @@ public class StockTask extends TimerTask {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd 'at' HH:mm:ss z");
         Date date = new Date();
         System.out.println("StockTask has run. Execution time: " + formatter.format(date));
+
+        for (String symbol : tickerSymbols) {
+            try {
+                JSONArray result = RequestHandler.sendGet(REQUEST_TYPE.STOCK_QUOTE, symbol);
+                for(int i = 0; i < result.length(); i++) {
+                    String name = result.getJSONObject(i).getString("Name");
+                    String code = result.getJSONObject(i).getString("Symbol");
+                    double min = result.getJSONObject(i).getDouble("Low");
+                    double max = result.getJSONObject(i).getDouble("High");
+                    String currency = "USD";
+
+                    Stock.createNewStock(name, code, min, max, null, currency, date);
+                }
+
+            } catch(IOException e){
+                System.out.println("Failure for stockTask with the following symbol: " + symbol);
+            }
+        }
     }
 }

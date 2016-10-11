@@ -6,10 +6,17 @@ import exceptions.InvalidCredentialsException;
 import exceptions.UserNotFoundException;
 import interfaces.IStockSend;
 import interfaces.IUserHandling;
-import util.RequestTickerSymbols;
+import org.json.JSONArray;
+import util.Mapper;
+import util.REQUEST_TYPE;
+import util.RequestHandler;
+import util.markitOnDemand.Element;
+import util.markitOnDemand.ElementType;
+import util.markitOnDemand.InteractiveChartDataInput;
 
-import java.rmi.RemoteException;
+import java.io.IOException;
 import java.rmi.server.UnicastRemoteObject;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -25,18 +32,28 @@ import java.util.Date;
 public class StockAppServer extends UnicastRemoteObject implements IStockSend, IUserHandling {
     private static StockAppServer _instance;
 
-    private StockAppServer() throws RemoteException {
+    private StockAppServer() throws IOException {
         _instance = this;
 
         // Start execution to fetch stocks each day at 23:30
-        FetchStocks.getInstance().execute(RequestTickerSymbols.requestTickerSymbols());
+//        RequestTickerSymbols requestTickerSymbols = new RequestTickerSymbols();
+//        Set<String> symbols = requestTickerSymbols.requestTickerSymbols();
+//        FetchStocks.getInstance().execute(symbols);
+
+        Element element = new Element("AAPL", ElementType.PRICE, null);
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss-SS");
+        String dateString = formatter.format(date);
+        InteractiveChartDataInput input = new InteractiveChartDataInput(dateString, dateString, new Element[] {element});
+
+        JSONArray result = RequestHandler.sendGet(REQUEST_TYPE.INTERACTIVE_CHART, Mapper.mapToJson(input));
     }
 
     public static StockAppServer getInstance() {
         try{
             return _instance == null ? new StockAppServer() : _instance;
-        } catch(RemoteException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         return null;

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -26,10 +27,10 @@ public class RequestHandler {
     private static String INTERACTIVECHART = "http://dev.markitondemand.com/api/v2/interactivechart";
 
     public static JSONArray sendGet(REQUEST_TYPE type, String params) throws IOException, HTTPException {
-        try{
+        try {
             URL obj = null;
 
-            switch(type) {
+            switch (type) {
                 case LOOKUP:
                     obj = new URL(LOOKUP + "?input=" + params);
                     break;
@@ -37,7 +38,8 @@ public class RequestHandler {
                     obj = new URL(QUOTE);
                     break;
                 case INTERACTIVE_CHART:
-                    obj = new URL(INTERACTIVECHART);
+                    String p = URLEncoder.encode(params);
+                    obj = new URL(INTERACTIVECHART + "?parameters=" + p);
                     break;
                 default:
                     throw new IllegalArgumentException("The provided REQUEST_TYPE isn't implemented in this method.");
@@ -48,8 +50,7 @@ public class RequestHandler {
             con.setRequestMethod("GET");
 
             int responseCode = con.getResponseCode();
-            if(responseCode == HttpURLConnection.HTTP_OK)
-            {
+            if (responseCode == HttpURLConnection.HTTP_OK) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(
                         con.getInputStream()));
                 String inputLine;
@@ -64,19 +65,15 @@ public class RequestHandler {
 
                 // print result
                 return new JSONArray(response);
-            }
-            else if(responseCode == HttpURLConnection.HTTP_UNAUTHORIZED)
-            {
+            } else if (responseCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
+                throw new HTTPException(responseCode);
+            } else {
                 throw new HTTPException(responseCode);
             }
-        }
-        catch(HTTPException ex)
-        {
+        } catch (HTTPException ex) {
             System.out.print("HTTP ERROR CODE: " + ex.getStatusCode());
             ex.printStackTrace();
-        }
-        catch(IOException ex)
-        {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
         return null;
