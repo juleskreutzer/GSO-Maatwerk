@@ -11,10 +11,7 @@ import util.RequestTickerSymbols;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -334,5 +331,38 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
     @Override
     public boolean createNotification(String code, String email, Double minimum, Double maximum) {
         return false;
+    }
+
+
+    private void clearActiveGroups() {
+        boolean running = true;
+
+        while(running) {
+            try {
+            Thread t = new Thread(new Runnable() {
+
+                @Override
+                public void run() {
+                    int i = 0;
+                    for(Group g : activeGroups) {
+                        ArrayList<User> users = (ArrayList<User>) g.getUsers();
+                        if(users.size() == 0) {
+                            g = null;
+                            i++;
+                        }
+                    }
+
+                    System.out.println(i + " group have been removed.");
+                }
+            });
+
+            t.start();
+
+            // wait 1 hour before checking all groups again.
+            wait(3600000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
