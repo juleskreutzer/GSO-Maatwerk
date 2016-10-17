@@ -9,6 +9,7 @@ import interfaces.IUserHandling;
 import org.json.JSONObject;
 import util.Mapper;
 import util.RequestHandler;
+import util.RequestTickerSymbols;
 import util.markitOnDemand.Element;
 import util.markitOnDemand.ElementType;
 import util.markitOnDemand.InteractiveChartData;
@@ -17,6 +18,7 @@ import util.markitOnDemand.InteractiveChartDataInput;
 import java.io.IOException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -35,9 +37,9 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
         _instance = this;
 
         // Start execution to fetch stocks each day at 23:30
-//        RequestTickerSymbols requestTickerSymbols = new RequestTickerSymbols();
-//        Set<String> symbols = requestTickerSymbols.requestTickerSymbols();
-//        FetchStocks.getInstance().execute(symbols);
+        RequestTickerSymbols requestTickerSymbols = new RequestTickerSymbols();
+        Set<String> symbols = requestTickerSymbols.requestTickerSymbols();
+        FetchStocks.getInstance().execute(symbols);
 
         Element element = new Element("AAPL", ElementType.PRICE, new String[] { "ohlc" }) ;
         InteractiveChartDataInput input = new InteractiveChartDataInput(365, new Element[] {element});
