@@ -16,10 +16,12 @@ public class Main {
         InetAddress IP= InetAddress.getLocalHost();
         System.out.println("IP of my system is := "+IP.getHostAddress());
 
-        if(IP.getHostAddress().toLowerCase().equals("37.97.223.70")) {
-            System.setProperty("java.rmi.server.hostname", "37.97.223.70");
-        } else {
+        if(args.length == 1 && args[0].toLowerCase().equals("local")) {
+            System.out.println("Running on localhost");
             System.setProperty("java.rmi.server.hostname", "127.0.0.1");
+        } else {
+            System.out.println("rmi hostname is set to 37.97.223.70");
+            System.setProperty("java.rmi.server.hostname", "37.97.223.70");
         }
 
         try {

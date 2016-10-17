@@ -6,14 +6,7 @@ import exceptions.InvalidCredentialsException;
 import exceptions.UserNotFoundException;
 import interfaces.IStockSend;
 import interfaces.IUserHandling;
-import org.json.JSONObject;
-import util.Mapper;
-import util.RequestHandler;
 import util.RequestTickerSymbols;
-import util.markitOnDemand.Element;
-import util.markitOnDemand.ElementType;
-import util.markitOnDemand.InteractiveChartData;
-import util.markitOnDemand.InteractiveChartDataInput;
 
 import java.io.IOException;
 import java.rmi.server.UnicastRemoteObject;
@@ -40,12 +33,6 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
         RequestTickerSymbols requestTickerSymbols = new RequestTickerSymbols();
         Set<String> symbols = requestTickerSymbols.requestTickerSymbols();
         FetchStocks.getInstance().execute(symbols);
-
-        Element element = new Element("AAPL", ElementType.PRICE, new String[] { "ohlc" }) ;
-        InteractiveChartDataInput input = new InteractiveChartDataInput(365, new Element[] {element});
-
-        JSONObject result = RequestHandler.requestInteracitveChartDate(Mapper.mapToJson(input));
-        InteractiveChartData icd = (InteractiveChartData) Mapper.mapToObject(result, InteractiveChartData.class);
     }
 
     public static StockAppServer getInstance() {
