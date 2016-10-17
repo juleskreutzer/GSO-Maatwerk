@@ -1,6 +1,7 @@
 package util;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.xml.ws.http.HTTPException;
 import java.io.BufferedReader;
@@ -24,7 +25,7 @@ public class RequestHandler {
     private static String BASE_URL = "http://dev.markitondemand.com/Api/v2";
     private static String LOOKUP = "http://dev.markitondemand.com/api/v2/lookup/json";
     private static String QUOTE = "http://dev.markitondemand.com/api/v2/quote/json";
-    private static String INTERACTIVECHART = "http://dev.markitondemand.com/api/v2/interactivechart";
+    private static String INTERACTIVECHART = "http://dev.markitondemand.com/api/v2/interactivechart/json";
 
     public static JSONArray sendGet(REQUEST_TYPE type, String params) throws IOException, HTTPException {
         try {
@@ -76,6 +77,41 @@ public class RequestHandler {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        return null;
+    }
+
+    public static JSONObject requestInteracitveChartDate(String params) throws IOException, HTTPException {
+        try{
+            String p = URLEncoder.encode(params, "utf-8");
+            URL obj = new URL(INTERACTIVECHART + "?parameters=" + p);
+
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("GET");
+
+            int responseCode = con.getResponseCode();
+            if(responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                String inputLine;
+                StringBuilder sb = new StringBuilder();
+                String response;
+
+                while((inputLine = in.readLine()) != null) {
+                    sb.append(inputLine + "\n");
+                }
+                in.close();
+                response = sb.toString();
+
+                return new JSONObject(response);
+            } else {
+                throw new HTTPException(responseCode);
+            }
+        } catch (HTTPException e) {
+            System.out.println("HTTP ERROR CODE: " + e.getStatusCode());
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 }

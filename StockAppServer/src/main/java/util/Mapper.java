@@ -2,6 +2,7 @@ package util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -41,10 +42,12 @@ public class Mapper {
      * @param type Class you want to map the JSON string to
      * @return Instance of a class
      */
-    public static Object mapToObject(String json, Class type)
+    public static Object mapToObject(JSONObject json, Class type)
     {
+        //mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        //mapper.setVisibilityChecker(VisibilityChecker.Std.defaultInstance().withFieldVisibility(JsonAutoDetect.Visibility.ANY));
         try{
-            return mapper.readValue(json, type);
+            return mapper.readValue(String.valueOf(json).toLowerCase(), type);
         } catch (IOException e) {
             e.printStackTrace();
         }

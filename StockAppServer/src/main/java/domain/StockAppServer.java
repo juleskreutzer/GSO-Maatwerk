@@ -6,17 +6,16 @@ import exceptions.InvalidCredentialsException;
 import exceptions.UserNotFoundException;
 import interfaces.IStockSend;
 import interfaces.IUserHandling;
-import org.json.JSONArray;
+import org.json.JSONObject;
 import util.Mapper;
-import util.REQUEST_TYPE;
 import util.RequestHandler;
 import util.markitOnDemand.Element;
 import util.markitOnDemand.ElementType;
+import util.markitOnDemand.InteractiveChartData;
 import util.markitOnDemand.InteractiveChartDataInput;
 
 import java.io.IOException;
 import java.rmi.server.UnicastRemoteObject;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -40,13 +39,11 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
 //        Set<String> symbols = requestTickerSymbols.requestTickerSymbols();
 //        FetchStocks.getInstance().execute(symbols);
 
-        Element element = new Element("AAPL", ElementType.PRICE, null);
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss-SS");
-        String dateString = formatter.format(date);
-        InteractiveChartDataInput input = new InteractiveChartDataInput(dateString, dateString, new Element[] {element});
+        Element element = new Element("AAPL", ElementType.PRICE, new String[] { "ohlc" }) ;
+        InteractiveChartDataInput input = new InteractiveChartDataInput(365, new Element[] {element});
 
-        JSONArray result = RequestHandler.sendGet(REQUEST_TYPE.INTERACTIVE_CHART, Mapper.mapToJson(input));
+        JSONObject result = RequestHandler.requestInteracitveChartDate(Mapper.mapToJson(input));
+        InteractiveChartData icd = (InteractiveChartData) Mapper.mapToObject(result, InteractiveChartData.class);
     }
 
     public static StockAppServer getInstance() {

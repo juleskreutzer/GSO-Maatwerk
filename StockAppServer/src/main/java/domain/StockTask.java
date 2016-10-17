@@ -1,8 +1,13 @@
 package domain;
 
-import org.json.JSONArray;
-import util.REQUEST_TYPE;
+import domain.database.DatabaseHandlerStock;
+import org.json.JSONObject;
+import util.Mapper;
 import util.RequestHandler;
+import util.markitOnDemand.Element;
+import util.markitOnDemand.ElementType;
+import util.markitOnDemand.InteractiveChartData;
+import util.markitOnDemand.InteractiveChartDataInput;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -38,19 +43,24 @@ public class StockTask extends TimerTask {
 
         for (String symbol : tickerSymbols) {
             try {
-                JSONArray result = RequestHandler.sendGet(REQUEST_TYPE.STOCK_QUOTE, symbol);
-                for(int i = 0; i < result.length(); i++) {
-                    String name = result.getJSONObject(i).getString("Name");
-                    String code = result.getJSONObject(i).getString("Symbol");
-                    double min = result.getJSONObject(i).getDouble("Low");
-                    double max = result.getJSONObject(i).getDouble("High");
-                    String currency = "USD";
 
-                    Stock.createNewStock(name, code, min, max, null, currency, date);
-                }
+                Element element = new Element(symbol, ElementType.PRICE, new String[] { "ohlc" }) ;
+                InteractiveChartDataInput input = new InteractiveChartDataInput(1, new Element[] {element});
+
+                JSONObject result = RequestHandler.requestInteracitveChartDate(Mapper.mapToJson(input));
+                InteractiveChartData icd = (InteractiveChartData) Mapper.mapToObject(result, InteractiveChartData.class);
+                icd.setFetchDate(date);
+
+                // Store the InteractiveChartData object into the database.
+                DatabaseHandlerStock.getInstance().addInteractiveChartDate(icd);
+
+                // Wait 10 seconds until a new request is fired from RequestHandler
+                wait(10000);
 
             } catch(IOException e){
                 System.out.println("Failure for stockTask with the following symbol: " + symbol);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }

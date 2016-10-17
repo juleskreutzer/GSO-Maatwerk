@@ -1,5 +1,7 @@
 package util.markitOnDemand;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 /**
@@ -13,22 +15,33 @@ import java.util.Date;
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 public class ElementData {
+
+    @JsonProperty
     private String currency;
-    private Date timeStamp;
+
+    @JsonProperty
+    private Date timestamp;
+
+    @JsonProperty
     private String symbol;
+
+    @JsonProperty
     private ElementType type;
 
     /**
      * Y Axis Values of the specified Element, corresponding with the X Axis coordinates in the list of "Positions".
      */
-    private Object dataSeries;
+    @JsonProperty
+    private Object dataseries;
+
+    public ElementData() { }
 
     public ElementData(String currency, Date timeStamp, String symbol, ElementType type, Object dataSeries) {
         this.currency = currency;
-        this.timeStamp = timeStamp;
+        this.timestamp = timeStamp;
         this.symbol = symbol;
         this.type = type;
-        this.dataSeries = dataSeries;
+        this.dataseries = dataSeries;
     }
 
     public String getCurrency() {
@@ -40,11 +53,11 @@ public class ElementData {
     }
 
     public Date getTimeStamp() {
-        return timeStamp;
+        return timestamp;
     }
 
     public void setTimeStamp(Date timeStamp) {
-        this.timeStamp = timeStamp;
+        this.timestamp = timeStamp;
     }
 
     public String getSymbol() {
@@ -63,11 +76,11 @@ public class ElementData {
         this.type = type;
     }
 
-    public Object getDataSeries() {
-        return dataSeries;
+    public Object getDataseries() {
+        return dataseries;
     }
 
-    public void setDataSeries(Object dataSeries) {
-        this.dataSeries = dataSeries;
+    public void setDataseries(Object dataSeries) {
+        this.dataseries = dataSeries;
     }
 }
