@@ -1,10 +1,7 @@
 package interfaces;
 
 import domain.User;
-import exceptions.GroupNameAlreadyExistsException;
-import exceptions.GroupNameNotFoundException;
-import exceptions.InvalidCredentialsException;
-import exceptions.UserNotFoundException;
+import exceptions.*;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -28,8 +25,12 @@ public interface IUserHandling extends Remote {
      * When the given credentials don't occur in the database, the database will insert the User object and return TRUE
      * @param user User object containing the credentials of the new user
      * @return True if the user isn't registered, false if user is registered
+     * @throws MultipleFoundException Thrown when the username exists multiple times in the database
+     * @throws UserIsRegisteredException Thrown when the username already exists once in the database
+     * @throws NotFoundException Thrown from checkExistence method in DatabaseHandler class, not thrown when storing a user in the database
+     * @throws UserIsNullException Thrown when the provided user object to the database method is null
      */
-    public boolean registerUser(User user) throws RemoteException;
+    public boolean registerUser(User user) throws RemoteException, MultipleFoundException, UserIsRegisteredException, NotFoundException, UserIsNullException;
 
     /**
      * Check the given credentials of the user object with the credentials that are stored in the database.
@@ -37,8 +38,9 @@ public interface IUserHandling extends Remote {
      * @return True if the credentials in the User object match the credentials in the database, false if not
      * @throws UserNotFoundException Thrown when there is no user found with the given username
      * @throws InvalidCredentialsException Thrown when the password of the User object doesn't match with the password in the database
+     * * @throws UserIsNullException Thrown when the provided user object to the database methods is null
      */
-    public boolean loginUser(User user) throws UserNotFoundException, InvalidCredentialsException, RemoteException;
+    public boolean loginUser(User user) throws UserNotFoundException, InvalidCredentialsException, RemoteException, UserIsNullException;
 
     /**
      * Create a new group on the server. A user can then send a stock to this group

@@ -1,5 +1,6 @@
 package domain;
 
+import interfaces.IStockReceive;
 import org.bson.types.ObjectId;
 
 import java.io.Serializable;
@@ -23,6 +24,7 @@ public class User implements Serializable {
     private String password;
     private String email;
     private List<String> preferredStock = new ArrayList<>();
+    private IStockReceive receiveInterface;
 
     /**
      * Private ctor is required for Jongo lib to map the data from the database to this class
@@ -118,5 +120,13 @@ public class User implements Serializable {
         user.setPreferredStock(temp);
 
         return user;
+    }
+
+    public IStockReceive getReceiveInterface() {
+        return receiveInterface;
+    }
+
+    public void setReceiveInterface(IStockReceive receiveInterface) {
+        this.receiveInterface = receiveInterface;
     }
 }
