@@ -67,6 +67,8 @@ public interface IUserHandling extends Remote {
      * @param minimum Minimum desired value of the stock
      * @param maximum Maximum desired value of the stock
      * @return returns true when the notification is created, false if not
+     * @throws InvalidStockCodeException Thrown when the provided stock code is empty
+     * @throws IllegalArgumentException Thrown when the provided email address is invalid, or when the minimum value is higher than the maximum value
      */
-    public boolean createNotification(String code, String email, Double minimum, Double maximum) throws RemoteException;
+    public boolean createNotification(String code, String email, Double minimum, Double maximum) throws InvalidStockCodeException, IllegalArgumentException;
 }

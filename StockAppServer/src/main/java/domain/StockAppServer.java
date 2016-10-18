@@ -329,9 +329,25 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
         throw new GroupNameNotFoundException("The group name \"" + groupName + "\" is not registered with the server.");
     }
 
+    /**
+     * Create a new notification with the server so the user will get an email when a stock reaches the desired value
+     * @param code Unique code to identify the stock (https://en.wikipedia.org/wiki/Ticker_symbol)
+     * @param email Email address of the user where the message will be sent to
+     * @param minimum Minimum desired value of the stock
+     * @param maximum Maximum desired value of the stock
+     * @return returns true when the notification is created, false if not
+     * @throws InvalidStockCodeException Thrown when the provided stock code is empty
+     * @throws IllegalArgumentException Thrown when the provided email address is invalid, or when the minimum value is higher than the maximum value
+     */
     @Override
-    public boolean createNotification(String code, String email, Double minimum, Double maximum) {
-        return false;
+    public boolean createNotification(String code, String email, Double minimum, Double maximum) throws InvalidStockCodeException, IllegalArgumentException {
+        if(code.equals("")) { throw new InvalidStockCodeException("Please provide a valid stock code."); }
+        if(email.equals("")) { throw new IllegalArgumentException("Please provide a valid email address."); }
+        if(minimum > maximum) { throw new IllegalArgumentException("The minimum value can't be greater than the maximum value."); }
+
+        Notification notification = new Notification(code, email, minimum, maximum);
+
+        return true;
     }
 
     /**
