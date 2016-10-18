@@ -342,7 +342,7 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
      * @throws IllegalArgumentException Thrown when the provided email address is invalid, or when the minimum value is higher than the maximum value
      */
     @Override
-    public boolean createNotification(String code, String email, Double minimum, Double maximum) throws InvalidStockCodeException, IllegalArgumentException {
+    public boolean createNotification(String code, String email, Double minimum, Double maximum) throws InvalidStockCodeException {
         if(code.equals("")) { throw new InvalidStockCodeException("Please provide a valid stock code."); }
         if(email.equals("")) { throw new IllegalArgumentException("Please provide a valid email address."); }
         if(minimum > maximum) { throw new IllegalArgumentException("The minimum value can't be greater than the maximum value."); }
