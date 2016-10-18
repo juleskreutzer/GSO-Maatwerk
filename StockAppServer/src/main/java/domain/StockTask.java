@@ -43,6 +43,25 @@ public class StockTask extends TimerTask {
 
         int x = 1;
 
+        /**
+         * Fetch for each symbol an InteractiveChartData object, then do the following:
+         *
+         * - Get all data needed to create a stock object:
+         *      x Code
+         *      x Minimum
+         *      x Maximum
+         *      x Values
+         *      x Currency
+         *      x Date
+         *
+         *      The code and currency are fields of the InteractiveChartData object, other values are stored in the ElementData array in InteractiveChartData
+         *      All values in ElementData are mapped by jackson to a LinkedHashMap<String, Object> except for the last array, this can be casted to ArrayList.
+         *
+         *      Set a breakpoint in the following code to see the structure of the response from Markit on Demand that is mapped to InteractiveChartData object.
+         *      
+         *  - Create a new Stock object
+         *  - Store the newly created stock object in the database
+         */
         for (String symbol : tickerSymbols) {
             try {
                 System.out.println("Running stock task for symbol \"" + symbol + "\"");
@@ -68,7 +87,6 @@ public class StockTask extends TimerTask {
                 LinkedHashMap<String, Object> high = (LinkedHashMap<String, Object>) dataSeries.get("high");
                 Double max = (Double) high.get("max");
 
-                ArrayList<Double> position = (ArrayList<Double>) icd.getPositions();
                 ArrayList<String> dates = (ArrayList<String>) icd.getDates();
 
                 HashMap<String, Double> values = new HashMap<>();
