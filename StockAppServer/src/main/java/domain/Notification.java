@@ -1,5 +1,13 @@
 package domain;
 
+import domain.database.DatabaseHandlerStock;
+import exceptions.InvalidStockCodeException;
+import exceptions.StockNotFoundException;
+import util.mail.MailHandler;
+
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * | Created by juleskreutzer
@@ -64,7 +72,41 @@ public class Notification {
         this.maximum = maximum;
     }
 
-    public void sendMail() {
-        //TODO: Setup email account and mail client when stock reaches desired value
+    private void sendMail(Double stockMinimum, Double stockMaximum) {
+        String message = "Hello,\'"
+                + "You've create a notification for the stock with the ticker symbol " + this.code + "."
+                + "\n\n"
+                + "This stock has now reached your desired value:"
+                + "\n"
+                + "Stock minimum: " + stockMinimum + " - Desired minimum: " + this.minimum
+                + "Stock maximum: " + stockMaximum + " - Desired maximum: " + this.maximum
+                + "\n\n"
+                + "Happy Trading!";
+
+        String subject = this.code + " has reached your desired value!";
+
+        MailHandler.sendMail(subject, message, this.email);
+    }
+
+    /**
+     * Check if the stock has reached the desired value(s).
+     * @return return true if the stock has reached the desired value(s), false if not
+     */
+    public boolean checkStock() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        Date date = cal.getTime();
+
+        try {
+            Stock stock = DatabaseHandlerStock.getInstance().getStock(date, this.code);
+            if(stock.getMinimum() < this.minimum || stock.getMaximum() < this.maximum) {
+                this.sendMail(stock.getMinimum(), stock.getMaximum());
+                return true;
+            }
+        } catch (StockNotFoundException | InvalidStockCodeException e) {
+            System.out.println("No stock found in the database with the code \"" + this.code + "\" for " + date.toString());
+        }
+
+        return false;
     }
 }

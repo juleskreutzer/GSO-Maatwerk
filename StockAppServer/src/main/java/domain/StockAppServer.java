@@ -30,12 +30,14 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
     private static StockAppServer _instance;
     private List<User> loggedInUsers;
     private List<Group> activeGroups;
+    private List<Notification> registeredNotifications;
 
     private StockAppServer() throws IOException {
         _instance = this;
 
         this.loggedInUsers = new ArrayList<>();
         this.activeGroups = new ArrayList<>();
+        this.registeredNotifications = new ArrayList<>();
 
         // Start execution to fetch stocks each day at 23:30
         RequestTickerSymbols requestTickerSymbols = new RequestTickerSymbols();
@@ -351,7 +353,9 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
     }
 
     /**
-     * Delete groups that have no users registered to it
+     * Check if a group that is stored in the arraylist activeGroups has not registered users. If so, remove the group from activeGroups
+     *
+     * This method will check all groups in activeGroups every hour
      */
     private void clearActiveGroups() {
         boolean running = true;
@@ -364,14 +368,18 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
                 public void run() {
                     int i = 0;
                     for(Group g : activeGroups) {
+                        // Get all users registered to the group
                         ArrayList<User> users = (ArrayList<User>) g.getUsers();
+
+                        // If users.size() == 0, the group has no active users anymore an can be removed.
                         if(users.size() == 0) {
+                            activeGroups.remove(g);
                             g = null;
                             i++;
                         }
                     }
 
-                    System.out.println(i + " group have been removed.");
+                    System.out.println(i + " group have been removed.\n" + activeGroups.size() + " group are still active");
                 }
             });
 
@@ -379,6 +387,48 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
 
             // wait 1 hour before checking all groups again.
             wait(3600000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * Check if a notification that is stored in the arraylist registeredNotifications is completed and send a mail to the user.
+     * When the notification is completed, remove the notification form the registeredNotifications list.
+     *
+     * This method will check all notifications in registeredNotifications every hour.
+     */
+    private void checkForCompletedNotifications() {
+        boolean running = true;
+
+        while(running) {
+            try{
+                Thread t = new Thread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        int i = 0;
+
+                        for(Notification notification : registeredNotifications) {
+                            // Check if a notification requirement is reached
+                            boolean notificationRemoved = notification.checkStock();
+
+                            // If notification is completed, remove it from the registeredNotifications list
+                            if(notificationRemoved) {
+                                registeredNotifications.remove(notification);
+                                notification = null;
+                            }
+                        }
+
+                        System.out.println(i + " Notifications have been completed.\n" + registeredNotifications.size() + " notifications are still active.");
+                    }
+                });
+
+                t.start();
+
+                // Wait 1 hour before checking all notifications again.
+                wait(3600000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
