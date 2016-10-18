@@ -11,7 +11,10 @@ import util.RequestTickerSymbols;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -38,8 +41,6 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
         RequestTickerSymbols requestTickerSymbols = new RequestTickerSymbols();
         Set<String> symbols = requestTickerSymbols.requestTickerSymbols();
         FetchStocks.getInstance().execute(symbols);
-
-        System.out.println();
     }
 
     public static StockAppServer getInstance() {

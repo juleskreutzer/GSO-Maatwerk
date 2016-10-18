@@ -107,6 +107,7 @@ public class RequestHandler {
             }
         } catch (HTTPException e) {
             System.out.println("HTTP ERROR CODE: " + e.getStatusCode());
+            System.out.println("URL Params (unencoded): " + params);
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();

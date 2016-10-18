@@ -11,18 +11,19 @@ package util.markitOnDemand;
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 public class InteractiveChartDataInput {
-    private boolean normalized;
-    private int numberOfDays;
-    private String dataPeriod; // The type of data requested. Minute, Hour, Day, Week, Month, Quarter, Year
 
+    private int numberOfDays;
+    private boolean normalized;
+    private String dataPeriod; // The type of data requested. Minute, Hour, Day, Week, Month, Quarter, Year
 
     private Element[] elements;
 
-    public InteractiveChartDataInput(int numberOfDays, Element[] elements) {
+    public InteractiveChartDataInput( int numberOfDays, Element[] elements) {
         this.normalized = false; // False shows data in price units, true in percentage
         this.numberOfDays = numberOfDays;
         this.dataPeriod = "Day";
         this.elements = elements;
+
     }
 
     public boolean isNormalized() {
@@ -31,14 +32,6 @@ public class InteractiveChartDataInput {
 
     public void setNormalized(boolean normalized) {
         this.normalized = normalized;
-    }
-
-    public int getNumberOfDays() {
-        return numberOfDays;
-    }
-
-    public void setNumberOfDays(int numberOfDays) {
-        this.numberOfDays = numberOfDays;
     }
 
     public String getDataPeriod() {
@@ -55,5 +48,13 @@ public class InteractiveChartDataInput {
 
     public void setElements(Element[] elements) {
         this.elements = elements;
+    }
+
+    public int getNumberOfDays() {
+        return numberOfDays;
+    }
+
+    public void setNumberOfDays(int numberOfDays) {
+        this.numberOfDays = numberOfDays;
     }
 }

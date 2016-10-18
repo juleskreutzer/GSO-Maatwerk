@@ -35,13 +35,20 @@ public class StockTask extends TimerTask {
     public void run() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd 'at' HH:mm:ss z");
         Date date = new Date();
-        System.out.println("StockTask has run. Execution time: " + formatter.format(date));
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, -1);
+        date = cal.getTime();
+        System.out.println("StockTask is running. Execution time: " + formatter.format(date));
+
+        int x = 1;
 
         for (String symbol : tickerSymbols) {
             try {
+                System.out.println("Running stock task for symbol \"" + symbol + "\"");
 
                 Element element = new Element(symbol, ElementType.PRICE, new String[] { "ohlc" }) ;
-                InteractiveChartDataInput input = new InteractiveChartDataInput(1, new Element[] {element});
+                InteractiveChartDataInput input = new InteractiveChartDataInput(30, new Element[] {element});
 
                 // Request a InteractiveChartData object from Markit on Demand
                 JSONObject result = RequestHandler.requestInteracitveChartDate(Mapper.mapToJson(input));
@@ -66,15 +73,19 @@ public class StockTask extends TimerTask {
 
                 HashMap<String, Double> values = new HashMap<>();
 
+                // Get teh correct values to draw a graph
+                LinkedHashMap<String, Object> dataSeriesOpen = (LinkedHashMap<String, Object>) dataSeries.get("open");
+                ArrayList<Double> dataSeriesOpenValues = (ArrayList<Double>) dataSeriesOpen.get("values");
+
                 // Amount of positions should be the same as the amount of dates
-                if(position.size() == dates.size()) {
+                if(dataSeriesOpenValues.size() == dates.size()) {
                     for(int i = 0; i < dates.size(); i++) {
                         /**
                          * Combine the positions and dates together
                          *
                          * The key should be the date and the postion should be the value
                          */
-                        values.put(dates.get(i), position.get(i));
+                        values.put(dates.get(i), (Double) dataSeriesOpenValues.get(i));
                     }
 
                     // positions and dates have been matched together
@@ -104,6 +115,8 @@ public class StockTask extends TimerTask {
                 System.out.println("The stock already exists in the database. \nTicker Symbol: " + symbol);
             } catch(StockIsNullException e) {
                 System.out.println("Tried to store the stock object for " + symbol + " in the database, but this object was null.");
+            } catch(ArrayIndexOutOfBoundsException e) {
+                System.out.println("No array data for \"" + symbol + "\"");
             } catch(Exception e) {
                 e.printStackTrace();
             }
