@@ -334,7 +334,9 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
         return false;
     }
 
-
+    /**
+     * Delete groups that have no users registered to it
+     */
     private void clearActiveGroups() {
         boolean running = true;
 
