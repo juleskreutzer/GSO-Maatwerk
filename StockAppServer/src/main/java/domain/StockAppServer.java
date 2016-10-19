@@ -43,6 +43,9 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
         RequestTickerSymbols requestTickerSymbols = new RequestTickerSymbols();
         Set<String> symbols = requestTickerSymbols.requestTickerSymbols();
         FetchStocks.getInstance().execute(symbols);
+
+        clearActiveGroups();
+        checkForCompletedNotifications();
     }
 
     public static StockAppServer getInstance() {

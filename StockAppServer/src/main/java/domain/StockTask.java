@@ -32,7 +32,7 @@ public class StockTask extends TimerTask {
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd 'at' HH:mm:ss z");
         Date date = new Date();
         Calendar cal = Calendar.getInstance();
