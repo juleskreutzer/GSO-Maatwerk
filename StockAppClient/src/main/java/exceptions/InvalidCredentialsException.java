@@ -7,7 +7,7 @@ package exceptions;
  * |
  * | Project Info:
  * | Project Name: StockAppServer
- * | Project Package Name: exceptions
+ * | Project Package Name: nl.nujules.exceptions
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 public class InvalidCredentialsException extends Exception {

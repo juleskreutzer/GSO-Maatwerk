@@ -11,10 +11,7 @@ import util.RequestTickerSymbols;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -39,10 +36,7 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
         this.activeGroups = new ArrayList<>();
         this.registeredNotifications = new ArrayList<>();
 
-        // Start execution to fetch stocks each day at 23:30
-        RequestTickerSymbols requestTickerSymbols = new RequestTickerSymbols();
-        Set<String> symbols = requestTickerSymbols.requestTickerSymbols();
-        FetchStocks.getInstance().execute(symbols);
+        this.registerStockTask();
 
         clearActiveGroups();
         checkForCompletedNotifications();
@@ -56,6 +50,21 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
         }
 
         return null;
+    }
+
+    private void registerStockTask() {
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // Start execution to fetch stocks each day at 23:30
+                RequestTickerSymbols requestTickerSymbols = new RequestTickerSymbols();
+                Set<String> symbols = requestTickerSymbols.requestTickerSymbols();
+                FetchStocks.getInstance().execute(symbols);
+            }
+        });
+
+        t.start();
+
     }
 
     /**
@@ -351,6 +360,7 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
         if(minimum > maximum) { throw new IllegalArgumentException("The minimum value can't be greater than the maximum value."); }
 
         Notification notification = new Notification(code, email, minimum, maximum);
+        this.registeredNotifications.add(notification);
 
         return true;
     }
@@ -360,40 +370,26 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
      *
      * This method will check all groups in activeGroups every hour
      */
-    private void clearActiveGroups() {
-        boolean running = true;
+    private synchronized void clearActiveGroups() {
+        Timer timer = new Timer();
 
-        while(running) {
-            try {
-            Thread t = new Thread(new Runnable() {
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                int i = 0;
+                for(Group g : activeGroups) {
+                    ArrayList<User> users = (ArrayList<User>) g.getUsers();
 
-                @Override
-                public void run() {
-                    int i = 0;
-                    for(Group g : activeGroups) {
-                        // Get all users registered to the group
-                        ArrayList<User> users = (ArrayList<User>) g.getUsers();
-
-                        // If users.size() == 0, the group has no active users anymore an can be removed.
-                        if(users.size() == 0) {
-                            activeGroups.remove(g);
-                            g = null;
-                            i++;
-                        }
+                    if(users.size() == 0) {
+                        activeGroups.remove(g);
+                        i++;
                     }
-
-                    System.out.println(i + " group have been removed.\n" + activeGroups.size() + " group are still active");
                 }
-            });
 
-            t.start();
+                System.out.println(i + " group have been removed.\n" + activeGroups.size() + " group are still active");
 
-            // wait 1 hour before checking all groups again.
-            wait(3600000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
-        }
+        }, 0, 3600000);
     }
 
     /**
@@ -402,39 +398,30 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
      *
      * This method will check all notifications in registeredNotifications every hour.
      */
-    private void checkForCompletedNotifications() {
-        boolean running = true;
+    private synchronized void checkForCompletedNotifications() {
 
-        while(running) {
-            try{
-                Thread t = new Thread(new Runnable() {
+        Timer timer = new Timer();
 
-                    @Override
-                    public void run() {
-                        int i = 0;
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                int i = 0;
 
-                        for(Notification notification : registeredNotifications) {
-                            // Check if a notification requirement is reached
-                            boolean notificationRemoved = notification.checkStock();
+                for (Notification notification : registeredNotifications) {
+                    // Check if a notification requirement is reached
+                    boolean notificationRemoved = notification.checkStock();
 
-                            // If notification is completed, remove it from the registeredNotifications list
-                            if(notificationRemoved) {
-                                registeredNotifications.remove(notification);
-                                notification = null;
-                            }
-                        }
-
-                        System.out.println(i + " Notifications have been completed.\n" + registeredNotifications.size() + " notifications are still active.");
+                    // If notification is completed, remove it from the registeredNotifications list
+                    if (notificationRemoved) {
+                        registeredNotifications.remove(notification);
+                        notification = null;
+                        i++;
                     }
-                });
+                }
 
-                t.start();
+                System.out.println(i + " Notifications have been completed.\n" + registeredNotifications.size() + " notifications are still active.");
 
-                // Wait 1 hour before checking all notifications again.
-                wait(3600000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
-        }
+        }, 0, 3600000);
     }
 }

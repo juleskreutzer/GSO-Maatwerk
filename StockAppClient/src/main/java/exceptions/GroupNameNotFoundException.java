@@ -7,10 +7,10 @@ package exceptions;
  * |
  * | Project Info:
  * | Project Name: StockAppServer
- * | Project Package Name: exceptions
+ * | Project Package Name: nl.nujules.exceptions
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-public class UserIsRegisteredException extends Exception {
-    public UserIsRegisteredException(String message) { super(message); }
-    public UserIsRegisteredException() { super(); }
+public class GroupNameNotFoundException extends Exception {
+    public GroupNameNotFoundException(String message) { super(message); }
+    public GroupNameNotFoundException() { super(); }
 }

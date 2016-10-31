@@ -3,14 +3,14 @@ package exceptions;
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * | Created by juleskreutzer
- * | Date: 27-09-16
+ * | Date: 03-10-16
  * |
  * | Project Info:
  * | Project Name: StockAppServer
  * | Project Package Name: exceptions
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-public class UserIsNullException extends Exception {
-    public UserIsNullException(String message) { super(); }
-    public UserIsNullException() { super(); }
+public class StockAlreadyExistsException extends Exception {
+    public StockAlreadyExistsException(String message) { super(message); }
+    public StockAlreadyExistsException() { super(); }
 }

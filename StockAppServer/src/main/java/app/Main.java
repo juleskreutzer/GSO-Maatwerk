@@ -25,9 +25,10 @@ public class Main {
         }
 
         try {
-            Registry reg = LocateRegistry.createRegistry(7611);
+            Registry reg = LocateRegistry.createRegistry(1099);
             StockAppServer server = StockAppServer.getInstance();
             reg.rebind("StockApp", server);
+            System.out.println("StockApp bound for StockAppServer object.");
         } catch (RemoteException e) {
             e.printStackTrace();
         }

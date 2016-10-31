@@ -10,7 +10,7 @@ package exceptions;
  * | Project Package Name: exceptions
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-public class StockIsNullException extends Exception {
-    public StockIsNullException(String message) { super(message); }
-    public StockIsNullException() { super(); }
+public class GroupNameAlreadyExistsException extends Exception {
+    public GroupNameAlreadyExistsException(String message) { super(message); }
+    public GroupNameAlreadyExistsException() { super(); }
 }
