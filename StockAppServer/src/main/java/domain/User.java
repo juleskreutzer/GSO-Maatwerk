@@ -19,7 +19,10 @@ import java.util.List;
  */
 public class User implements Serializable {
 
-    private ObjectId _id;
+    /** Serialization ID for RMI */
+    private static final long serialVersionUID = 30L;
+
+    private transient ObjectId _id;
     private String username;
     private String password;
     private String email;

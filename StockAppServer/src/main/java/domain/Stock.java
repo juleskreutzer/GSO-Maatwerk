@@ -20,7 +20,10 @@ import java.util.HashMap;
  */
 public class Stock implements Serializable {
 
-    private ObjectId _id;
+    /** Serialization ID for RMI */
+    private static final long serialVersionUID = 29L;
+
+    private transient ObjectId _id;
     private String name;
     private String code;
     private double minimum;

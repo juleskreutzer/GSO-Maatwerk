@@ -34,13 +34,6 @@ public class StockTask extends TimerTask {
     @Override
     public synchronized void run() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd 'at' HH:mm:ss z");
-        Date date = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.DATE, -1);
-        date = cal.getTime();
-        System.out.println("StockTask is running. Execution time: " + formatter.format(date));
-
         int x = 1;
 
         /**
@@ -64,7 +57,12 @@ public class StockTask extends TimerTask {
          */
         for (String symbol : tickerSymbols) {
             try {
-                System.out.println("Running stock task for symbol \"" + symbol + "\"");
+                Date date = new Date();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                cal.add(Calendar.DATE, -1);
+                date = cal.getTime();
+                System.out.println("Running stock task for symbol \"" + symbol + "\" at " + formatter.format(date));
 
                 Element element = new Element(symbol, ElementType.PRICE, new String[] { "ohlc" }) ;
                 InteractiveChartDataInput input = new InteractiveChartDataInput(30, new Element[] {element});
