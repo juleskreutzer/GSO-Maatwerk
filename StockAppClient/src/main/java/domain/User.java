@@ -18,6 +18,9 @@ import java.util.List;
  */
 public class User implements Serializable {
 
+    /** Serialization ID for RMI */
+    private static final long serialVersionUID = 30L;
+
     private String username;
     private String password;
     private String email;
@@ -56,10 +59,7 @@ public class User implements Serializable {
     }
 
     public void setEmail(String email) {
-        if(email.equals("")) { throw new IllegalArgumentException("Empty email address is not allowed"); }
-        {
-            this.email = email;
-        }
+        this.email = email;
     }
 
     public List<String> getPreferredStock() {
@@ -73,7 +73,7 @@ public class User implements Serializable {
     public static User createUser(String username, String password, String email, List<String> preferredStock) {
         if(username.equals("")) { throw new IllegalArgumentException("Empty username not allowed"); }
         if(password.equals("")) { throw new IllegalArgumentException("Empty password not allowed"); }
-        if(email.equals("")) { throw new IllegalArgumentException("Empty email address not allowed"); }
+//        if(email.equals("")) { throw new IllegalArgumentException("Empty email address not allowed"); }
 
         User user = new User();
         user.setUsername(username);
@@ -94,7 +94,7 @@ public class User implements Serializable {
     public static User createUser(String username, String password, String email) {
         if(username.equals("")) { throw new IllegalArgumentException("Empty username not allowed"); }
         if(password.equals("")) { throw new IllegalArgumentException("Empty password not allowed"); }
-        if(email.equals("")) { throw new IllegalArgumentException("Empty email address not allowed"); }
+//        if(email.equals("")) { throw new IllegalArgumentException("Empty email address not allowed"); }
 
         User user = new User();
         user.setUsername(username);

@@ -79,9 +79,8 @@ public class LoginController implements Initializable {
 
                     if(loginSuccess) {
                         // Login is correct. Show main UI
-                        //TODO: Show MainUI
 
-                        AlertMessage.show("Login was successful, but we haven't implemented further actions at this time.", "", Alert.AlertType.INFORMATION);
+                        MainScreenController.showMenu();
                     } else {
                         // Login failed, but a UserNotFound or InvalidCredentials Exception should've been thrown instead...
                         AlertMessage.show("The provided username and password are incorrect.\nPlease try again.", "", Alert.AlertType.ERROR);

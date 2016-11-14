@@ -7,13 +7,11 @@ import exceptions.StockIsNullException;
 import org.json.JSONObject;
 import util.Mapper;
 import util.RequestHandler;
+import util.RequestTickerSymbols;
 import util.markitOnDemand.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.*;
 
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -28,11 +26,11 @@ import java.util.LinkedHashMap;
 public class StockTaskTest {
 
     public static void main(String[] args) throws Exception {
-        String symbol = "AAPL";
+        //String symbol = "AAPL";
 
-        //RequestTickerSymbols requestTickerSymbols = new RequestTickerSymbols();
-        //Set<String> symbols = requestTickerSymbols.requestTickerSymbols();
-        //for(String symbol : symbols) {
+        RequestTickerSymbols requestTickerSymbols = new RequestTickerSymbols();
+        Set<String> symbols = requestTickerSymbols.requestTickerSymbols();
+        for(String symbol : symbols) {
             try {
                 System.out.println("Running stock task for symbol \"" + symbol + "\"");
 
@@ -105,5 +103,5 @@ public class StockTaskTest {
                 e.printStackTrace();
             }
         }
-    //}
+    }
 }

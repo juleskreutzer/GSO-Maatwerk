@@ -18,6 +18,9 @@ import java.util.HashMap;
  */
 public class Stock implements Serializable {
 
+    /** Serialization ID for RMI */
+    private static final long serialVersionUID = 29L;
+
     private String name;
     private String code;
     private double minimum;

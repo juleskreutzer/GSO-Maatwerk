@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
+   <children>
+      <ChoiceBox fx:id="cbStock" layoutX="9.0" layoutY="44.0" prefHeight="27.0" prefWidth="276.0" />
+      <Line endY="600.0" layoutX="600.0" />
+      <Label layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="274.0" text="Select stock to show:">
+         <font>
+            <Font name="Apple SD Gothic Neo UltraLight" size="18.0" />
+         </font></Label>
+      <LineChart fx:id="lineChart" layoutX="9.0" layoutY="120.0" prefHeight="470.0" prefWidth="581.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Button fx:id="btnNotification" layoutX="505.0" layoutY="89.0" mnemonicParsing="false" text="Notification">
+         <font>
+            <Font name="Apple SD Gothic Neo UltraLight" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnFavorite" layoutX="433.0" layoutY="89.0" mnemonicParsing="false" text="Favorite">
+         <font>
+            <Font name="Apple SD Gothic Neo UltraLight" size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="stockNameLabel" layoutX="14.0" layoutY="91.0" text="Stock Name (Ticker Symbol)">
+         <font>
+            <Font name="Apple SD Gothic Neo UltraLight" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnSendStock" layoutX="834.0" layoutY="10.0" mnemonicParsing="false" text="Send Stock data to user">
+         <font>
+            <Font name="Apple SD Gothic Neo UltraLight" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnJoinGroup" layoutX="831.0" layoutY="61.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="155.0" text="Join group">
+         <font>
+            <Font name="Apple SD Gothic Neo UltraLight" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCreateGroup" layoutX="831.0" layoutY="98.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="155.0" text="Create and join group">
+         <font>
+            <Font name="Apple SD Gothic Neo UltraLight" size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtUsername" layoutX="610.0" layoutY="10.0" promptText="Username" />
+      <TextField fx:id="txtGroupname" layoutX="610.0" layoutY="61.0" promptText="Group name" />
+      <TextArea fx:id="taStockInfo" editable="false" layoutX="610.0" layoutY="190.0" prefHeight="400.0" prefWidth="380.0" />
+      <Line endX="300.0" layoutX="700.0" layoutY="51.0" startX="-100.0" />
+      <Line endX="300.0" layoutX="700.0" layoutY="132.0" startX="-100.0" />
+      <Label layoutX="610.0" layoutY="157.0" text="Stock Info">
+         <font>
+            <Font name="Apple SD Gothic Neo UltraLight" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
