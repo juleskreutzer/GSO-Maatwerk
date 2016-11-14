@@ -44,7 +44,8 @@ public class DatabaseHandlerStock extends DatabaseHandler {
         if(stock.getDate() == null) { throw new IllegalArgumentException("Not allowed to have null as date"); }
 
 
-        stockCollection.insert(stock);
+//        stockCollection.insert(stock);
+        stockCollection.insert("{name: #, code: #, currency: #, date: #, maximum: #, minimum: #, values: #}", stock.getName(), stock.getCode(), stock.getCurrency(), stock.getDate(), stock.getMaximum(), stock.getMinimum(), stock.getValues());
     }
 
     public Stock getStock(Date date, String code) throws StockNotFoundException, InvalidStockCodeException {
