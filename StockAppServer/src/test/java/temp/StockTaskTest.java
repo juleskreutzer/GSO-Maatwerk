@@ -71,7 +71,7 @@ public class StockTaskTest {
                          *
                          * The key should be the date and the postion should be the value
                          */
-                        values.put(dates.get(i), (Double) dataSeriesOpenValues.get(i));
+                        values.put(dates.get(i), Double.valueOf(String.valueOf(dataSeriesOpenValues.get(i))));
                     }
 
                     // positions and dates have been matched together
