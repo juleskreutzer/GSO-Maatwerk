@@ -43,9 +43,11 @@ public class DatabaseHandlerStock extends DatabaseHandler {
         if(stock.getCode().equals("")) { throw new IllegalArgumentException("Not allowed to have empty code"); }
         if(stock.getDate() == null) { throw new IllegalArgumentException("Not allowed to have null as date"); }
 
+        MongoCursor<Stock> cursor = stockCollection.find("{code: #, date: # }", stock.getCode(), stock.getDate()).as(Stock.class);
 
-//        stockCollection.insert(stock);
-        stockCollection.insert("{name: #, code: #, currency: #, date: #, maximum: #, minimum: #, values: #}", stock.getName(), stock.getCode(), stock.getCurrency(), stock.getDate(), stock.getMaximum(), stock.getMinimum(), stock.getValues());
+        if(cursor.count() == 0) {
+            stockCollection.insert("{name: #, code: #, currency: #, date: #, maximum: #, minimum: #, values: #}", stock.getName(), stock.getCode(), stock.getCurrency(), stock.getDate(), stock.getMaximum(), stock.getMinimum(), stock.getValues());
+        }
     }
 
     public Stock getStock(Date date, String code) throws StockNotFoundException, InvalidStockCodeException {

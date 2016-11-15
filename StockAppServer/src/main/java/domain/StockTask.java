@@ -80,10 +80,10 @@ public class StockTask extends TimerTask {
                 LinkedHashMap<String, Object> dataSeries = (LinkedHashMap<String, Object>) elementDatas[0].getDataseries();
 
                 LinkedHashMap<String, Object> low = (LinkedHashMap<String, Object>) dataSeries.get("low");
-                Double min = (Double) low.get("min");
+                Double min = Double.valueOf(String.valueOf(low.get("min")));
 
                 LinkedHashMap<String, Object> high = (LinkedHashMap<String, Object>) dataSeries.get("high");
-                Double max = (Double) high.get("max");
+                Double max = Double.valueOf(String.valueOf(high.get("max")));
 
                 ArrayList<String> dates = (ArrayList<String>) icd.getDates();
 
