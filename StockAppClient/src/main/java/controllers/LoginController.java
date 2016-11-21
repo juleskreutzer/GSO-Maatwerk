@@ -1,6 +1,5 @@
 package controllers;
 
-import app.Main;
 import domain.StockApp;
 import domain.User;
 import exceptions.*;
@@ -17,10 +16,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
+import util.Helper;
 
 import java.io.IOException;
 import java.net.URL;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -49,10 +48,11 @@ public class LoginController implements Initializable {
 
     private static Stage stage;
 
-    private static IUserHandling iUserHandling;
+    private IUserHandling iUserHandling;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.iUserHandling = StockApp.getInstance().getIUserHandlingInterface();
 
     }
 
@@ -79,6 +79,7 @@ public class LoginController implements Initializable {
 
                     if(loginSuccess) {
                         // Login is correct. Show main UI
+                        Helper.getInstance().setUser(user);
 
                         MainScreenController.showMenu();
                     } else {
@@ -157,14 +158,6 @@ public class LoginController implements Initializable {
         stage.centerOnScreen();
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setScene(scene);
-
-        try {
-            iUserHandling = Main.getIUserHandling();
-        } catch (RemoteException e) {
-            AlertMessage.showException("Unable to connect to our server.", e);
-        } catch (NotBoundException e) {
-            AlertMessage.showException("No server has been found with the name \"StockApp\" on the remote host.\nPlease try again later", e);
-        }
         stage.show();
 
     }

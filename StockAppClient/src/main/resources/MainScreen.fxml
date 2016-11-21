@@ -23,12 +23,12 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <Button fx:id="btnNotification" layoutX="505.0" layoutY="89.0" mnemonicParsing="false" text="Notification">
+      <Button fx:id="btnNotification" layoutX="505.0" layoutY="89.0" mnemonicParsing="false" onAction="#addNotification" text="Notification">
          <font>
             <Font name="Apple SD Gothic Neo UltraLight" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnFavorite" layoutX="433.0" layoutY="89.0" mnemonicParsing="false" text="Favorite">
+      <Button fx:id="btnFavorite" layoutX="433.0" layoutY="89.0" mnemonicParsing="false" onAction="#addFavorite" text="Favorite">
          <font>
             <Font name="Apple SD Gothic Neo UltraLight" size="14.0" />
          </font>
@@ -38,17 +38,17 @@
             <Font name="Apple SD Gothic Neo UltraLight" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnSendStock" layoutX="834.0" layoutY="10.0" mnemonicParsing="false" text="Send Stock data to user">
+      <Button fx:id="btnSendStock" layoutX="834.0" layoutY="10.0" mnemonicParsing="false" onAction="#sendStock" text="Send Stock data to user">
          <font>
             <Font name="Apple SD Gothic Neo UltraLight" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnJoinGroup" layoutX="831.0" layoutY="61.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="155.0" text="Join group">
+      <Button fx:id="btnJoinGroup" layoutX="831.0" layoutY="61.0" mnemonicParsing="false" onAction="#joinGroup" prefHeight="28.0" prefWidth="155.0" text="Join group">
          <font>
             <Font name="Apple SD Gothic Neo UltraLight" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnCreateGroup" layoutX="831.0" layoutY="98.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="155.0" text="Create and join group">
+      <Button fx:id="btnCreateGroup" layoutX="831.0" layoutY="98.0" mnemonicParsing="false" onAction="#createGroup" prefHeight="28.0" prefWidth="155.0" text="Create and join group">
          <font>
             <Font name="Apple SD Gothic Neo UltraLight" size="14.0" />
          </font>

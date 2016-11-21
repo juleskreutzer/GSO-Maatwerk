@@ -1,6 +1,9 @@
 package app;
 
+import controllers.AlertMessage;
 import controllers.LoginController;
+import domain.StockApp;
+import interfaces.IStockSend;
 import interfaces.IUserHandling;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -48,13 +51,17 @@ public class Main extends Application {
             System.out.println("Attempting to connect to RMI server over 37.97.223.70");
         }
 
+        try {
+            StockApp.getInstance().setServerInterfaces((IStockSend) reg.lookup("StockApp"), (IUserHandling) reg.lookup("StockApp"));
+        } catch(RemoteException e) {
+            AlertMessage.showException("Unable to connect to server.", e);
+        } catch (NotBoundException e) {
+            AlertMessage.showException("No server has been found with the name \"StockApp\" on the remote host.\nPlease try again later", e);
+        }
+
         LoginController.showMenu();
 
         //FileNotFoundException e = new FileNotFoundException("Couldn't find file blabla.txt");
         //AlertMessage.showException("Something went wrong. Please try again later.", e);
-    }
-
-    public static IUserHandling getIUserHandling() throws RemoteException, NotBoundException {
-        return (IUserHandling) reg.lookup("StockApp");
     }
 }

@@ -25,8 +25,8 @@ public class StockApp extends UnicastRemoteObject implements IStockReceive {
     /**
      * Interfaces to call methods on server
      */
-    private static IStockSend iStockSend;
-    private static IUserHandling iUserHandling;
+    private IStockSend iStockSend;
+    private IUserHandling iUserHandling;
 
     private StockApp() throws RemoteException {
         super();
@@ -47,6 +47,14 @@ public class StockApp extends UnicastRemoteObject implements IStockReceive {
     public void setServerInterfaces(IStockSend iStockSend, IUserHandling iUserHandling) {
         this.iStockSend = iStockSend;
         this.iUserHandling = iUserHandling;
+    }
+
+    public IStockSend getIStockSendInterface() {
+        return this.iStockSend;
+    }
+
+    public IUserHandling getIUserHandlingInterface() {
+        return this.iUserHandling;
     }
 
     @Override
