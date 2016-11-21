@@ -1,0 +1,29 @@
+{
+  "name": "stockappweb",
+  "version": "1.0.0",
+  "description": "GSO-Maatwerk project",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juleskreutzer/GSO-Maatwerk.git"
+  },
+  "keywords": [
+    "gso",
+    "nodejs",
+    "jules",
+    "kreutzer",
+    "express"
+  ],
+  "author": "Jules Kreutzer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juleskreutzer/GSO-Maatwerk/issues"
+  },
+  "homepage": "https://github.com/juleskreutzer/GSO-Maatwerk#readme",
+  "dependencies": {
+    "mongodb": "^2.2.11"
+  }
+}
