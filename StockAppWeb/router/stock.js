@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+var jwt = require('jsonwebtoken');
+var config = require('../config');
+
 var mongoose = require('mongoose');
 var db_url = 'mongodb://localhost:27017/StockApp';
 mongoose.connect(db_url);
@@ -14,6 +17,30 @@ db.on('error', console.error.bind(console, 'connection error: '));
 
 db.once('open', function() {
   console.log('Connected to database!');
+});
+
+router.use(function(req, res, next) {
+
+  console.log('Looking for token...');
+  var token = req.body.token || req.query.token || req.header['x-access-token'];
+
+  if(token) {
+    console.log('token found: ' + token);
+
+    jwt.verify(token, config.secret, function(err, decoded) {
+      if(err) {
+        return res.json({ success: false, message: 'You are not authorized to call this endpoint. (Failed to authenticate token)'});
+      } else {
+        req.decoded = decoded;
+        next();
+      }
+    });
+  } else {
+      return res.status(403).send({
+        success: false,
+        message: 'No token provided to authorize this request.'
+      });
+  }
 });
 
 /**

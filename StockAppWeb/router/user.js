@@ -1,8 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var sha1 = require('js-sha1');
 var app = express();
 var router = express.Router();
 var mongoose = require('mongoose');
+
+var jwt = require('jsonwebtoken');
+var config = require('../config');
+
 var db_url = 'mongodb://localhost:27017/StockApp';
 mongoose.connect(db_url);
 
@@ -10,6 +15,30 @@ var Stock = require('../schemas/stockSchema');
 var User = require('../schemas/userSchema');
 
 var db = mongoose.connection;
+
+router.use(function(req, res, next) {
+
+  console.log('Looking for token...');
+  var token = req.body.token || req.query.token || req.header['x-access-token'];
+
+  if(token) {
+    console.log('token found: ' + token);
+
+    jwt.verify(token, config.secret, function(err, decoded) {
+      if(err) {
+        return res.json({ success: false, message: 'You are not authorized to call this endpoint. (Failed to authenticate token)'});
+      } else {
+        req.decoded = decoded;
+        next();
+      }
+    });
+  } else {
+      return res.status(403).send({
+        success: false,
+        message: 'No token provided to authorize this request.'
+      });
+  }
+});
 
 router.get('/', function(req, res) {
   res.end('user endpoint');
@@ -29,17 +58,26 @@ router.post('/register', function(req, res) {
   var password = req.body.password;
   var email = req.body.email;
 
-  var newUser = new User({
-    username: username,
-    password: password,
-    email: email,
-    preferredStock: []
+  var hashed = sha1(password);
+
+  User.find({username: username}, function(err, result) {
+
+    if(result.length > 0) { res.end("User with username \"" + username + "\" already exists."); }
   });
 
-  newUser.save(function(err) {
-    if(err) { res.send(err); }
-    else { res.send("User created!"); }
-  })
+    // Store new user in database
+    var newUser = new User({
+      username: username,
+      password: hashed,
+      email: email,
+      preferredStock: []
+    });
+
+    newUser.save(function(err) {
+      if(err) { res.send(err); }
+      else { res.json({ success: true }); }
+    });
+
 });
 
 /**
