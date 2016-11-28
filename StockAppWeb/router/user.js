@@ -9,7 +9,6 @@ var jwt = require('jsonwebtoken');
 var config = require('../config');
 
 var db_url = 'mongodb://localhost:27017/StockApp';
-mongoose.connect(db_url);
 
 var Stock = require('../schemas/stockSchema');
 var User = require('../schemas/userSchema');
@@ -18,25 +17,32 @@ var db = mongoose.connection;
 
 router.use(function(req, res, next) {
 
-  console.log('Looking for token...');
-  var token = req.body.token || req.query.token || req.header['x-access-token'];
+  var path = "/register";
+  console.log("Path is: " + req.path);
+  if(path != req.path) {
 
-  if(token) {
-    console.log('token found: ' + token);
+    console.log('Looking for token...');
+    var token = req.body.token || req.query.token || req.header['x-access-token'];
 
-    jwt.verify(token, config.secret, function(err, decoded) {
-      if(err) {
-        return res.json({ success: false, message: 'You are not authorized to call this endpoint. (Failed to authenticate token)'});
-      } else {
-        req.decoded = decoded;
-        next();
-      }
-    });
-  } else {
-      return res.status(403).send({
-        success: false,
-        message: 'No token provided to authorize this request.'
+    if(token) {
+      console.log('token found: ' + token);
+
+      jwt.verify(token, config.secret, function(err, decoded) {
+        if(err) {
+          return res.json({ success: false, message: 'You are not authorized to call this endpoint. (Failed to authenticate token)'});
+        } else {
+          req.decoded = decoded;
+          next();
+        }
       });
+    } else {
+        return res.status(403).send({
+          success: false,
+          message: 'No token provided to authorize this request.'
+        });
+    }
+  } else {
+    next();
   }
 });
 
