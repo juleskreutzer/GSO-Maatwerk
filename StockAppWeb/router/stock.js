@@ -6,7 +6,6 @@ var config = require('../config');
 
 var mongoose = require('mongoose');
 var db_url = 'mongodb://localhost:27017/StockApp';
-mongoose.connect(db_url);
 
 var Stock = require('../schemas/stockSchema');
 var User = require('../schemas/userSchema');
@@ -70,6 +69,57 @@ router.get('/:code', function(req, res) {
     }
 
     res.json(stocks);
+  });
+});
+
+/**
+Get all stock objects stored in the database for the provided :code param.
+Days represent the number of days back from the current date you want to start searching for the stock object
+
+This endpoint will return a JSON object with the key 'success' defining if the request is successful.
+If success is true, an array of stock objects will be sent to the client, if success is false, an error message will be returned
+*/
+router.get('/:code/:days', function(req, res) {
+  var code = req.params.code;
+  var days = req.params.days;
+
+  var endDate = new Date();
+  var startDate = endDate.getDay() - days;
+
+  Stock.find({code: code, date: { '$gte': startDate, '$lt': endDate}}, function(err, result) {
+    if(err) {
+      res.json({ success: false, message: 'Couldn\'t find any stocks.\n' + err});
+    }
+
+    res.json({ success: true, result });
+  });
+});
+
+/**
+Get all stock object stored in the database for the provided :code param
+With this endpoint you can search history in the database.
+
+:code will contain the ticker symbol for the stock object
+:endDate will contain a JS date object in JSON format (now.toJSON)
+:days will be used to calculate the start date
+
+THis endpoint will return a JSON object with the key 'success' defining if the request is successful.
+If success is true, an array of stock objects will be sent to the client, if success is false, an error message will be returned
+*/
+router.get('/history/:code/:endDate/:days', function(req, res) {
+  var code = req.params.code;
+  var endDateJsonString = req.params.endDate; // Add endDate params by calling now.toJSON() on client
+  var days = req.params.days;
+
+  var endDate = new Date(endDateJsonString);
+  var startDate = endDate.getDay() - days;
+
+  Stock.find({code: code, date: { '$gte': startDate, '$lt': endDate}}, function(err, result) {
+    if(err) {
+      res.json({ success: false, message: 'Couldn\'t find any stocks.\n' + err});
+    }
+
+    res.json({ success: true, result });
   });
 });
 

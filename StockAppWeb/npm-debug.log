@@ -1,0 +1,1605 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/juleskreutzer/.nvm/versions/node/v5.10.1/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'nodermi',
+1 verbose cli   '--save' ]
+2 info using npm@3.10.8
+3 info using node@v5.10.1
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData nodermi
+8 silly fetchNamedPackageData nodermi
+9 silly mapToRegistry name nodermi
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: 'nodermi',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: 'nodermi',
+12 silly mapToRegistry   name: 'nodermi',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag' }
+13 silly mapToRegistry uri https://registry.npmjs.org/nodermi
+14 verbose request uri https://registry.npmjs.org/nodermi
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 12:06:25
+17 verbose request using bearer token for auth
+18 verbose request id 104b99f4574ae488
+19 verbose etag W/"56074e9f-2f12"
+20 verbose lastModified Sun, 27 Sep 2015 02:04:15 GMT
+21 http request GET https://registry.npmjs.org/nodermi
+22 http 304 https://registry.npmjs.org/nodermi
+23 verbose headers { server: 'nginx/1.10.1',
+23 verbose headers   'last-modified': 'Sun, 27 Sep 2015 02:04:15 GMT',
+23 verbose headers   etag: '"56074e9f-2f12"',
+23 verbose headers   'cache-control': 'max-age=300',
+23 verbose headers   'accept-ranges': 'bytes',
+23 verbose headers   date: 'Mon, 28 Nov 2016 11:06:25 GMT',
+23 verbose headers   via: '1.1 varnish',
+23 verbose headers   connection: 'keep-alive',
+23 verbose headers   'x-served-by': 'cache-ams4435-AMS',
+23 verbose headers   'x-cache': 'MISS',
+23 verbose headers   'x-cache-hits': '0',
+23 verbose headers   'x-timer': 'S1480331185.778022,VS0,VE6',
+23 verbose headers   vary: 'Accept-Encoding' }
+24 silly get cb [ 304,
+24 silly get   { server: 'nginx/1.10.1',
+24 silly get     'last-modified': 'Sun, 27 Sep 2015 02:04:15 GMT',
+24 silly get     etag: '"56074e9f-2f12"',
+24 silly get     'cache-control': 'max-age=300',
+24 silly get     'accept-ranges': 'bytes',
+24 silly get     date: 'Mon, 28 Nov 2016 11:06:25 GMT',
+24 silly get     via: '1.1 varnish',
+24 silly get     connection: 'keep-alive',
+24 silly get     'x-served-by': 'cache-ams4435-AMS',
+24 silly get     'x-cache': 'MISS',
+24 silly get     'x-cache-hits': '0',
+24 silly get     'x-timer': 'S1480331185.778022,VS0,VE6',
+24 silly get     vary: 'Accept-Encoding' } ]
+25 verbose etag https://registry.npmjs.org/nodermi from cache
+26 verbose get saving nodermi to /Users/juleskreutzer/.npm/registry.npmjs.org/nodermi/.cache.json
+27 verbose correctMkdir /Users/juleskreutzer/.npm correctMkdir not in flight; initializing
+28 silly install normalizeTree
+29 silly loadCurrentTree Finishing
+30 silly loadIdealTree Starting
+31 silly install loadIdealTree
+32 silly cloneCurrentTree Starting
+33 silly install cloneCurrentTreeToIdealTree
+34 silly cloneCurrentTree Finishing
+35 silly loadShrinkwrap Starting
+36 silly install loadShrinkwrap
+37 silly loadShrinkwrap Finishing
+38 silly loadAllDepsIntoIdealTree Starting
+39 silly install loadAllDepsIntoIdealTree
+40 silly resolveWithNewModule nodermi@0.0.4 checking installable status
+41 silly cache add args [ 'nodermi', null ]
+42 verbose cache add spec nodermi
+43 silly cache add parsed spec Result {
+43 silly cache add   raw: 'nodermi',
+43 silly cache add   scope: null,
+43 silly cache add   escapedName: 'nodermi',
+43 silly cache add   name: 'nodermi',
+43 silly cache add   rawSpec: '',
+43 silly cache add   spec: 'latest',
+43 silly cache add   type: 'tag' }
+44 silly addNamed nodermi@latest
+45 verbose addNamed "latest" is being treated as a dist-tag for nodermi
+46 info addNameTag [ 'nodermi', 'latest' ]
+47 silly mapToRegistry name nodermi
+48 silly mapToRegistry using default registry
+49 silly mapToRegistry registry https://registry.npmjs.org/
+50 silly mapToRegistry data Result {
+50 silly mapToRegistry   raw: 'nodermi',
+50 silly mapToRegistry   scope: null,
+50 silly mapToRegistry   escapedName: 'nodermi',
+50 silly mapToRegistry   name: 'nodermi',
+50 silly mapToRegistry   rawSpec: '',
+50 silly mapToRegistry   spec: 'latest',
+50 silly mapToRegistry   type: 'tag' }
+51 silly mapToRegistry uri https://registry.npmjs.org/nodermi
+52 verbose addNameTag registry:https://registry.npmjs.org/nodermi not in flight; fetching
+53 verbose get https://registry.npmjs.org/nodermi not expired, no request
+54 silly addNameTag next cb for nodermi with tag latest
+55 silly addNamed nodermi@0.0.4
+56 verbose addNamed "0.0.4" is a plain semver version for nodermi
+57 silly cache afterAdd nodermi@0.0.4
+58 verbose afterAdd /Users/juleskreutzer/.npm/nodermi/0.0.4/package/package.json not in flight; writing
+59 verbose correctMkdir /Users/juleskreutzer/.npm correctMkdir not in flight; initializing
+60 verbose afterAdd /Users/juleskreutzer/.npm/nodermi/0.0.4/package/package.json written
+61 silly fetchNamedPackageData lodash
+62 silly mapToRegistry name lodash
+63 silly mapToRegistry using default registry
+64 silly mapToRegistry registry https://registry.npmjs.org/
+65 silly mapToRegistry data Result {
+65 silly mapToRegistry   raw: 'lodash',
+65 silly mapToRegistry   scope: null,
+65 silly mapToRegistry   escapedName: 'lodash',
+65 silly mapToRegistry   name: 'lodash',
+65 silly mapToRegistry   rawSpec: '',
+65 silly mapToRegistry   spec: 'latest',
+65 silly mapToRegistry   type: 'tag' }
+66 silly mapToRegistry uri https://registry.npmjs.org/lodash
+67 silly fetchNamedPackageData weak
+68 silly mapToRegistry name weak
+69 silly mapToRegistry using default registry
+70 silly mapToRegistry registry https://registry.npmjs.org/
+71 silly mapToRegistry data Result {
+71 silly mapToRegistry   raw: 'weak',
+71 silly mapToRegistry   scope: null,
+71 silly mapToRegistry   escapedName: 'weak',
+71 silly mapToRegistry   name: 'weak',
+71 silly mapToRegistry   rawSpec: '',
+71 silly mapToRegistry   spec: 'latest',
+71 silly mapToRegistry   type: 'tag' }
+72 silly mapToRegistry uri https://registry.npmjs.org/weak
+73 silly fetchNamedPackageData async
+74 silly mapToRegistry name async
+75 silly mapToRegistry using default registry
+76 silly mapToRegistry registry https://registry.npmjs.org/
+77 silly mapToRegistry data Result {
+77 silly mapToRegistry   raw: 'async',
+77 silly mapToRegistry   scope: null,
+77 silly mapToRegistry   escapedName: 'async',
+77 silly mapToRegistry   name: 'async',
+77 silly mapToRegistry   rawSpec: '',
+77 silly mapToRegistry   spec: 'latest',
+77 silly mapToRegistry   type: 'tag' }
+78 silly mapToRegistry uri https://registry.npmjs.org/async
+79 verbose request uri https://registry.npmjs.org/weak
+80 verbose request no auth needed
+81 info attempt registry request try #1 at 12:06:25
+82 verbose request using bearer token for auth
+83 verbose etag W/"5689f0a7-6ec5"
+84 verbose lastModified Mon, 04 Jan 2016 04:10:15 GMT
+85 http request GET https://registry.npmjs.org/weak
+86 verbose request uri https://registry.npmjs.org/lodash
+87 verbose request no auth needed
+88 info attempt registry request try #1 at 12:06:25
+89 verbose request using bearer token for auth
+90 verbose etag W/"5836aaa8-27ff0"
+91 verbose lastModified Thu, 24 Nov 2016 08:54:00 GMT
+92 http request GET https://registry.npmjs.org/lodash
+93 verbose request uri https://registry.npmjs.org/async
+94 verbose request no auth needed
+95 info attempt registry request try #1 at 12:06:25
+96 verbose request using bearer token for auth
+97 verbose etag W/"583b0001-1d1ac"
+98 verbose lastModified Sun, 27 Nov 2016 15:47:13 GMT
+99 http request GET https://registry.npmjs.org/async
+100 http 304 https://registry.npmjs.org/weak
+101 verbose headers { server: 'nginx/1.10.1',
+101 verbose headers   'last-modified': 'Mon, 04 Jan 2016 04:10:15 GMT',
+101 verbose headers   etag: '"5689f0a7-6ec5"',
+101 verbose headers   'cache-control': 'max-age=300',
+101 verbose headers   'accept-ranges': 'bytes',
+101 verbose headers   date: 'Mon, 28 Nov 2016 11:06:25 GMT',
+101 verbose headers   via: '1.1 varnish',
+101 verbose headers   connection: 'keep-alive',
+101 verbose headers   'x-served-by': 'cache-ams4435-AMS',
+101 verbose headers   'x-cache': 'MISS',
+101 verbose headers   'x-cache-hits': '0',
+101 verbose headers   'x-timer': 'S1480331185.909125,VS0,VE6',
+101 verbose headers   vary: 'Accept-Encoding' }
+102 silly get cb [ 304,
+102 silly get   { server: 'nginx/1.10.1',
+102 silly get     'last-modified': 'Mon, 04 Jan 2016 04:10:15 GMT',
+102 silly get     etag: '"5689f0a7-6ec5"',
+102 silly get     'cache-control': 'max-age=300',
+102 silly get     'accept-ranges': 'bytes',
+102 silly get     date: 'Mon, 28 Nov 2016 11:06:25 GMT',
+102 silly get     via: '1.1 varnish',
+102 silly get     connection: 'keep-alive',
+102 silly get     'x-served-by': 'cache-ams4435-AMS',
+102 silly get     'x-cache': 'MISS',
+102 silly get     'x-cache-hits': '0',
+102 silly get     'x-timer': 'S1480331185.909125,VS0,VE6',
+102 silly get     vary: 'Accept-Encoding' } ]
+103 verbose etag https://registry.npmjs.org/weak from cache
+104 verbose get saving weak to /Users/juleskreutzer/.npm/registry.npmjs.org/weak/.cache.json
+105 verbose correctMkdir /Users/juleskreutzer/.npm correctMkdir not in flight; initializing
+106 silly resolveWithNewModule weak@0.4.1 checking installable status
+107 silly cache add args [ 'weak@0.4.1', null ]
+108 verbose cache add spec weak@0.4.1
+109 silly cache add parsed spec Result {
+109 silly cache add   raw: 'weak@0.4.1',
+109 silly cache add   scope: null,
+109 silly cache add   escapedName: 'weak',
+109 silly cache add   name: 'weak',
+109 silly cache add   rawSpec: '0.4.1',
+109 silly cache add   spec: '0.4.1',
+109 silly cache add   type: 'version' }
+110 silly addNamed weak@0.4.1
+111 verbose addNamed "0.4.1" is a plain semver version for weak
+112 silly mapToRegistry name weak
+113 silly mapToRegistry using default registry
+114 silly mapToRegistry registry https://registry.npmjs.org/
+115 silly mapToRegistry data Result {
+115 silly mapToRegistry   raw: 'weak',
+115 silly mapToRegistry   scope: null,
+115 silly mapToRegistry   escapedName: 'weak',
+115 silly mapToRegistry   name: 'weak',
+115 silly mapToRegistry   rawSpec: '',
+115 silly mapToRegistry   spec: 'latest',
+115 silly mapToRegistry   type: 'tag' }
+116 silly mapToRegistry uri https://registry.npmjs.org/weak
+117 verbose addNameVersion registry:https://registry.npmjs.org/weak not in flight; fetching
+118 verbose get https://registry.npmjs.org/weak not expired, no request
+119 silly cache afterAdd weak@0.4.1
+120 verbose afterAdd /Users/juleskreutzer/.npm/weak/0.4.1/package/package.json not in flight; writing
+121 verbose correctMkdir /Users/juleskreutzer/.npm correctMkdir not in flight; initializing
+122 verbose afterAdd /Users/juleskreutzer/.npm/weak/0.4.1/package/package.json written
+123 http 304 https://registry.npmjs.org/lodash
+124 verbose headers { server: 'nginx/1.10.1',
+124 verbose headers   'last-modified': 'Thu, 24 Nov 2016 08:54:00 GMT',
+124 verbose headers   etag: '"5836aaa8-27ff0"',
+124 verbose headers   'cache-control': 'max-age=300',
+124 verbose headers   'accept-ranges': 'bytes',
+124 verbose headers   date: 'Mon, 28 Nov 2016 11:06:25 GMT',
+124 verbose headers   via: '1.1 varnish',
+124 verbose headers   connection: 'keep-alive',
+124 verbose headers   'x-served-by': 'cache-ams4136-AMS',
+124 verbose headers   'x-cache': 'MISS',
+124 verbose headers   'x-cache-hits': '0',
+124 verbose headers   'x-timer': 'S1480331185.937655,VS0,VE6',
+124 verbose headers   vary: 'Accept-Encoding' }
+125 silly get cb [ 304,
+125 silly get   { server: 'nginx/1.10.1',
+125 silly get     'last-modified': 'Thu, 24 Nov 2016 08:54:00 GMT',
+125 silly get     etag: '"5836aaa8-27ff0"',
+125 silly get     'cache-control': 'max-age=300',
+125 silly get     'accept-ranges': 'bytes',
+125 silly get     date: 'Mon, 28 Nov 2016 11:06:25 GMT',
+125 silly get     via: '1.1 varnish',
+125 silly get     connection: 'keep-alive',
+125 silly get     'x-served-by': 'cache-ams4136-AMS',
+125 silly get     'x-cache': 'MISS',
+125 silly get     'x-cache-hits': '0',
+125 silly get     'x-timer': 'S1480331185.937655,VS0,VE6',
+125 silly get     vary: 'Accept-Encoding' } ]
+126 verbose etag https://registry.npmjs.org/lodash from cache
+127 verbose get saving lodash to /Users/juleskreutzer/.npm/registry.npmjs.org/lodash/.cache.json
+128 verbose correctMkdir /Users/juleskreutzer/.npm correctMkdir not in flight; initializing
+129 silly resolveWithNewModule lodash@3.9.3 checking installable status
+130 silly cache add args [ 'lodash@3.9.3', null ]
+131 verbose cache add spec lodash@3.9.3
+132 silly cache add parsed spec Result {
+132 silly cache add   raw: 'lodash@3.9.3',
+132 silly cache add   scope: null,
+132 silly cache add   escapedName: 'lodash',
+132 silly cache add   name: 'lodash',
+132 silly cache add   rawSpec: '3.9.3',
+132 silly cache add   spec: '3.9.3',
+132 silly cache add   type: 'version' }
+133 silly addNamed lodash@3.9.3
+134 verbose addNamed "3.9.3" is a plain semver version for lodash
+135 silly mapToRegistry name lodash
+136 silly mapToRegistry using default registry
+137 silly mapToRegistry registry https://registry.npmjs.org/
+138 silly mapToRegistry data Result {
+138 silly mapToRegistry   raw: 'lodash',
+138 silly mapToRegistry   scope: null,
+138 silly mapToRegistry   escapedName: 'lodash',
+138 silly mapToRegistry   name: 'lodash',
+138 silly mapToRegistry   rawSpec: '',
+138 silly mapToRegistry   spec: 'latest',
+138 silly mapToRegistry   type: 'tag' }
+139 silly mapToRegistry uri https://registry.npmjs.org/lodash
+140 verbose addNameVersion registry:https://registry.npmjs.org/lodash not in flight; fetching
+141 verbose get https://registry.npmjs.org/lodash not expired, no request
+142 silly cache afterAdd lodash@3.9.3
+143 verbose afterAdd /Users/juleskreutzer/.npm/lodash/3.9.3/package/package.json not in flight; writing
+144 verbose correctMkdir /Users/juleskreutzer/.npm correctMkdir not in flight; initializing
+145 verbose afterAdd /Users/juleskreutzer/.npm/lodash/3.9.3/package/package.json written
+146 http 304 https://registry.npmjs.org/async
+147 verbose headers { server: 'nginx/1.10.1',
+147 verbose headers   'last-modified': 'Sun, 27 Nov 2016 15:47:13 GMT',
+147 verbose headers   etag: '"583b0001-1d1ac"',
+147 verbose headers   'cache-control': 'max-age=300',
+147 verbose headers   'accept-ranges': 'bytes',
+147 verbose headers   date: 'Mon, 28 Nov 2016 11:06:25 GMT',
+147 verbose headers   via: '1.1 varnish',
+147 verbose headers   connection: 'keep-alive',
+147 verbose headers   'x-served-by': 'cache-ams4421-AMS',
+147 verbose headers   'x-cache': 'MISS',
+147 verbose headers   'x-cache-hits': '0',
+147 verbose headers   'x-timer': 'S1480331185.938316,VS0,VE30',
+147 verbose headers   vary: 'Accept-Encoding' }
+148 silly get cb [ 304,
+148 silly get   { server: 'nginx/1.10.1',
+148 silly get     'last-modified': 'Sun, 27 Nov 2016 15:47:13 GMT',
+148 silly get     etag: '"583b0001-1d1ac"',
+148 silly get     'cache-control': 'max-age=300',
+148 silly get     'accept-ranges': 'bytes',
+148 silly get     date: 'Mon, 28 Nov 2016 11:06:25 GMT',
+148 silly get     via: '1.1 varnish',
+148 silly get     connection: 'keep-alive',
+148 silly get     'x-served-by': 'cache-ams4421-AMS',
+148 silly get     'x-cache': 'MISS',
+148 silly get     'x-cache-hits': '0',
+148 silly get     'x-timer': 'S1480331185.938316,VS0,VE30',
+148 silly get     vary: 'Accept-Encoding' } ]
+149 verbose etag https://registry.npmjs.org/async from cache
+150 verbose get saving async to /Users/juleskreutzer/.npm/registry.npmjs.org/async/.cache.json
+151 verbose correctMkdir /Users/juleskreutzer/.npm correctMkdir not in flight; initializing
+152 silly resolveWithNewModule async@1.2.1 checking installable status
+153 silly cache add args [ 'async@1.2.1', null ]
+154 verbose cache add spec async@1.2.1
+155 silly cache add parsed spec Result {
+155 silly cache add   raw: 'async@1.2.1',
+155 silly cache add   scope: null,
+155 silly cache add   escapedName: 'async',
+155 silly cache add   name: 'async',
+155 silly cache add   rawSpec: '1.2.1',
+155 silly cache add   spec: '1.2.1',
+155 silly cache add   type: 'version' }
+156 silly addNamed async@1.2.1
+157 verbose addNamed "1.2.1" is a plain semver version for async
+158 silly mapToRegistry name async
+159 silly mapToRegistry using default registry
+160 silly mapToRegistry registry https://registry.npmjs.org/
+161 silly mapToRegistry data Result {
+161 silly mapToRegistry   raw: 'async',
+161 silly mapToRegistry   scope: null,
+161 silly mapToRegistry   escapedName: 'async',
+161 silly mapToRegistry   name: 'async',
+161 silly mapToRegistry   rawSpec: '',
+161 silly mapToRegistry   spec: 'latest',
+161 silly mapToRegistry   type: 'tag' }
+162 silly mapToRegistry uri https://registry.npmjs.org/async
+163 verbose addNameVersion registry:https://registry.npmjs.org/async not in flight; fetching
+164 verbose get https://registry.npmjs.org/async not expired, no request
+165 silly cache afterAdd async@1.2.1
+166 verbose afterAdd /Users/juleskreutzer/.npm/async/1.2.1/package/package.json not in flight; writing
+167 verbose correctMkdir /Users/juleskreutzer/.npm correctMkdir not in flight; initializing
+168 verbose afterAdd /Users/juleskreutzer/.npm/async/1.2.1/package/package.json written
+169 silly fetchNamedPackageData bindings
+170 silly mapToRegistry name bindings
+171 silly mapToRegistry using default registry
+172 silly mapToRegistry registry https://registry.npmjs.org/
+173 silly mapToRegistry data Result {
+173 silly mapToRegistry   raw: 'bindings',
+173 silly mapToRegistry   scope: null,
+173 silly mapToRegistry   escapedName: 'bindings',
+173 silly mapToRegistry   name: 'bindings',
+173 silly mapToRegistry   rawSpec: '',
+173 silly mapToRegistry   spec: 'latest',
+173 silly mapToRegistry   type: 'tag' }
+174 silly mapToRegistry uri https://registry.npmjs.org/bindings
+175 silly fetchNamedPackageData nan
+176 silly mapToRegistry name nan
+177 silly mapToRegistry using default registry
+178 silly mapToRegistry registry https://registry.npmjs.org/
+179 silly mapToRegistry data Result {
+179 silly mapToRegistry   raw: 'nan',
+179 silly mapToRegistry   scope: null,
+179 silly mapToRegistry   escapedName: 'nan',
+179 silly mapToRegistry   name: 'nan',
+179 silly mapToRegistry   rawSpec: '',
+179 silly mapToRegistry   spec: 'latest',
+179 silly mapToRegistry   type: 'tag' }
+180 silly mapToRegistry uri https://registry.npmjs.org/nan
+181 verbose request uri https://registry.npmjs.org/nan
+182 verbose request no auth needed
+183 info attempt registry request try #1 at 12:06:26
+184 verbose request using bearer token for auth
+185 verbose etag W/"5818d749-1ce1e"
+186 verbose lastModified Tue, 01 Nov 2016 17:56:25 GMT
+187 http request GET https://registry.npmjs.org/nan
+188 verbose request uri https://registry.npmjs.org/bindings
+189 verbose request no auth needed
+190 info attempt registry request try #1 at 12:06:26
+191 verbose request using bearer token for auth
+192 verbose etag W/"580645d3-46f7"
+193 verbose lastModified Tue, 18 Oct 2016 15:54:59 GMT
+194 http request GET https://registry.npmjs.org/bindings
+195 http 304 https://registry.npmjs.org/bindings
+196 verbose headers { server: 'nginx/1.10.1',
+196 verbose headers   'last-modified': 'Tue, 18 Oct 2016 15:54:59 GMT',
+196 verbose headers   etag: '"580645d3-46f7"',
+196 verbose headers   'cache-control': 'max-age=300',
+196 verbose headers   'accept-ranges': 'bytes',
+196 verbose headers   date: 'Mon, 28 Nov 2016 11:06:26 GMT',
+196 verbose headers   via: '1.1 varnish',
+196 verbose headers   connection: 'keep-alive',
+196 verbose headers   'x-served-by': 'cache-ams4136-AMS',
+196 verbose headers   'x-cache': 'MISS',
+196 verbose headers   'x-cache-hits': '0',
+196 verbose headers   'x-timer': 'S1480331186.045261,VS0,VE6',
+196 verbose headers   vary: 'Accept-Encoding' }
+197 silly get cb [ 304,
+197 silly get   { server: 'nginx/1.10.1',
+197 silly get     'last-modified': 'Tue, 18 Oct 2016 15:54:59 GMT',
+197 silly get     etag: '"580645d3-46f7"',
+197 silly get     'cache-control': 'max-age=300',
+197 silly get     'accept-ranges': 'bytes',
+197 silly get     date: 'Mon, 28 Nov 2016 11:06:26 GMT',
+197 silly get     via: '1.1 varnish',
+197 silly get     connection: 'keep-alive',
+197 silly get     'x-served-by': 'cache-ams4136-AMS',
+197 silly get     'x-cache': 'MISS',
+197 silly get     'x-cache-hits': '0',
+197 silly get     'x-timer': 'S1480331186.045261,VS0,VE6',
+197 silly get     vary: 'Accept-Encoding' } ]
+198 verbose etag https://registry.npmjs.org/bindings from cache
+199 verbose get saving bindings to /Users/juleskreutzer/.npm/registry.npmjs.org/bindings/.cache.json
+200 verbose correctMkdir /Users/juleskreutzer/.npm correctMkdir not in flight; initializing
+201 http 304 https://registry.npmjs.org/nan
+202 verbose headers { server: 'nginx/1.10.1',
+202 verbose headers   'last-modified': 'Tue, 01 Nov 2016 17:56:25 GMT',
+202 verbose headers   etag: '"5818d749-1ce1e"',
+202 verbose headers   'cache-control': 'max-age=300',
+202 verbose headers   'accept-ranges': 'bytes',
+202 verbose headers   date: 'Mon, 28 Nov 2016 11:06:26 GMT',
+202 verbose headers   via: '1.1 varnish',
+202 verbose headers   connection: 'keep-alive',
+202 verbose headers   'x-served-by': 'cache-ams4435-AMS',
+202 verbose headers   'x-cache': 'MISS',
+202 verbose headers   'x-cache-hits': '0',
+202 verbose headers   'x-timer': 'S1480331186.046025,VS0,VE6',
+202 verbose headers   vary: 'Accept-Encoding' }
+203 silly get cb [ 304,
+203 silly get   { server: 'nginx/1.10.1',
+203 silly get     'last-modified': 'Tue, 01 Nov 2016 17:56:25 GMT',
+203 silly get     etag: '"5818d749-1ce1e"',
+203 silly get     'cache-control': 'max-age=300',
+203 silly get     'accept-ranges': 'bytes',
+203 silly get     date: 'Mon, 28 Nov 2016 11:06:26 GMT',
+203 silly get     via: '1.1 varnish',
+203 silly get     connection: 'keep-alive',
+203 silly get     'x-served-by': 'cache-ams4435-AMS',
+203 silly get     'x-cache': 'MISS',
+203 silly get     'x-cache-hits': '0',
+203 silly get     'x-timer': 'S1480331186.046025,VS0,VE6',
+203 silly get     vary: 'Accept-Encoding' } ]
+204 verbose etag https://registry.npmjs.org/nan from cache
+205 verbose get saving nan to /Users/juleskreutzer/.npm/registry.npmjs.org/nan/.cache.json
+206 verbose correctMkdir /Users/juleskreutzer/.npm correctMkdir not in flight; initializing
+207 silly resolveWithNewModule nan@1.8.4 checking installable status
+208 silly cache add args [ 'nan@~1.8.4', null ]
+209 verbose cache add spec nan@~1.8.4
+210 silly cache add parsed spec Result {
+210 silly cache add   raw: 'nan@~1.8.4',
+210 silly cache add   scope: null,
+210 silly cache add   escapedName: 'nan',
+210 silly cache add   name: 'nan',
+210 silly cache add   rawSpec: '~1.8.4',
+210 silly cache add   spec: '>=1.8.4 <1.9.0',
+210 silly cache add   type: 'range' }
+211 silly addNamed nan@>=1.8.4 <1.9.0
+212 verbose addNamed ">=1.8.4 <1.9.0" is a valid semver range for nan
+213 silly addNameRange { name: 'nan', range: '>=1.8.4 <1.9.0', hasData: false }
+214 silly mapToRegistry name nan
+215 silly mapToRegistry using default registry
+216 silly mapToRegistry registry https://registry.npmjs.org/
+217 silly mapToRegistry data Result {
+217 silly mapToRegistry   raw: 'nan',
+217 silly mapToRegistry   scope: null,
+217 silly mapToRegistry   escapedName: 'nan',
+217 silly mapToRegistry   name: 'nan',
+217 silly mapToRegistry   rawSpec: '',
+217 silly mapToRegistry   spec: 'latest',
+217 silly mapToRegistry   type: 'tag' }
+218 silly mapToRegistry uri https://registry.npmjs.org/nan
+219 verbose addNameRange registry:https://registry.npmjs.org/nan not in flight; fetching
+220 silly resolveWithNewModule bindings@1.2.1 checking installable status
+221 silly cache add args [ 'bindings@*', null ]
+222 verbose cache add spec bindings@*
+223 silly cache add parsed spec Result {
+223 silly cache add   raw: 'bindings@*',
+223 silly cache add   scope: null,
+223 silly cache add   escapedName: 'bindings',
+223 silly cache add   name: 'bindings',
+223 silly cache add   rawSpec: '*',
+223 silly cache add   spec: '*',
+223 silly cache add   type: 'range' }
+224 silly addNamed bindings@*
+225 verbose addNamed "*" is a valid semver range for bindings
+226 silly addNameRange { name: 'bindings', range: '*', hasData: false }
+227 silly mapToRegistry name bindings
+228 silly mapToRegistry using default registry
+229 silly mapToRegistry registry https://registry.npmjs.org/
+230 silly mapToRegistry data Result {
+230 silly mapToRegistry   raw: 'bindings',
+230 silly mapToRegistry   scope: null,
+230 silly mapToRegistry   escapedName: 'bindings',
+230 silly mapToRegistry   name: 'bindings',
+230 silly mapToRegistry   rawSpec: '',
+230 silly mapToRegistry   spec: 'latest',
+230 silly mapToRegistry   type: 'tag' }
+231 silly mapToRegistry uri https://registry.npmjs.org/bindings
+232 verbose addNameRange registry:https://registry.npmjs.org/bindings not in flight; fetching
+233 verbose get https://registry.npmjs.org/nan not expired, no request
+234 silly addNameRange number 2 { name: 'nan', range: '>=1.8.4 <1.9.0', hasData: true }
+235 silly addNameRange versions [ 'nan',
+235 silly addNameRange   [ '0.3.0-wip',
+235 silly addNameRange     '0.3.0-wip2',
+235 silly addNameRange     '0.3.0',
+235 silly addNameRange     '0.3.1',
+235 silly addNameRange     '0.3.2',
+235 silly addNameRange     '0.4.0',
+235 silly addNameRange     '0.4.1',
+235 silly addNameRange     '0.4.2',
+235 silly addNameRange     '0.4.3',
+235 silly addNameRange     '0.4.4',
+235 silly addNameRange     '0.5.0',
+235 silly addNameRange     '0.5.1',
+235 silly addNameRange     '0.5.2',
+235 silly addNameRange     '0.6.0',
+235 silly addNameRange     '0.7.0',
+235 silly addNameRange     '0.7.1',
+235 silly addNameRange     '0.8.0',
+235 silly addNameRange     '1.0.0',
+235 silly addNameRange     '1.1.0',
+235 silly addNameRange     '1.1.1',
+235 silly addNameRange     '1.1.2',
+235 silly addNameRange     '1.2.0',
+235 silly addNameRange     '1.3.0',
+235 silly addNameRange     '1.4.0',
+235 silly addNameRange     '1.4.1',
+235 silly addNameRange     '1.5.0',
+235 silly addNameRange     '1.4.2',
+235 silly addNameRange     '1.4.3',
+235 silly addNameRange     '1.5.1',
+235 silly addNameRange     '1.5.2',
+235 silly addNameRange     '1.6.0',
+235 silly addNameRange     '1.5.3',
+235 silly addNameRange     '1.6.1',
+235 silly addNameRange     '1.6.2',
+235 silly addNameRange     '1.7.0',
+235 silly addNameRange     '1.8.0',
+235 silly addNameRange     '1.8.1',
+235 silly addNameRange     '1.8.2',
+235 silly addNameRange     '1.8.3',
+235 silly addNameRange     '1.8.4',
+235 silly addNameRange     '1.9.0',
+235 silly addNameRange     '2.0.0',
+235 silly addNameRange     '2.0.1',
+235 silly addNameRange     '2.0.2',
+235 silly addNameRange     '2.0.3',
+235 silly addNameRange     '2.0.4',
+235 silly addNameRange     '2.0.5',
+235 silly addNameRange     '2.0.6',
+235 silly addNameRange     '2.0.7',
+235 silly addNameRange     '2.0.8',
+235 silly addNameRange     '2.0.9',
+235 silly addNameRange     '2.1.0',
+235 silly addNameRange     '2.2.0',
+235 silly addNameRange     '2.2.1',
+235 silly addNameRange     '2.3.0',
+235 silly addNameRange     '2.3.1',
+235 silly addNameRange     '2.3.2',
+235 silly addNameRange     '2.3.3',
+235 silly addNameRange     '2.3.4',
+235 silly addNameRange     '2.3.5',
+235 silly addNameRange     '2.4.0' ] ]
+236 silly addNamed nan@1.8.4
+237 verbose addNamed "1.8.4" is a plain semver version for nan
+238 verbose get https://registry.npmjs.org/bindings not expired, no request
+239 silly addNameRange number 2 { name: 'bindings', range: '*', hasData: true }
+240 silly addNameRange versions [ 'bindings',
+240 silly addNameRange   [ '0.0.1',
+240 silly addNameRange     '0.1.0',
+240 silly addNameRange     '0.1.1',
+240 silly addNameRange     '0.2.0',
+240 silly addNameRange     '0.2.1',
+240 silly addNameRange     '0.2.2',
+240 silly addNameRange     '0.2.3',
+240 silly addNameRange     '0.2.4',
+240 silly addNameRange     '0.3.0',
+240 silly addNameRange     '0.4.0',
+240 silly addNameRange     '1.0.0',
+240 silly addNameRange     '1.1.0',
+240 silly addNameRange     '1.1.1',
+240 silly addNameRange     '1.2.0',
+240 silly addNameRange     '1.2.1' ] ]
+241 silly addNamed bindings@1.2.1
+242 verbose addNamed "1.2.1" is a plain semver version for bindings
+243 silly cache afterAdd bindings@1.2.1
+244 verbose afterAdd /Users/juleskreutzer/.npm/bindings/1.2.1/package/package.json not in flight; writing
+245 verbose correctMkdir /Users/juleskreutzer/.npm correctMkdir not in flight; initializing
+246 silly cache afterAdd nan@1.8.4
+247 verbose afterAdd /Users/juleskreutzer/.npm/nan/1.8.4/package/package.json not in flight; writing
+248 verbose correctMkdir /Users/juleskreutzer/.npm correctMkdir not in flight; initializing
+249 verbose afterAdd /Users/juleskreutzer/.npm/nan/1.8.4/package/package.json written
+250 verbose afterAdd /Users/juleskreutzer/.npm/bindings/1.2.1/package/package.json written
+251 silly loadAllDepsIntoIdealTree Finishing
+252 silly loadIdealTree Finishing
+253 silly currentTree stockappweb@1.0.0
+253 silly currentTree ├── accepts@1.3.3
+253 silly currentTree ├── array-flatten@1.1.1
+253 silly currentTree ├── ascli@0.3.0
+253 silly currentTree ├── async@2.1.2
+253 silly currentTree ├── base64-url@1.3.3
+253 silly currentTree ├── base64url@2.0.0
+253 silly currentTree ├── basic-auth@1.0.4
+253 silly currentTree ├── bluebird@2.10.2
+253 silly currentTree ├── body-parser@1.15.2
+253 silly currentTree ├── bson@0.5.7
+253 silly currentTree ├── buffer-equal-constant-time@1.0.1
+253 silly currentTree ├── buffer-shims@1.0.0
+253 silly currentTree ├── bufferview@1.0.1
+253 silly currentTree ├── bytebuffer@3.5.5
+253 silly currentTree ├── bytes@2.4.0
+253 silly currentTree ├── colour@0.7.1
+253 silly currentTree ├── content-disposition@0.5.1
+253 silly currentTree ├── content-type@1.0.2
+253 silly currentTree ├── cookie-signature@1.0.6
+253 silly currentTree ├── cookie@0.3.1
+253 silly currentTree ├── core-util-is@1.0.2
+253 silly currentTree ├── debug@2.2.0
+253 silly currentTree ├── depd@1.1.0
+253 silly currentTree ├── destroy@1.0.4
+253 silly currentTree ├── ecdsa-sig-formatter@1.0.7
+253 silly currentTree ├── ee-first@1.1.1
+253 silly currentTree ├── encodeurl@1.0.1
+253 silly currentTree ├── es6-promise@3.2.1
+253 silly currentTree ├── escape-html@1.0.3
+253 silly currentTree ├── etag@1.7.0
+253 silly currentTree ├── express@4.14.0
+253 silly currentTree ├── finalhandler@0.5.0
+253 silly currentTree ├── forwarded@0.1.0
+253 silly currentTree ├── fresh@0.3.0
+253 silly currentTree ├── hoek@2.16.3
+253 silly currentTree ├── hooks-fixed@1.2.0
+253 silly currentTree ├── http-errors@1.5.1
+253 silly currentTree ├── iconv-lite@0.4.13
+253 silly currentTree ├── inherits@2.0.3
+253 silly currentTree ├── ipaddr.js@1.1.1
+253 silly currentTree ├── isarray@1.0.0
+253 silly currentTree ├── isemail@1.2.0
+253 silly currentTree ├── joi@6.10.1
+253 silly currentTree ├── js-sha1@0.3.0
+253 silly currentTree ├── jsonwebtoken@7.1.9
+253 silly currentTree ├── jwa@1.1.4
+253 silly currentTree ├── jws@3.1.4
+253 silly currentTree ├── kareem@1.1.3
+253 silly currentTree ├── lodash.once@4.1.1
+253 silly currentTree ├── lodash@4.17.2
+253 silly currentTree ├── long@2.4.0
+253 silly currentTree ├── media-typer@0.3.0
+253 silly currentTree ├── merge-descriptors@1.0.1
+253 silly currentTree ├── methods@1.1.2
+253 silly currentTree ├── mime-db@1.25.0
+253 silly currentTree ├── mime-types@2.1.13
+253 silly currentTree ├── mime@1.3.4
+253 silly currentTree ├── moment@2.16.0
+253 silly currentTree ├── mongodb-core@2.0.13
+253 silly currentTree ├─┬ mongoose@4.6.8
+253 silly currentTree │ └── mongodb@2.2.11
+253 silly currentTree ├── morgan@1.7.0
+253 silly currentTree ├── mpath@0.2.1
+253 silly currentTree ├── mpromise@0.5.5
+253 silly currentTree ├─┬ mquery@2.0.0
+253 silly currentTree │ └── sliced@0.0.5
+253 silly currentTree ├── ms@0.7.1
+253 silly currentTree ├── muri@1.1.1
+253 silly currentTree ├── negotiator@0.6.1
+253 silly currentTree ├── on-finished@2.3.0
+253 silly currentTree ├── on-headers@1.0.1
+253 silly currentTree ├── optjs@3.2.2
+253 silly currentTree ├── parseurl@1.3.1
+253 silly currentTree ├── passport-local@1.0.0
+253 silly currentTree ├── passport-strategy@1.0.0
+253 silly currentTree ├── path-to-regexp@0.1.7
+253 silly currentTree ├── process-nextick-args@1.0.7
+253 silly currentTree ├── protobufjs@3.8.2
+253 silly currentTree ├── proxy-addr@1.1.2
+253 silly currentTree ├── qs@6.2.0
+253 silly currentTree ├── range-parser@1.2.0
+253 silly currentTree ├── raw-body@2.1.7
+253 silly currentTree ├── readable-stream@2.1.5
+253 silly currentTree ├── regexp-clone@0.0.1
+253 silly currentTree ├── require_optional@1.0.0
+253 silly currentTree ├── resolve-from@2.0.0
+253 silly currentTree ├── safe-buffer@5.0.1
+253 silly currentTree ├── semver@5.3.0
+253 silly currentTree ├── send@0.14.1
+253 silly currentTree ├── serve-static@1.11.1
+253 silly currentTree ├── setprototypeof@1.0.2
+253 silly currentTree ├── sliced@1.0.1
+253 silly currentTree ├── statuses@1.3.1
+253 silly currentTree ├── string_decoder@0.10.31
+253 silly currentTree ├── topo@1.1.0
+253 silly currentTree ├── type-is@1.6.14
+253 silly currentTree ├── unpipe@1.0.0
+253 silly currentTree ├── util-deprecate@1.0.2
+253 silly currentTree ├── utils-merge@1.0.0
+253 silly currentTree ├── vary@1.1.0
+253 silly currentTree └── xtend@4.0.1
+254 silly idealTree stockappweb@1.0.0
+254 silly idealTree ├── accepts@1.3.3
+254 silly idealTree ├── array-flatten@1.1.1
+254 silly idealTree ├── ascli@0.3.0
+254 silly idealTree ├── async@2.1.2
+254 silly idealTree ├── base64-url@1.3.3
+254 silly idealTree ├── base64url@2.0.0
+254 silly idealTree ├── basic-auth@1.0.4
+254 silly idealTree ├── bindings@1.2.1
+254 silly idealTree ├── bluebird@2.10.2
+254 silly idealTree ├── body-parser@1.15.2
+254 silly idealTree ├── bson@0.5.7
+254 silly idealTree ├── buffer-equal-constant-time@1.0.1
+254 silly idealTree ├── buffer-shims@1.0.0
+254 silly idealTree ├── bufferview@1.0.1
+254 silly idealTree ├── bytebuffer@3.5.5
+254 silly idealTree ├── bytes@2.4.0
+254 silly idealTree ├── colour@0.7.1
+254 silly idealTree ├── content-disposition@0.5.1
+254 silly idealTree ├── content-type@1.0.2
+254 silly idealTree ├── cookie-signature@1.0.6
+254 silly idealTree ├── cookie@0.3.1
+254 silly idealTree ├── core-util-is@1.0.2
+254 silly idealTree ├── debug@2.2.0
+254 silly idealTree ├── depd@1.1.0
+254 silly idealTree ├── destroy@1.0.4
+254 silly idealTree ├── ecdsa-sig-formatter@1.0.7
+254 silly idealTree ├── ee-first@1.1.1
+254 silly idealTree ├── encodeurl@1.0.1
+254 silly idealTree ├── es6-promise@3.2.1
+254 silly idealTree ├── escape-html@1.0.3
+254 silly idealTree ├── etag@1.7.0
+254 silly idealTree ├── express@4.14.0
+254 silly idealTree ├── finalhandler@0.5.0
+254 silly idealTree ├── forwarded@0.1.0
+254 silly idealTree ├── fresh@0.3.0
+254 silly idealTree ├── hoek@2.16.3
+254 silly idealTree ├── hooks-fixed@1.2.0
+254 silly idealTree ├── http-errors@1.5.1
+254 silly idealTree ├── iconv-lite@0.4.13
+254 silly idealTree ├── inherits@2.0.3
+254 silly idealTree ├── ipaddr.js@1.1.1
+254 silly idealTree ├── isarray@1.0.0
+254 silly idealTree ├── isemail@1.2.0
+254 silly idealTree ├── joi@6.10.1
+254 silly idealTree ├── js-sha1@0.3.0
+254 silly idealTree ├── jsonwebtoken@7.1.9
+254 silly idealTree ├── jwa@1.1.4
+254 silly idealTree ├── jws@3.1.4
+254 silly idealTree ├── kareem@1.1.3
+254 silly idealTree ├── lodash.once@4.1.1
+254 silly idealTree ├── lodash@4.17.2
+254 silly idealTree ├── long@2.4.0
+254 silly idealTree ├── media-typer@0.3.0
+254 silly idealTree ├── merge-descriptors@1.0.1
+254 silly idealTree ├── methods@1.1.2
+254 silly idealTree ├── mime-db@1.25.0
+254 silly idealTree ├── mime-types@2.1.13
+254 silly idealTree ├── mime@1.3.4
+254 silly idealTree ├── moment@2.16.0
+254 silly idealTree ├── mongodb-core@2.0.13
+254 silly idealTree ├─┬ mongoose@4.6.8
+254 silly idealTree │ └── mongodb@2.2.11
+254 silly idealTree ├── morgan@1.7.0
+254 silly idealTree ├── mpath@0.2.1
+254 silly idealTree ├── mpromise@0.5.5
+254 silly idealTree ├─┬ mquery@2.0.0
+254 silly idealTree │ └── sliced@0.0.5
+254 silly idealTree ├── ms@0.7.1
+254 silly idealTree ├── muri@1.1.1
+254 silly idealTree ├── nan@1.8.4
+254 silly idealTree ├── negotiator@0.6.1
+254 silly idealTree ├─┬ nodermi@0.0.4
+254 silly idealTree │ ├── async@1.2.1
+254 silly idealTree │ └── lodash@3.9.3
+254 silly idealTree ├── on-finished@2.3.0
+254 silly idealTree ├── on-headers@1.0.1
+254 silly idealTree ├── optjs@3.2.2
+254 silly idealTree ├── parseurl@1.3.1
+254 silly idealTree ├── passport-local@1.0.0
+254 silly idealTree ├── passport-strategy@1.0.0
+254 silly idealTree ├── path-to-regexp@0.1.7
+254 silly idealTree ├── process-nextick-args@1.0.7
+254 silly idealTree ├── protobufjs@3.8.2
+254 silly idealTree ├── proxy-addr@1.1.2
+254 silly idealTree ├── qs@6.2.0
+254 silly idealTree ├── range-parser@1.2.0
+254 silly idealTree ├── raw-body@2.1.7
+254 silly idealTree ├── readable-stream@2.1.5
+254 silly idealTree ├── regexp-clone@0.0.1
+254 silly idealTree ├── require_optional@1.0.0
+254 silly idealTree ├── resolve-from@2.0.0
+254 silly idealTree ├── safe-buffer@5.0.1
+254 silly idealTree ├── semver@5.3.0
+254 silly idealTree ├── send@0.14.1
+254 silly idealTree ├── serve-static@1.11.1
+254 silly idealTree ├── setprototypeof@1.0.2
+254 silly idealTree ├── sliced@1.0.1
+254 silly idealTree ├── statuses@1.3.1
+254 silly idealTree ├── string_decoder@0.10.31
+254 silly idealTree ├── topo@1.1.0
+254 silly idealTree ├── type-is@1.6.14
+254 silly idealTree ├── unpipe@1.0.0
+254 silly idealTree ├── util-deprecate@1.0.2
+254 silly idealTree ├── utils-merge@1.0.0
+254 silly idealTree ├── vary@1.1.0
+254 silly idealTree ├── weak@0.4.1
+254 silly idealTree └── xtend@4.0.1
+255 silly generateActionsToTake Starting
+256 silly install generateActionsToTake
+257 silly generateActionsToTake Finishing
+258 silly diffTrees action count 6
+259 silly diffTrees add bindings@1.2.1
+260 silly diffTrees add nan@1.8.4
+261 silly diffTrees add async@1.2.1
+262 silly diffTrees add lodash@3.9.3
+263 silly diffTrees add weak@0.4.1
+264 silly diffTrees add nodermi@0.0.4
+265 silly decomposeActions action count 48
+266 silly decomposeActions fetch bindings@1.2.1
+267 silly decomposeActions extract bindings@1.2.1
+268 silly decomposeActions test bindings@1.2.1
+269 silly decomposeActions preinstall bindings@1.2.1
+270 silly decomposeActions build bindings@1.2.1
+271 silly decomposeActions install bindings@1.2.1
+272 silly decomposeActions postinstall bindings@1.2.1
+273 silly decomposeActions finalize bindings@1.2.1
+274 silly decomposeActions fetch nan@1.8.4
+275 silly decomposeActions extract nan@1.8.4
+276 silly decomposeActions test nan@1.8.4
+277 silly decomposeActions preinstall nan@1.8.4
+278 silly decomposeActions build nan@1.8.4
+279 silly decomposeActions install nan@1.8.4
+280 silly decomposeActions postinstall nan@1.8.4
+281 silly decomposeActions finalize nan@1.8.4
+282 silly decomposeActions fetch async@1.2.1
+283 silly decomposeActions extract async@1.2.1
+284 silly decomposeActions test async@1.2.1
+285 silly decomposeActions preinstall async@1.2.1
+286 silly decomposeActions build async@1.2.1
+287 silly decomposeActions install async@1.2.1
+288 silly decomposeActions postinstall async@1.2.1
+289 silly decomposeActions finalize async@1.2.1
+290 silly decomposeActions fetch lodash@3.9.3
+291 silly decomposeActions extract lodash@3.9.3
+292 silly decomposeActions test lodash@3.9.3
+293 silly decomposeActions preinstall lodash@3.9.3
+294 silly decomposeActions build lodash@3.9.3
+295 silly decomposeActions install lodash@3.9.3
+296 silly decomposeActions postinstall lodash@3.9.3
+297 silly decomposeActions finalize lodash@3.9.3
+298 silly decomposeActions fetch weak@0.4.1
+299 silly decomposeActions extract weak@0.4.1
+300 silly decomposeActions test weak@0.4.1
+301 silly decomposeActions preinstall weak@0.4.1
+302 silly decomposeActions build weak@0.4.1
+303 silly decomposeActions install weak@0.4.1
+304 silly decomposeActions postinstall weak@0.4.1
+305 silly decomposeActions finalize weak@0.4.1
+306 silly decomposeActions fetch nodermi@0.0.4
+307 silly decomposeActions extract nodermi@0.0.4
+308 silly decomposeActions test nodermi@0.0.4
+309 silly decomposeActions preinstall nodermi@0.0.4
+310 silly decomposeActions build nodermi@0.0.4
+311 silly decomposeActions install nodermi@0.0.4
+312 silly decomposeActions postinstall nodermi@0.0.4
+313 silly decomposeActions finalize nodermi@0.0.4
+314 silly runTopLevelLifecycles Starting
+315 silly executeActions Starting
+316 silly install executeActions
+317 silly doSerial global-install 0
+318 silly doParallel fetch 6
+319 verbose correctMkdir /Users/juleskreutzer/.npm/_locks correctMkdir not in flight; initializing
+320 verbose lock using /Users/juleskreutzer/.npm/_locks/staging-cc1b2beb5f567eee.lock for /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging
+321 silly doParallel extract 6
+322 silly extract bindings@1.2.1
+323 silly extract nan@1.8.4
+324 silly extract async@1.2.1
+325 silly extract lodash@3.9.3
+326 silly extract weak@0.4.1
+327 silly extract nodermi@0.0.4
+328 verbose unbuild node_modules/.staging/nan-89a762b4
+329 verbose unbuild node_modules/.staging/bindings-7361a62f
+330 verbose unbuild node_modules/.staging/lodash-51c1739d
+331 verbose unbuild node_modules/.staging/async-27230526
+332 verbose unbuild node_modules/.staging/weak-c35c50c1
+333 verbose unbuild node_modules/.staging/nodermi-76a59807
+334 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nan-89a762b4 is being purged from base /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb
+335 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nan-89a762b4
+336 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/bindings-7361a62f is being purged from base /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb
+337 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/bindings-7361a62f
+338 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/lodash-51c1739d is being purged from base /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb
+339 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/lodash-51c1739d
+340 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/async-27230526 is being purged from base /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb
+341 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/async-27230526
+342 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/weak-c35c50c1 is being purged from base /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb
+343 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/weak-c35c50c1
+344 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nodermi-76a59807 is being purged from base /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb
+345 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nodermi-76a59807
+346 verbose tar unpack /Users/juleskreutzer/.npm/nan/1.8.4/package.tgz
+347 verbose tar unpacking to /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nan-89a762b4
+348 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nan-89a762b4 is being purged
+349 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nan-89a762b4
+350 verbose tar unpack /Users/juleskreutzer/.npm/bindings/1.2.1/package.tgz
+351 verbose tar unpacking to /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/bindings-7361a62f
+352 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/bindings-7361a62f is being purged
+353 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/bindings-7361a62f
+354 verbose tar unpack /Users/juleskreutzer/.npm/lodash/3.9.3/package.tgz
+355 verbose tar unpacking to /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/lodash-51c1739d
+356 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/lodash-51c1739d is being purged
+357 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/lodash-51c1739d
+358 verbose tar unpack /Users/juleskreutzer/.npm/async/1.2.1/package.tgz
+359 verbose tar unpacking to /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/async-27230526
+360 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/async-27230526 is being purged
+361 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/async-27230526
+362 verbose tar unpack /Users/juleskreutzer/.npm/weak/0.4.1/package.tgz
+363 verbose tar unpacking to /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/weak-c35c50c1
+364 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/weak-c35c50c1 is being purged
+365 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/weak-c35c50c1
+366 verbose tar unpack /Users/juleskreutzer/.npm/nodermi/0.0.4/package.tgz
+367 verbose tar unpacking to /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nodermi-76a59807
+368 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nodermi-76a59807 is being purged
+369 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nodermi-76a59807
+370 silly gunzTarPerm modes [ '755', '644' ]
+371 silly gunzTarPerm modes [ '755', '644' ]
+372 silly gunzTarPerm modes [ '755', '644' ]
+373 silly gunzTarPerm modes [ '755', '644' ]
+374 silly gunzTarPerm modes [ '755', '644' ]
+375 silly gunzTarPerm modes [ '755', '644' ]
+376 silly gunzTarPerm extractEntry package.json
+377 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
+378 silly gunzTarPerm extractEntry package.json
+379 silly gunzTarPerm extractEntry package.json
+380 silly gunzTarPerm extractEntry package.json
+381 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
+382 silly gunzTarPerm extractEntry package.json
+383 silly gunzTarPerm extractEntry package.json
+384 silly gunzTarPerm extractEntry README.md
+385 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
+386 silly gunzTarPerm extractEntry README.md
+387 silly gunzTarPerm extractEntry bindings.js
+388 silly gunzTarPerm extractEntry README.md
+389 silly gunzTarPerm extractEntry date.js
+390 silly gunzTarPerm extractEntry README.md
+391 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
+392 silly gunzTarPerm extractEntry LICENSE
+393 silly gunzTarPerm modified mode [ 'LICENSE', 436, 420 ]
+394 silly gunzTarPerm extractEntry .npmignore
+395 silly gunzTarPerm extractEntry README.md
+396 silly gunzTarPerm extractEntry .npmignore
+397 silly gunzTarPerm extractEntry README.md
+398 silly gunzTarPerm extractEntry include_dirs.js
+399 silly gunzTarPerm modified mode [ 'include_dirs.js', 436, 420 ]
+400 silly gunzTarPerm extractEntry function.js
+401 silly gunzTarPerm extractEntry index.js
+402 silly gunzTarPerm extractEntry LICENSE.md
+403 silly gunzTarPerm modified mode [ 'LICENSE.md', 436, 420 ]
+404 silly gunzTarPerm extractEntry .dntrc
+405 silly gunzTarPerm modified mode [ '.dntrc', 436, 420 ]
+406 silly gunzTarPerm extractEntry appveyor.yml
+407 silly gunzTarPerm modified mode [ 'appveyor.yml', 436, 420 ]
+408 silly gunzTarPerm extractEntry component.json
+409 silly gunzTarPerm modified mode [ 'component.json', 436, 420 ]
+410 silly gunzTarPerm extractEntry CHANGELOG.md
+411 silly gunzTarPerm modified mode [ 'CHANGELOG.md', 436, 420 ]
+412 silly gunzTarPerm extractEntry .jshintrc
+413 silly gunzTarPerm modified mode [ '.jshintrc', 436, 420 ]
+414 silly gunzTarPerm extractEntry LICENSE
+415 silly gunzTarPerm extractEntry binding.gyp
+416 silly gunzTarPerm extractEntry LICENSE
+417 silly gunzTarPerm extractEntry lib/class_registry.js
+418 silly gunzTarPerm extractEntry nan.h
+419 silly gunzTarPerm modified mode [ 'nan.h', 436, 420 ]
+420 silly gunzTarPerm extractEntry bower.json
+421 silly gunzTarPerm modified mode [ 'bower.json', 436, 420 ]
+422 silly gunzTarPerm extractEntry nan_implementation_12_inl.h
+423 silly gunzTarPerm modified mode [ 'nan_implementation_12_inl.h', 436, 420 ]
+424 silly gunzTarPerm extractEntry coverage/prettify.js
+425 silly gunzTarPerm modified mode [ 'coverage/prettify.js', 436, 420 ]
+426 silly gunzTarPerm extractEntry nan_implementation_pre_12_inl.h
+427 silly gunzTarPerm modified mode [ 'nan_implementation_pre_12_inl.h', 436, 420 ]
+428 silly gunzTarPerm extractEntry coverage/sorter.js
+429 silly gunzTarPerm modified mode [ 'coverage/sorter.js', 436, 420 ]
+430 silly gunzTarPerm extractEntry .travis.yml
+431 silly gunzTarPerm extractEntry appveyor.yml
+432 silly gunzTarPerm extractEntry lib/decoding.js
+433 silly gunzTarPerm extractEntry lib/encoding.js
+434 silly gunzTarPerm extractEntry lib/failure_detector.js
+435 silly gunzTarPerm modified mode [ 'lib/failure_detector.js', 436, 420 ]
+436 silly gunzTarPerm extractEntry lib/common.js
+437 silly gunzTarPerm extractEntry lib/main.js
+438 silly gunzTarPerm extractEntry lib/server.js
+439 silly gunzTarPerm extractEntry lib/object_registry.js
+440 silly gunzTarPerm extractEntry lib/socket_transport.js
+441 silly gunzTarPerm extractEntry lib/file_logger.js
+442 silly gunzTarPerm extractEntry lib/message.proto
+443 silly gunzTarPerm modified mode [ 'lib/message.proto', 436, 420 ]
+444 silly gunzTarPerm extractEntry examples/base.js
+445 silly gunzTarPerm modified mode [ 'examples/base.js', 436, 420 ]
+446 silly gunzTarPerm extractEntry build.sh
+447 silly gunzTarPerm extractEntry test/test_encoding.js
+448 silly gunzTarPerm modified mode [ 'test/test_encoding.js', 436, 420 ]
+449 silly gunzTarPerm extractEntry test/test_failure_detector.js
+450 silly gunzTarPerm modified mode [ 'test/test_failure_detector.js', 436, 420 ]
+451 silly gunzTarPerm extractEntry test/test_integration.js
+452 silly gunzTarPerm extractEntry test/test_objectregistry.js
+453 silly gunzTarPerm modified mode [ 'test/test_objectregistry.js', 436, 420 ]
+454 silly gunzTarPerm extractEntry test/test_startup_error.js
+455 silly gunzTarPerm extractEntry collection.js
+456 silly gunzTarPerm extractEntry coverage/base.css
+457 silly gunzTarPerm modified mode [ 'coverage/base.css', 436, 420 ]
+458 silly gunzTarPerm extractEntry coverage/index.html
+459 silly gunzTarPerm modified mode [ 'coverage/index.html', 436, 420 ]
+460 silly gunzTarPerm extractEntry nan_new.h
+461 silly gunzTarPerm modified mode [ 'nan_new.h', 436, 420 ]
+462 silly gunzTarPerm extractEntry lang.js
+463 silly gunzTarPerm extractEntry math.js
+464 silly gunzTarPerm extractEntry History.md
+465 silly gunzTarPerm extractEntry lib/weak.js
+466 silly gunzTarPerm extractEntry nan_string_bytes.h
+467 silly gunzTarPerm modified mode [ 'nan_string_bytes.h', 436, 420 ]
+468 silly gunzTarPerm extractEntry CHANGELOG.md
+469 silly gunzTarPerm modified mode [ 'CHANGELOG.md', 436, 420 ]
+470 silly gunzTarPerm extractEntry coverage/lcov-report/prettify.js
+471 silly gunzTarPerm modified mode [ 'coverage/lcov-report/prettify.js', 436, 420 ]
+472 silly gunzTarPerm extractEntry coverage/lcov-report/sorter.js
+473 silly gunzTarPerm modified mode [ 'coverage/lcov-report/sorter.js', 436, 420 ]
+474 silly gunzTarPerm extractEntry number.js
+475 silly gunzTarPerm extractEntry object.js
+476 silly gunzTarPerm extractEntry chain.js
+477 silly gunzTarPerm extractEntry src/weakref.cc
+478 silly gunzTarPerm extractEntry string.js
+479 silly gunzTarPerm extractEntry array.js
+480 silly gunzTarPerm extractEntry utility.js
+481 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/bindings-7361a62f/node_modules is being purged
+482 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/bindings-7361a62f/node_modules
+483 silly gunzTarPerm extractEntry coverage/lcov-report/base.css
+484 silly gunzTarPerm modified mode [ 'coverage/lcov-report/base.css', 436, 420 ]
+485 silly gunzTarPerm extractEntry coverage/lcov-report/index.html
+486 silly gunzTarPerm modified mode [ 'coverage/lcov-report/index.html', 436, 420 ]
+487 silly gunzTarPerm extractEntry support.js
+488 silly gunzTarPerm extractEntry test/buffer.js
+489 silly gunzTarPerm extractEntry test/callback.js
+490 silly gunzTarPerm extractEntry date/now.js
+491 silly gunzTarPerm extractEntry math/add.js
+492 silly gunzTarPerm extractEntry coverage/lcov-report/lib/async.js.html
+493 silly gunzTarPerm modified mode [ 'coverage/lcov-report/lib/async.js.html', 436, 420 ]
+494 silly gunzTarPerm extractEntry coverage/lcov-report/lib/index.html
+495 silly gunzTarPerm modified mode [ 'coverage/lcov-report/lib/index.html', 436, 420 ]
+496 silly gunzTarPerm extractEntry math/max.js
+497 silly gunzTarPerm extractEntry test/create.js
+498 silly gunzTarPerm extractEntry test/exports.js
+499 silly gunzTarPerm extractEntry math/min.js
+500 silly gunzTarPerm extractEntry math/sum.js
+501 silly gunzTarPerm extractEntry chain/chain.js
+502 silly gunzTarPerm extractEntry chain/run.js
+503 silly gunzTarPerm extractEntry coverage/lcov-report/prettify.css
+504 silly gunzTarPerm modified mode [ 'coverage/lcov-report/prettify.css', 436, 420 ]
+505 silly gunzTarPerm extractEntry coverage/lcov-report/sort-arrow-sprite.png
+506 silly gunzTarPerm modified mode [ 'coverage/lcov-report/sort-arrow-sprite.png', 436, 420 ]
+507 silly gunzTarPerm extractEntry test/weakref.js
+508 silly gunzTarPerm extractEntry chain/tap.js
+509 silly gunzTarPerm extractEntry chain/thru.js
+510 silly gunzTarPerm extractEntry chain/toJSON.js
+511 silly gunzTarPerm extractEntry chain/reverse.js
+512 silly gunzTarPerm extractEntry coverage/lcov.info
+513 silly gunzTarPerm modified mode [ 'coverage/lcov.info', 436, 420 ]
+514 silly gunzTarPerm extractEntry coverage/lib/async.js.html
+515 silly gunzTarPerm modified mode [ 'coverage/lib/async.js.html', 436, 420 ]
+516 silly gunzTarPerm extractEntry chain/value.js
+517 silly gunzTarPerm extractEntry coverage/lib/index.html
+518 silly gunzTarPerm modified mode [ 'coverage/lib/index.html', 436, 420 ]
+519 silly gunzTarPerm extractEntry chain/valueOf.js
+520 silly gunzTarPerm extractEntry chain/wrapperChain.js
+521 silly gunzTarPerm extractEntry chain/wrapperCommit.js
+522 silly gunzTarPerm extractEntry chain/wrapperPlant.js
+523 silly gunzTarPerm extractEntry chain/plant.js
+524 silly gunzTarPerm extractEntry coverage/prettify.css
+525 silly gunzTarPerm modified mode [ 'coverage/prettify.css', 436, 420 ]
+526 silly gunzTarPerm extractEntry coverage/sort-arrow-sprite.png
+527 silly gunzTarPerm modified mode [ 'coverage/sort-arrow-sprite.png', 436, 420 ]
+528 silly gunzTarPerm extractEntry chain/wrapperReverse.js
+529 silly gunzTarPerm extractEntry chain/lodash.js
+530 silly gunzTarPerm extractEntry lib/async.js
+531 silly gunzTarPerm modified mode [ 'lib/async.js', 436, 420 ]
+532 silly gunzTarPerm extractEntry support/sync-package-managers.js
+533 silly gunzTarPerm modified mode [ 'support/sync-package-managers.js', 509, 493 ]
+534 silly gunzTarPerm extractEntry chain/wrapperToString.js
+535 silly gunzTarPerm extractEntry chain/commit.js
+536 silly gunzTarPerm extractEntry nyc_output/5074.json
+537 silly gunzTarPerm modified mode [ 'nyc_output/5074.json', 436, 420 ]
+538 silly gunzTarPerm extractEntry .travis.yml
+539 silly gunzTarPerm modified mode [ '.travis.yml', 436, 420 ]
+540 silly gunzTarPerm extractEntry chain/wrapperValue.js
+541 silly gunzTarPerm extractEntry chain/toString.js
+542 silly gunzTarPerm extractEntry number/inRange.js
+543 silly gunzTarPerm extractEntry number/random.js
+544 silly gunzTarPerm extractEntry function/after.js
+545 silly gunzTarPerm extractEntry function/curryRight.js
+546 silly gunzTarPerm extractEntry function/debounce.js
+547 silly gunzTarPerm extractEntry function/defer.js
+548 silly gunzTarPerm extractEntry function/curry.js
+549 silly gunzTarPerm extractEntry function/flow.js
+550 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nan-89a762b4/node_modules is being purged
+551 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nan-89a762b4/node_modules
+552 silly gunzTarPerm extractEntry function/flowRight.js
+553 silly gunzTarPerm extractEntry function/memoize.js
+554 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/weak-c35c50c1/node_modules is being purged
+555 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/weak-c35c50c1/node_modules
+556 silly gunzTarPerm extractEntry function/negate.js
+557 silly gunzTarPerm extractEntry function/once.js
+558 silly gunzTarPerm extractEntry function/compose.js
+559 silly gunzTarPerm extractEntry function/partial.js
+560 silly gunzTarPerm extractEntry function/bindKey.js
+561 silly gunzTarPerm extractEntry function/partialRight.js
+562 silly gunzTarPerm extractEntry function/bindAll.js
+563 silly gunzTarPerm extractEntry function/rearg.js
+564 silly gunzTarPerm extractEntry function/bind.js
+565 silly gunzTarPerm extractEntry function/restParam.js
+566 silly gunzTarPerm extractEntry function/before.js
+567 silly gunzTarPerm extractEntry function/spread.js
+568 silly gunzTarPerm extractEntry function/backflow.js
+569 silly gunzTarPerm extractEntry function/throttle.js
+570 silly gunzTarPerm extractEntry function/ary.js
+571 silly gunzTarPerm extractEntry function/wrap.js
+572 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nodermi-76a59807/node_modules is being purged
+573 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nodermi-76a59807/node_modules
+574 silly gunzTarPerm extractEntry function/delay.js
+575 silly gunzTarPerm extractEntry object/assign.js
+576 silly gunzTarPerm extractEntry object/functions.js
+577 silly gunzTarPerm extractEntry object/get.js
+578 silly gunzTarPerm extractEntry object/has.js
+579 silly gunzTarPerm extractEntry object/invert.js
+580 silly gunzTarPerm extractEntry object/forOwnRight.js
+581 silly gunzTarPerm extractEntry object/keysIn.js
+582 silly gunzTarPerm extractEntry object/mapKeys.js
+583 silly gunzTarPerm extractEntry object/mapValues.js
+584 silly gunzTarPerm extractEntry object/merge.js
+585 silly gunzTarPerm extractEntry object/methods.js
+586 silly gunzTarPerm extractEntry object/forOwn.js
+587 silly gunzTarPerm extractEntry object/omit.js
+588 silly gunzTarPerm extractEntry object/forInRight.js
+589 silly gunzTarPerm extractEntry object/pairs.js
+590 silly gunzTarPerm extractEntry object/forIn.js
+591 silly gunzTarPerm extractEntry object/pick.js
+592 silly gunzTarPerm extractEntry object/findLastKey.js
+593 silly gunzTarPerm extractEntry object/result.js
+594 silly gunzTarPerm extractEntry object/findKey.js
+595 silly gunzTarPerm extractEntry object/set.js
+596 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/async-27230526/node_modules is being purged
+597 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/async-27230526/node_modules
+598 silly gunzTarPerm extractEntry object/extend.js
+599 silly gunzTarPerm extractEntry object/transform.js
+600 silly gunzTarPerm extractEntry object/defaults.js
+601 silly gunzTarPerm extractEntry object/values.js
+602 silly gunzTarPerm extractEntry object/create.js
+603 silly gunzTarPerm extractEntry object/valuesIn.js
+604 silly gunzTarPerm extractEntry object/keys.js
+605 silly gunzTarPerm extractEntry array/chunk.js
+606 silly gunzTarPerm extractEntry array/last.js
+607 silly gunzTarPerm extractEntry array/lastIndexOf.js
+608 silly gunzTarPerm extractEntry array/object.js
+609 silly gunzTarPerm extractEntry array/pull.js
+610 silly gunzTarPerm extractEntry array/intersection.js
+611 silly gunzTarPerm extractEntry array/remove.js
+612 silly gunzTarPerm extractEntry array/rest.js
+613 silly gunzTarPerm extractEntry array/slice.js
+614 silly gunzTarPerm extractEntry array/sortedIndex.js
+615 silly gunzTarPerm extractEntry array/sortedLastIndex.js
+616 silly gunzTarPerm extractEntry array/initial.js
+617 silly gunzTarPerm extractEntry array/tail.js
+618 silly gunzTarPerm extractEntry array/indexOf.js
+619 silly gunzTarPerm extractEntry array/take.js
+620 silly gunzTarPerm extractEntry array/head.js
+621 silly gunzTarPerm extractEntry array/takeRight.js
+622 silly gunzTarPerm extractEntry array/flattenDeep.js
+623 silly gunzTarPerm extractEntry array/takeRightWhile.js
+624 silly gunzTarPerm extractEntry array/flatten.js
+625 silly gunzTarPerm extractEntry array/takeWhile.js
+626 silly gunzTarPerm extractEntry array/first.js
+627 silly gunzTarPerm extractEntry array/union.js
+628 silly gunzTarPerm extractEntry array/findLastIndex.js
+629 silly gunzTarPerm extractEntry array/uniq.js
+630 silly gunzTarPerm extractEntry array/findIndex.js
+631 silly gunzTarPerm extractEntry array/unique.js
+632 silly gunzTarPerm extractEntry array/fill.js
+633 silly gunzTarPerm extractEntry array/unzip.js
+634 silly gunzTarPerm extractEntry array/dropWhile.js
+635 silly gunzTarPerm extractEntry array/unzipWith.js
+636 silly gunzTarPerm extractEntry array/dropRightWhile.js
+637 silly gunzTarPerm extractEntry array/without.js
+638 silly gunzTarPerm extractEntry array/dropRight.js
+639 silly gunzTarPerm extractEntry array/xor.js
+640 silly gunzTarPerm extractEntry array/drop.js
+641 silly gunzTarPerm extractEntry array/zip.js
+642 silly gunzTarPerm extractEntry array/difference.js
+643 silly gunzTarPerm extractEntry array/zipObject.js
+644 silly gunzTarPerm extractEntry array/compact.js
+645 silly gunzTarPerm extractEntry array/zipWith.js
+646 silly gunzTarPerm extractEntry array/pullAt.js
+647 silly gunzTarPerm extractEntry collection/all.js
+648 silly gunzTarPerm extractEntry collection/forEachRight.js
+649 silly gunzTarPerm extractEntry collection/groupBy.js
+650 silly gunzTarPerm extractEntry collection/include.js
+651 silly gunzTarPerm extractEntry collection/includes.js
+652 silly gunzTarPerm extractEntry collection/forEach.js
+653 silly gunzTarPerm extractEntry collection/inject.js
+654 silly gunzTarPerm extractEntry collection/invoke.js
+655 silly gunzTarPerm extractEntry collection/map.js
+656 silly gunzTarPerm extractEntry collection/max.js
+657 silly gunzTarPerm extractEntry collection/min.js
+658 silly gunzTarPerm extractEntry collection/foldr.js
+659 silly gunzTarPerm extractEntry collection/partition.js
+660 silly gunzTarPerm extractEntry collection/foldl.js
+661 silly gunzTarPerm extractEntry collection/pluck.js
+662 silly gunzTarPerm extractEntry collection/findWhere.js
+663 silly gunzTarPerm extractEntry collection/reduce.js
+664 silly gunzTarPerm extractEntry collection/findLast.js
+665 silly gunzTarPerm extractEntry collection/reduceRight.js
+666 silly gunzTarPerm extractEntry collection/find.js
+667 silly gunzTarPerm extractEntry collection/reject.js
+668 silly gunzTarPerm extractEntry collection/filter.js
+669 silly gunzTarPerm extractEntry collection/sample.js
+670 silly gunzTarPerm extractEntry collection/every.js
+671 silly gunzTarPerm extractEntry collection/select.js
+672 silly gunzTarPerm extractEntry collection/eachRight.js
+673 silly gunzTarPerm extractEntry collection/shuffle.js
+674 silly gunzTarPerm extractEntry collection/each.js
+675 silly gunzTarPerm extractEntry collection/size.js
+676 silly gunzTarPerm extractEntry collection/detect.js
+677 silly gunzTarPerm extractEntry collection/some.js
+678 silly gunzTarPerm extractEntry collection/countBy.js
+679 silly gunzTarPerm extractEntry collection/sortBy.js
+680 silly gunzTarPerm extractEntry collection/contains.js
+681 silly gunzTarPerm extractEntry collection/sortByAll.js
+682 silly gunzTarPerm extractEntry collection/collect.js
+683 silly gunzTarPerm extractEntry collection/sortByOrder.js
+684 silly gunzTarPerm extractEntry collection/at.js
+685 silly gunzTarPerm extractEntry collection/sum.js
+686 silly gunzTarPerm extractEntry collection/any.js
+687 silly gunzTarPerm extractEntry collection/where.js
+688 silly gunzTarPerm extractEntry collection/indexBy.js
+689 silly gunzTarPerm extractEntry string/camelCase.js
+690 silly gunzTarPerm extractEntry string/padLeft.js
+691 silly gunzTarPerm extractEntry string/padRight.js
+692 silly gunzTarPerm extractEntry string/parseInt.js
+693 silly gunzTarPerm extractEntry string/pad.js
+694 silly gunzTarPerm extractEntry string/snakeCase.js
+695 silly gunzTarPerm extractEntry string/startCase.js
+696 silly gunzTarPerm extractEntry string/startsWith.js
+697 silly gunzTarPerm extractEntry string/template.js
+698 silly gunzTarPerm extractEntry string/templateSettings.js
+699 silly gunzTarPerm extractEntry string/kebabCase.js
+700 silly gunzTarPerm extractEntry string/trim.js
+701 silly gunzTarPerm extractEntry string/escapeRegExp.js
+702 silly gunzTarPerm extractEntry string/trimLeft.js
+703 silly gunzTarPerm extractEntry string/escape.js
+704 silly gunzTarPerm extractEntry string/trimRight.js
+705 silly gunzTarPerm extractEntry string/endsWith.js
+706 silly gunzTarPerm extractEntry string/trunc.js
+707 silly gunzTarPerm extractEntry string/deburr.js
+708 silly gunzTarPerm extractEntry string/unescape.js
+709 silly gunzTarPerm extractEntry string/capitalize.js
+710 silly gunzTarPerm extractEntry string/words.js
+711 silly gunzTarPerm extractEntry string/repeat.js
+712 silly gunzTarPerm extractEntry internal/LazyWrapper.js
+713 silly gunzTarPerm extractEntry internal/charsRightIndex.js
+714 silly gunzTarPerm extractEntry internal/compareAscending.js
+715 silly gunzTarPerm extractEntry internal/compareMultiple.js
+716 silly gunzTarPerm extractEntry internal/composeArgs.js
+717 silly gunzTarPerm extractEntry internal/charsLeftIndex.js
+718 silly gunzTarPerm extractEntry internal/createAggregator.js
+719 silly gunzTarPerm extractEntry internal/createAssigner.js
+720 silly gunzTarPerm extractEntry internal/createBaseEach.js
+721 silly gunzTarPerm extractEntry internal/createBaseFor.js
+722 silly gunzTarPerm extractEntry internal/createBindWrapper.js
+723 silly gunzTarPerm extractEntry internal/cachePush.js
+724 silly gunzTarPerm extractEntry internal/createCache.js
+725 silly gunzTarPerm extractEntry internal/cacheIndexOf.js
+726 silly gunzTarPerm extractEntry internal/createCompounder.js
+727 silly gunzTarPerm extractEntry internal/bufferClone.js
+728 silly gunzTarPerm extractEntry internal/createCtorWrapper.js
+729 silly gunzTarPerm extractEntry internal/bindCallback.js
+730 silly gunzTarPerm extractEntry internal/createCurry.js
+731 silly gunzTarPerm extractEntry internal/binaryIndexBy.js
+732 silly gunzTarPerm extractEntry internal/createExtremum.js
+733 silly gunzTarPerm extractEntry internal/binaryIndex.js
+734 silly gunzTarPerm extractEntry internal/createFind.js
+735 silly gunzTarPerm extractEntry internal/baseWrapperValue.js
+736 silly gunzTarPerm extractEntry internal/createFindIndex.js
+737 silly gunzTarPerm extractEntry internal/baseWhile.js
+738 silly gunzTarPerm extractEntry internal/createFindKey.js
+739 silly gunzTarPerm extractEntry internal/baseValues.js
+740 silly gunzTarPerm extractEntry internal/createFlow.js
+741 silly gunzTarPerm extractEntry internal/baseUniq.js
+742 silly gunzTarPerm extractEntry internal/createForEach.js
+743 silly gunzTarPerm extractEntry internal/baseToString.js
+744 silly gunzTarPerm extractEntry internal/createForIn.js
+745 silly gunzTarPerm extractEntry internal/baseSum.js
+746 silly gunzTarPerm extractEntry internal/createForOwn.js
+747 silly gunzTarPerm extractEntry internal/baseSortByOrder.js
+748 silly gunzTarPerm extractEntry internal/createHybridWrapper.js
+749 silly gunzTarPerm extractEntry internal/baseSortBy.js
+750 silly gunzTarPerm extractEntry internal/createObjectMapper.js
+751 silly gunzTarPerm extractEntry internal/baseSome.js
+752 silly gunzTarPerm extractEntry internal/createPadDir.js
+753 silly gunzTarPerm extractEntry internal/baseSlice.js
+754 silly gunzTarPerm extractEntry internal/createPadding.js
+755 silly gunzTarPerm extractEntry internal/baseSetData.js
+756 silly gunzTarPerm extractEntry internal/createPartial.js
+757 silly gunzTarPerm extractEntry internal/baseReduce.js
+758 silly gunzTarPerm extractEntry internal/createPartialWrapper.js
+759 silly gunzTarPerm extractEntry internal/baseRandom.js
+760 silly gunzTarPerm extractEntry internal/createReduce.js
+761 silly gunzTarPerm extractEntry internal/basePullAt.js
+762 silly gunzTarPerm extractEntry internal/createSortedIndex.js
+763 silly gunzTarPerm extractEntry internal/basePropertyDeep.js
+764 silly gunzTarPerm extractEntry internal/createWrapper.js
+765 silly gunzTarPerm extractEntry internal/baseProperty.js
+766 silly gunzTarPerm extractEntry internal/deburrLetter.js
+767 silly gunzTarPerm extractEntry internal/baseMergeDeep.js
+768 silly gunzTarPerm extractEntry internal/equalArrays.js
+769 silly gunzTarPerm extractEntry internal/baseMerge.js
+770 silly gunzTarPerm extractEntry internal/equalByTag.js
+771 silly gunzTarPerm extractEntry internal/baseMatchesProperty.js
+772 silly gunzTarPerm extractEntry internal/equalObjects.js
+773 silly gunzTarPerm extractEntry internal/baseMatches.js
+774 silly gunzTarPerm extractEntry internal/escapeHtmlChar.js
+775 silly gunzTarPerm extractEntry internal/baseMap.js
+776 silly gunzTarPerm extractEntry internal/escapeStringChar.js
+777 silly gunzTarPerm extractEntry internal/baseLodash.js
+778 silly gunzTarPerm extractEntry internal/getData.js
+779 silly gunzTarPerm extractEntry internal/baseIsMatch.js
+780 silly gunzTarPerm extractEntry internal/getFuncName.js
+781 silly gunzTarPerm extractEntry internal/baseIsFunction.js
+782 silly gunzTarPerm extractEntry internal/getLength.js
+783 silly gunzTarPerm extractEntry internal/baseIsEqualDeep.js
+784 silly gunzTarPerm extractEntry internal/getMatchData.js
+785 silly gunzTarPerm extractEntry internal/baseIsEqual.js
+786 silly gunzTarPerm extractEntry internal/getNative.js
+787 silly gunzTarPerm extractEntry internal/baseIndexOf.js
+788 silly gunzTarPerm extractEntry internal/getView.js
+789 silly gunzTarPerm extractEntry internal/baseGet.js
+790 silly gunzTarPerm extractEntry internal/indexOfNaN.js
+791 silly gunzTarPerm extractEntry internal/baseFunctions.js
+792 silly gunzTarPerm extractEntry internal/initCloneArray.js
+793 silly gunzTarPerm extractEntry internal/baseForRight.js
+794 silly gunzTarPerm extractEntry internal/initCloneByTag.js
+795 silly gunzTarPerm extractEntry internal/baseForOwnRight.js
+796 silly gunzTarPerm extractEntry internal/initCloneObject.js
+797 silly gunzTarPerm extractEntry internal/baseForOwn.js
+798 silly gunzTarPerm extractEntry internal/invokePath.js
+799 silly gunzTarPerm extractEntry internal/baseForIn.js
+800 silly gunzTarPerm extractEntry internal/isArrayLike.js
+801 silly gunzTarPerm extractEntry internal/baseFor.js
+802 silly gunzTarPerm extractEntry internal/isIndex.js
+803 silly gunzTarPerm extractEntry internal/baseFlatten.js
+804 silly gunzTarPerm extractEntry internal/isIterateeCall.js
+805 silly gunzTarPerm extractEntry internal/baseFindIndex.js
+806 silly gunzTarPerm extractEntry internal/isKey.js
+807 silly gunzTarPerm extractEntry internal/baseFind.js
+808 silly gunzTarPerm extractEntry internal/isLaziable.js
+809 silly gunzTarPerm extractEntry internal/baseFilter.js
+810 silly gunzTarPerm extractEntry internal/isLength.js
+811 silly gunzTarPerm extractEntry internal/baseFill.js
+812 silly gunzTarPerm extractEntry internal/isObjectLike.js
+813 silly gunzTarPerm extractEntry internal/baseExtremum.js
+814 silly gunzTarPerm extractEntry internal/isSpace.js
+815 silly gunzTarPerm extractEntry internal/baseEvery.js
+816 silly gunzTarPerm extractEntry internal/isStrictComparable.js
+817 silly gunzTarPerm extractEntry internal/baseEachRight.js
+818 silly gunzTarPerm extractEntry internal/lazyClone.js
+819 silly gunzTarPerm extractEntry internal/baseEach.js
+820 silly gunzTarPerm extractEntry internal/lazyReverse.js
+821 silly gunzTarPerm extractEntry internal/baseDifference.js
+822 silly gunzTarPerm extractEntry internal/lazyValue.js
+823 silly gunzTarPerm extractEntry internal/baseDelay.js
+824 silly gunzTarPerm extractEntry internal/mapDelete.js
+825 silly gunzTarPerm extractEntry internal/baseCreate.js
+826 silly gunzTarPerm extractEntry internal/mapGet.js
+827 silly gunzTarPerm extractEntry internal/baseCopy.js
+828 silly gunzTarPerm extractEntry internal/mapHas.js
+829 silly gunzTarPerm extractEntry internal/baseCompareAscending.js
+830 silly gunzTarPerm extractEntry internal/mapSet.js
+831 silly gunzTarPerm extractEntry internal/baseClone.js
+832 silly gunzTarPerm extractEntry internal/mergeData.js
+833 silly gunzTarPerm extractEntry internal/baseCallback.js
+834 silly gunzTarPerm extractEntry internal/metaMap.js
+835 silly gunzTarPerm extractEntry internal/baseAt.js
+836 silly gunzTarPerm extractEntry internal/pickByArray.js
+837 silly gunzTarPerm extractEntry internal/baseAssign.js
+838 silly gunzTarPerm extractEntry internal/pickByCallback.js
+839 silly gunzTarPerm extractEntry internal/assignWith.js
+840 silly gunzTarPerm extractEntry internal/reEscape.js
+841 silly gunzTarPerm extractEntry internal/assignOwnDefaults.js
+842 silly gunzTarPerm extractEntry internal/reEvaluate.js
+843 silly gunzTarPerm extractEntry internal/assignDefaults.js
+844 silly gunzTarPerm extractEntry internal/reInterpolate.js
+845 silly gunzTarPerm extractEntry internal/arraySum.js
+846 silly gunzTarPerm extractEntry internal/realNames.js
+847 silly gunzTarPerm extractEntry internal/arraySome.js
+848 silly gunzTarPerm extractEntry internal/reorder.js
+849 silly gunzTarPerm extractEntry internal/arrayReduceRight.js
+850 silly gunzTarPerm extractEntry internal/replaceHolders.js
+851 silly gunzTarPerm extractEntry internal/arrayReduce.js
+852 silly gunzTarPerm extractEntry internal/setData.js
+853 silly gunzTarPerm extractEntry internal/arrayMap.js
+854 silly gunzTarPerm extractEntry internal/shimIsPlainObject.js
+855 silly gunzTarPerm extractEntry internal/arrayFilter.js
+856 silly gunzTarPerm extractEntry internal/shimKeys.js
+857 silly gunzTarPerm extractEntry internal/arrayExtremum.js
+858 silly gunzTarPerm extractEntry internal/sortedUniq.js
+859 silly gunzTarPerm extractEntry internal/arrayEvery.js
+860 silly gunzTarPerm extractEntry internal/toIterable.js
+861 silly gunzTarPerm extractEntry internal/arrayEachRight.js
+862 silly gunzTarPerm extractEntry internal/toObject.js
+863 silly gunzTarPerm extractEntry internal/arrayEach.js
+864 silly gunzTarPerm extractEntry internal/toPath.js
+865 silly gunzTarPerm extractEntry internal/arrayCopy.js
+866 silly gunzTarPerm extractEntry internal/trimmedLeftIndex.js
+867 silly gunzTarPerm extractEntry internal/SetCache.js
+868 silly gunzTarPerm extractEntry internal/trimmedRightIndex.js
+869 silly gunzTarPerm extractEntry internal/MapCache.js
+870 silly gunzTarPerm extractEntry internal/unescapeHtmlChar.js
+871 silly gunzTarPerm extractEntry internal/LodashWrapper.js
+872 silly gunzTarPerm extractEntry internal/wrapperClone.js
+873 silly gunzTarPerm extractEntry internal/composeArgsRight.js
+874 silly gunzTarPerm extractEntry LICENSE.txt
+875 silly gunzTarPerm extractEntry utility/attempt.js
+876 silly gunzTarPerm extractEntry utility/iteratee.js
+877 silly gunzTarPerm extractEntry utility/matches.js
+878 silly gunzTarPerm extractEntry utility/matchesProperty.js
+879 silly gunzTarPerm extractEntry utility/method.js
+880 silly gunzTarPerm extractEntry utility/identity.js
+881 silly gunzTarPerm extractEntry utility/mixin.js
+882 silly gunzTarPerm extractEntry utility/noop.js
+883 silly gunzTarPerm extractEntry utility/property.js
+884 silly gunzTarPerm extractEntry utility/propertyOf.js
+885 silly gunzTarPerm extractEntry utility/range.js
+886 silly gunzTarPerm extractEntry utility/constant.js
+887 silly gunzTarPerm extractEntry utility/times.js
+888 silly gunzTarPerm extractEntry utility/callback.js
+889 silly gunzTarPerm extractEntry utility/uniqueId.js
+890 silly gunzTarPerm extractEntry utility/methodOf.js
+891 silly gunzTarPerm extractEntry lang/clone.js
+892 silly gunzTarPerm extractEntry lang/isEqual.js
+893 silly gunzTarPerm extractEntry lang/isError.js
+894 silly gunzTarPerm extractEntry lang/isFinite.js
+895 silly gunzTarPerm extractEntry lang/isFunction.js
+896 silly gunzTarPerm extractEntry lang/isEmpty.js
+897 silly gunzTarPerm extractEntry lang/isNaN.js
+898 silly gunzTarPerm extractEntry lang/isNative.js
+899 silly gunzTarPerm extractEntry lang/isNull.js
+900 silly gunzTarPerm extractEntry lang/isNumber.js
+901 silly gunzTarPerm extractEntry lang/isObject.js
+902 silly gunzTarPerm extractEntry lang/isElement.js
+903 silly gunzTarPerm extractEntry lang/isPlainObject.js
+904 silly gunzTarPerm extractEntry lang/isDate.js
+905 silly gunzTarPerm extractEntry lang/isRegExp.js
+906 silly gunzTarPerm extractEntry lang/isBoolean.js
+907 silly gunzTarPerm extractEntry lang/isString.js
+908 silly gunzTarPerm extractEntry lang/isArray.js
+909 silly gunzTarPerm extractEntry lang/isTypedArray.js
+910 silly gunzTarPerm extractEntry lang/isArguments.js
+911 silly gunzTarPerm extractEntry lang/isUndefined.js
+912 silly gunzTarPerm extractEntry lang/gte.js
+913 silly gunzTarPerm extractEntry lang/lt.js
+914 silly gunzTarPerm extractEntry lang/gt.js
+915 silly gunzTarPerm extractEntry lang/lte.js
+916 silly gunzTarPerm extractEntry lang/eq.js
+917 silly gunzTarPerm extractEntry lang/toArray.js
+918 silly gunzTarPerm extractEntry lang/cloneDeep.js
+919 silly gunzTarPerm extractEntry lang/toPlainObject.js
+920 silly gunzTarPerm extractEntry lang/isMatch.js
+921 silly gentlyRm /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/lodash-51c1739d/node_modules is being purged
+922 verbose gentlyRm don't care about contents; nuking /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/lodash-51c1739d/node_modules
+923 silly doParallel preinstall 6
+924 silly preinstall bindings@1.2.1 /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/bindings-7361a62f
+925 info lifecycle bindings@1.2.1~preinstall: bindings@1.2.1
+926 silly preinstall nan@1.8.4 /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nan-89a762b4
+927 info lifecycle nan@1.8.4~preinstall: nan@1.8.4
+928 silly preinstall async@1.2.1 /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/async-27230526
+929 info lifecycle async@1.2.1~preinstall: async@1.2.1
+930 silly preinstall lodash@3.9.3 /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/lodash-51c1739d
+931 info lifecycle lodash@3.9.3~preinstall: lodash@3.9.3
+932 silly preinstall weak@0.4.1 /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/weak-c35c50c1
+933 info lifecycle weak@0.4.1~preinstall: weak@0.4.1
+934 silly preinstall nodermi@0.0.4 /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nodermi-76a59807
+935 info lifecycle nodermi@0.0.4~preinstall: nodermi@0.0.4
+936 silly lifecycle bindings@1.2.1~preinstall: no script for preinstall, continuing
+937 silly lifecycle nan@1.8.4~preinstall: no script for preinstall, continuing
+938 silly lifecycle async@1.2.1~preinstall: no script for preinstall, continuing
+939 silly lifecycle lodash@3.9.3~preinstall: no script for preinstall, continuing
+940 silly lifecycle weak@0.4.1~preinstall: no script for preinstall, continuing
+941 silly lifecycle nodermi@0.0.4~preinstall: no script for preinstall, continuing
+942 silly doReverseSerial remove 0
+943 silly doSerial move 0
+944 silly doSerial finalize 6
+945 silly finalize /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/bindings
+946 silly finalize /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/nan
+947 silly finalize /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/nodermi/node_modules/async
+948 silly finalize /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/nodermi/node_modules/lodash
+949 silly finalize /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/weak
+950 silly finalize /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/nodermi
+951 silly doSerial build 6
+952 silly build bindings@1.2.1
+953 info linkStuff bindings@1.2.1
+954 silly linkStuff bindings@1.2.1 has /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules as its parent node_modules
+955 verbose linkBins bindings@1.2.1
+956 verbose linkMans bindings@1.2.1
+957 silly build nan@1.8.4
+958 info linkStuff nan@1.8.4
+959 silly linkStuff nan@1.8.4 has /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules as its parent node_modules
+960 verbose linkBins nan@1.8.4
+961 verbose linkMans nan@1.8.4
+962 silly build async@1.2.1
+963 info linkStuff async@1.2.1
+964 silly linkStuff async@1.2.1 has /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/nodermi/node_modules as its parent node_modules
+965 verbose linkBins async@1.2.1
+966 verbose linkMans async@1.2.1
+967 silly build lodash@3.9.3
+968 info linkStuff lodash@3.9.3
+969 silly linkStuff lodash@3.9.3 has /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/nodermi/node_modules as its parent node_modules
+970 verbose linkBins lodash@3.9.3
+971 verbose linkMans lodash@3.9.3
+972 silly build weak@0.4.1
+973 info linkStuff weak@0.4.1
+974 silly linkStuff weak@0.4.1 has /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules as its parent node_modules
+975 verbose linkBins weak@0.4.1
+976 verbose linkMans weak@0.4.1
+977 silly build nodermi@0.0.4
+978 info linkStuff nodermi@0.0.4
+979 silly linkStuff nodermi@0.0.4 has /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules as its parent node_modules
+980 verbose linkBins nodermi@0.0.4
+981 verbose linkMans nodermi@0.0.4
+982 silly doSerial global-link 0
+983 silly doParallel update-linked 0
+984 silly doSerial install 6
+985 silly install bindings@1.2.1 /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/bindings-7361a62f
+986 info lifecycle bindings@1.2.1~install: bindings@1.2.1
+987 silly lifecycle bindings@1.2.1~install: no script for install, continuing
+988 silly install nan@1.8.4 /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/nan-89a762b4
+989 info lifecycle nan@1.8.4~install: nan@1.8.4
+990 silly lifecycle nan@1.8.4~install: no script for install, continuing
+991 silly install async@1.2.1 /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/async-27230526
+992 info lifecycle async@1.2.1~install: async@1.2.1
+993 silly lifecycle async@1.2.1~install: no script for install, continuing
+994 silly install lodash@3.9.3 /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/lodash-51c1739d
+995 info lifecycle lodash@3.9.3~install: lodash@3.9.3
+996 silly lifecycle lodash@3.9.3~install: no script for install, continuing
+997 silly install weak@0.4.1 /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging/weak-c35c50c1
+998 info lifecycle weak@0.4.1~install: weak@0.4.1
+999 verbose lifecycle weak@0.4.1~install: unsafe-perm in lifecycle false
+1000 verbose lifecycle weak@0.4.1~install: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/weak/node_modules/.bin:/Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.bin:/Users/juleskreutzer/.nvm/versions/node/v5.10.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+1001 verbose lifecycle weak@0.4.1~install: CWD: /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/weak
+1002 silly lifecycle weak@0.4.1~install: Args: [ '-c', 'node-gyp rebuild' ]
+1003 silly lifecycle weak@0.4.1~install: Returned: code: 1  signal: null
+1004 info lifecycle weak@0.4.1~install: Failed to exec install script
+1005 verbose unlock done using /Users/juleskreutzer/.npm/_locks/staging-cc1b2beb5f567eee.lock for /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb/node_modules/.staging
+1006 silly rollbackFailedOptional Starting
+1007 silly rollbackFailedOptional Finishing
+1008 silly runTopLevelLifecycles Finishing
+1009 silly install printInstalled
+1010 verbose stack Error: weak@0.4.1 install: `node-gyp rebuild`
+1010 verbose stack Exit status 1
+1010 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:255:16)
+1010 verbose stack     at emitTwo (events.js:100:13)
+1010 verbose stack     at EventEmitter.emit (events.js:185:7)
+1010 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+1010 verbose stack     at emitTwo (events.js:100:13)
+1010 verbose stack     at ChildProcess.emit (events.js:185:7)
+1010 verbose stack     at maybeClose (internal/child_process.js:850:16)
+1010 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
+1011 verbose pkgid weak@0.4.1
+1012 verbose cwd /Users/juleskreutzer/Documents/github/GSO-Maatwerk/StockAppWeb
+1013 error Darwin 16.0.0
+1014 error argv "/Users/juleskreutzer/.nvm/versions/node/v5.10.1/bin/node" "/usr/local/bin/npm" "install" "nodermi" "--save"
+1015 error node v5.10.1
+1016 error npm  v3.10.8
+1017 error code ELIFECYCLE
+1018 error weak@0.4.1 install: `node-gyp rebuild`
+1018 error Exit status 1
+1019 error Failed at the weak@0.4.1 install script 'node-gyp rebuild'.
+1019 error Make sure you have the latest version of node.js and npm installed.
+1019 error If you do, this is most likely a problem with the weak package,
+1019 error not with npm itself.
+1019 error Tell the author that this fails on your system:
+1019 error     node-gyp rebuild
+1019 error You can get information on how to open an issue for this project with:
+1019 error     npm bugs weak
+1019 error Or if that isn't available, you can get their info via:
+1019 error     npm owner ls weak
+1019 error There is likely additional logging output above.
+1020 verbose exit [ 1, true ]
