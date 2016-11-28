@@ -1,5 +1,6 @@
 package domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import interfaces.IStockReceive;
 import org.bson.types.ObjectId;
 
@@ -22,6 +23,7 @@ public class User implements Serializable {
     /** Serialization ID for RMI */
     private static final long serialVersionUID = 30L;
 
+    @JsonIgnore
     private transient ObjectId _id;
     private String username;
     private String password;

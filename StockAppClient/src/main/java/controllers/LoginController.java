@@ -52,7 +52,12 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.iUserHandling = StockApp.getInstance().getIUserHandlingInterface();
+        if(StockApp.getInstance().getIUserHandlingInterface() != null) {
+            this.iUserHandling = StockApp.getInstance().getIUserHandlingInterface();
+        } else {
+            NullPointerException e = new NullPointerException("Didn't receive user handling interface.");
+            AlertMessage.showException("At this time, we're unable to contact the server.\nPlease try again later.", e);
+        }
 
     }
 
@@ -73,7 +78,6 @@ public class LoginController implements Initializable {
             user.setReceiveInterface(instance);
 
             if(user != null) {
-                //TODO: Connect to server and check if login is correct.
                 try {
                     boolean loginSuccess = iUserHandling.loginUser(user);
 
@@ -118,8 +122,6 @@ public class LoginController implements Initializable {
             User user = User.createUser(username, password, email);
 
             if(user != null) {
-                //TODO: Connect to server and register a new account.
-
                 try {
                     boolean registrationSuccess = iUserHandling.registerUser(user);
 
