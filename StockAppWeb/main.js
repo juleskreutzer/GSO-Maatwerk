@@ -10,6 +10,7 @@ var stockRoute = require('./router/stock');
 var userRoute = require('./router/user');
 var infoRoute = require('./router/info');
 var authRoute = require('./router/authenticate');
+//var notificationRoute = require('./router/notification');
 
 app.set('superSecret', config.secret);
 app.use(morgan('dev'));
@@ -23,10 +24,11 @@ app.use('/auth', authRoute);
 app.use('/stock', stockRoute);
 app.use('/user', userRoute);
 app.use('/info', infoRoute);
+//app.use('/notification', notificationRoute);
 
 
 
-var server = app.listen(8080, function() {
+var server = app.listen(8082, function() {
   var host = server.address().address;
   var port = server.address().port;
 
