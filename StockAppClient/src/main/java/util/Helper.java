@@ -1,9 +1,14 @@
 package util;
 
+import controllers.AlertMessage;
 import domain.User;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -27,6 +32,7 @@ public class Helper {
     private String joinedGroup;
     private ArrayList<String> preferredStock;
     private Set<String> symbols;
+    private final String tickerSymbolsFileName = "tickersymbols.txt";
 
     private Helper() {
         _instance = this;
@@ -71,5 +77,23 @@ public class Helper {
 
     public void setSymbols(Set<String> symbols) {
         this.symbols = symbols;
+        writeTickerSymblsToFile(tickerSymbolsFileName, symbols);
+    }
+
+    private void writeTickerSymblsToFile(String fileName, Set<String> data) {
+        try {
+            BufferedWriter out =  new BufferedWriter(new FileWriter(tickerSymbolsFileName));
+            Iterator it = data.iterator();
+            while(it.hasNext()) {
+                out.write(it.next() + "\n");
+            }
+
+            out.close();
+            System.out.println("Ticker symbols written to file!");
+
+        } catch (IOException e) {
+            AlertMessage.showException("Unable to save the requested ticker symbols at this time. Please close this application and try again.", e);
+        }
+
     }
 }

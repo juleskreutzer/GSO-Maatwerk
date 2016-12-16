@@ -18,6 +18,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import util.Helper;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
@@ -85,7 +86,16 @@ public class LoginController implements Initializable {
                         // Login is correct. Show main UI
                         Helper.getInstance().setUser(user);
 
-                        MainScreenController.showMenu();
+                        // Check if file with all stock symbols exist
+                        File file = new File("tickersymbols.txt");
+                        if(file.exists() && !file.isDirectory()) {
+                            // File exists, show main screen
+                            MainScreenController.showMenu();
+                        } else {
+                            // File doesn't exists, fetch them!
+                            SetupController.showMenu();
+                        }
+
                     } else {
                         // Login failed, but a UserNotFound or InvalidCredentials Exception should've been thrown instead...
                         AlertMessage.show("The provided username and password are incorrect.\nPlease try again.", "", Alert.AlertType.ERROR);

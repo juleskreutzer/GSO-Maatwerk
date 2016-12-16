@@ -17,13 +17,11 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import util.Helper;
-import util.RequestTickerSymbols;
 
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -62,10 +60,7 @@ public class MainScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(Helper.getInstance().getSymbols().isEmpty()) {
-            AlertMessage.show("Getting the latest information...", "At this time, we are fetching the current ticker symbols for you to use. This process can take up to 5 minutes.\nYou should get some coffee.", Alert.AlertType.INFORMATION);
-            RequestTickerSymbols requestTickerSymbols = new RequestTickerSymbols();
-            Set<String> symbols = requestTickerSymbols.requestTickerSymbols();
-            Helper.getInstance().setSymbols(symbols);
+            SetupController.showMenu();
         }
 
     }

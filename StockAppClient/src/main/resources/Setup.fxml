@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="228.0" prefWidth="379.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SetupController">
+   <children>
+      <ProgressBar layoutX="10.0" layoutY="181.0" prefHeight="20.0" prefWidth="359.0" progress="0.0" />
+      <Label layoutX="10.0" layoutY="14.0" prefHeight="137.0" prefWidth="359.0" text="At this time, we're fetching the current ticker symbols for you to use. This process will only occur the first time and can take up to 5 minutes. You should get some coffee." wrapText="true" />
+   </children>
+</Pane>
