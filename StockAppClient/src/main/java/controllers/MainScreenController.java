@@ -66,9 +66,9 @@ public class MainScreenController implements Initializable {
     final CategoryAxis xAxis = new CategoryAxis();
 
     @FXML
-    LineChart<Number, Number> lineChart = new LineChart<Number, Number>(xAxis, yAxis);
+    LineChart<String, Double> lineChart;
 
-    XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
+    XYChart.Series<String, Double> series = new XYChart.Series<String, Double>();
 
     private static Stage stage;
 
@@ -211,9 +211,9 @@ public class MainScreenController implements Initializable {
     }
 
     private void draw(Stock stockToDraw, String code, String name) {
-        /**
-         * TODO: Probably create an observable list/map from stockToDraw.getValues() and display the values on the lineChart
-         */
+        // Remove current data on line chart if set
+        //lineChart.getData().clear();
+        series.getData().clear();
 
         Platform.runLater(new Runnable() {
             @Override
@@ -227,12 +227,9 @@ public class MainScreenController implements Initializable {
                         "Currency: " + stockToDraw.getCurrency());
             }
         });
-        series.setName(name + "\'s data");
 
-        int i = 1;
         for(String key : stockToDraw.getValues().keySet()) {
-            series.getData().add(new XYChart.Data<Number, Number>(i, (Number) Double.valueOf(stockToDraw.getValues().get(key))));
-            i++;
+            series.getData().add(new XYChart.Data<String, Double>(key, Double.valueOf(stockToDraw.getValues().get(key))));
         }
 
         lineChart.getData().add(series);
