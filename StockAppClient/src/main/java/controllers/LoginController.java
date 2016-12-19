@@ -91,9 +91,11 @@ public class LoginController implements Initializable {
                         if(file.exists() && !file.isDirectory()) {
                             // File exists, show main screen
                             MainScreenController.showMenu();
+                            stage.close();
                         } else {
                             // File doesn't exists, fetch them!
                             SetupController.showMenu();
+                            stage.close();
                         }
 
                     } else {

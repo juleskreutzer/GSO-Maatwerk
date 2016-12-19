@@ -21,6 +21,8 @@ router.post('/', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
 
+  console.log(req.body);
+
   var hashed = sha1(password);
 
   User.findOne({

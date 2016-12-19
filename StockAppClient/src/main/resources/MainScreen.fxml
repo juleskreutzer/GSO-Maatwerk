@@ -17,10 +17,10 @@
          </font></Label>
       <LineChart fx:id="lineChart" layoutX="9.0" layoutY="120.0" prefHeight="470.0" prefWidth="581.0">
         <xAxis>
-          <CategoryAxis side="BOTTOM" />
+          <CategoryAxis label="Days" side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis side="LEFT" />
+          <NumberAxis label="Value" side="LEFT" />
         </yAxis>
       </LineChart>
       <Button fx:id="btnNotification" layoutX="505.0" layoutY="89.0" mnemonicParsing="false" onAction="#addNotification" text="Notification">

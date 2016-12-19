@@ -6,6 +6,7 @@ import exceptions.*;
 import interfaces.IStockReceive;
 import interfaces.IStockSend;
 import interfaces.IUserHandling;
+import rest.Router;
 import util.RequestTickerSymbols;
 
 import java.io.IOException;
@@ -40,6 +41,9 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
 
         clearActiveGroups();
         checkForCompletedNotifications();
+
+        // Start the restful framework to allow incoming connections from the NodeJS server to manage new notification
+        Router.getInstance();
     }
 
     public static StockAppServer getInstance() {

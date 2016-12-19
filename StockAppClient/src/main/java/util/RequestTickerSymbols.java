@@ -4,7 +4,6 @@ import javafx.concurrent.Task;
 import org.json.JSONArray;
 import util.listeners.ListenerManager;
 
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,14 +35,15 @@ public class RequestTickerSymbols extends Task<Void> {
                 JSONArray result = RequestHandler.sendGet(REQUEST_TYPE.LOOKUP, c);
 
                 if(result != null) {
-                    for (int j = 0; j < result.length() - 1; j++) {
-                        symbols.add(result.getJSONObject(i).getString("Symbol"));
-                        updateProgress(i + 1, chars.length);
+                    for (int j = 0; j < result.length(); j++) {
+                        symbols.add(result.getJSONObject(j).getString("Symbol") + " - " + result.getJSONObject(j).getString("Name"));
                     }
                 } else {
                     System.out.println("No ticker symbols found with character " + c);
                 }
-            } catch (IOException e) {
+
+                updateProgress(i + 1, chars.length);
+            } catch (Exception e) {
                 System.out.println("Failure with character " + c);
                 e.printStackTrace();
             } finally {

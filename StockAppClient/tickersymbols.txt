@@ -1,0 +1,206 @@
+BA - Boeing Co
+WAC - Walter Investment Management Corp
+LZB - La-Z-Boy Inc
+GK - G&K Services Inc
+MODN - Model N Inc
+HIL - Hill International Inc
+LB - L Brands Inc
+SEED - Origin Agritech Ltd
+ZEUS - Olympic Steel Inc
+Y - Alleghany Corp
+BAC - Bank of America Corp
+K - Kellogg Co
+EBF - Ennis Inc
+JNP - Juniper Pharmaceuticals Inc
+H - Hyatt Hotels Corp
+MTRN - Materion Corp
+FTR - Frontier Communications Corp
+NYCB PR U - New York Community Capital Trust V
+GABC - German American Bancorp Inc
+BBW - Build-A-Bear Workshop Inc
+HES - Hess Corp
+WILC - G Willi-Food International Ltd
+WFT - Weatherford International PLC
+EBAY - eBay Inc
+FIS - Fidelity National Information Services Inc
+QADB - QAD Inc
+XOXO - XO Group Inc
+FUD - UBS E-TRACS Bloomberg CMCI Food 
+EAT - Brinker International Inc
+BEAV - B/E Aerospace Inc
+CB - Chubb Ltd
+HWAY - Healthways Inc
+QCOM - Qualcomm Inc
+CSI - Cutwater Select Income Fund
+ETFC - E*TRADE Financial Corp
+RCII - Rent-A-Center Inc
+AXF - NAS OMX Alpha   F vs. SPY Settle
+FSTR - L.B. Foster Co
+FNB - F.N.B. Corp
+KBH - KB Home
+LAD - Lithia Motors Inc
+BAF - BlackRock Municipal Income Investment Quality Trust
+VIAV - Viavi Solutions Inc
+S - Sprint Corp
+GRA - W. R. Grace & Co
+KTWO - K2M Group Holdings Inc
+LAMR - Lamar Advertising Co
+GURE - Gulf Resources Inc
+JBLU - JetBlue Airways Corp
+KAMN - Kaman Corp
+SSP - E. W. Scripps Co
+JCP - J C Penney Company Inc
+R - Ryder System Inc
+RAI - Reynolds American Inc
+CHRW - C.H. Robinson Worldwide Inc
+AAPL - Apple Inc
+WETF - WisdomTree Investments Inc
+ZIXI - Zix Corp
+LLL - L-3 Communications Holdings Inc
+OHAI - OHA Investment Corp
+CATY - Cathay General Bancorp
+TREC - Trecora Resources
+B - Barnes Group Inc
+DAIO - Data I/O Corp
+HWBK - Hawthorn Bancshares Inc
+T - AT&T Inc
+Q - Quintiles IMS Holdings Inc
+THG - Hanover Insurance Group Inc
+A - Agilent Technologies Inc
+USPH - U.S. Physical Therapy Inc
+TMUS - T-Mobile US Inc
+AJG - Arthur J Gallagher & Co
+QEH - AdvisorShares QAM Equity Hedge ETF
+JAKK - JAKKS Pacific Inc
+ARNC - Arconic Inc
+B50INR - DJ India15 TR
+JAX - J Alexanders Holdings Inc
+JJSF - J & J Snack Foods Corp
+USB - U.S. Bancorp
+I - Intelsat SA
+NQCIL3CLER - NASDAQ Commodity 3x Leverage Crude O
+ICON - Iconix Brand Group Inc
+UBFO - United Security Bancshares
+SPGI - S&P Global Inc
+X - United States Steel Corp
+F - Ford Motor Co
+NSP - Insperity Inc
+WEN - Wendys Co
+ARKW - ARK Web X.0 ETF
+GXG - Global X MSCI Colombia ETF
+SRPT - Sarepta Therapeutics Inc
+XPO - XPO Logistics Inc
+VAL - Valspar Corp
+BCR - C R Bard Inc
+DD - E I du Pont de Nemours and Co
+GGE - Guggenheim Enhanced Equity Strategy Fund
+JBL - Jabil Circuit Inc
+B50BRR - DJ Brazil15 TR
+LRN - K12 Inc
+LABL - Multi-Color Corp
+MHO - M/I Homes Inc
+DHI - D.R. Horton Inc
+TROW - T. Rowe Price Group Inc
+W1SUS - DJ SUST WLD XALL
+GROW - U.S. Global Investors Inc
+JBHT - J B Hunt Transport Services Inc
+SLCA - U.S. Silica Holdings Inc
+KAI - Kadant Inc
+GAB - Gabelli Equity Trust
+ZTR - Virtus Global Dividend & Income Fund Inc.
+AAON - AAON Inc
+KDMN - Kadmon Holdings Inc
+UCBI - United Community Banks Inc
+GWW - W W Grainger Inc
+OIIL - Credit Suisse X Links WTI Crude Oil Index 
+ZBRA - Zebra Technologies Corp
+HY - Hyster-Yale Materials Handling Inc
+AOS - A. O. Smith Corp
+L - Loews Corp
+HRB - H & R Block Inc
+MSR - Mauser Group B.V.
+LANC - Lancaster Colony Corp
+YHOO - Yahoo! Inc
+FAM - First Trust/Aberdeen Global Opportunity Income Fund
+QTWO - Q2 Holdings Inc
+OCFC - OceanFirst Financial Corp
+QSII - Quality Systems Inc
+VASC - Vascular Solutions Inc
+Z - Zillow Group Inc
+RNST - Renasant Corp
+XCRA - Xcerra Corp
+MLNK - ModusLink Global Solutions Inc
+AIRT - Air T Inc
+PACW - PacWest Bancorp
+ZION - Zions Bancorp
+MATX - Matson Inc
+P - Pandora Media Inc
+XDSCX - Cross Shore Discovery Fund
+EBTC - Enterprise Bancorp Inc
+DAR - Darling Ingredients Inc
+V - Visa Inc
+TRST - TrustCo Bank Corp N Y
+WRB - W. R. Berkley Corp
+TGNA - Tegna Inc
+OA - Orbital ATK Inc
+THRM - Gentherm Inc
+EBIX - Ebix Inc
+SCX - L S Starrett Co
+OKS - ONEOK Partners LP
+BABY - Natus Medical Inc
+KBAL - Kimball International Inc
+UBA - Urstadt Biddle Properties Inc
+QTM - Quantum Corp
+O - Realty Income Corp
+QADA - QAD Inc
+C - Citigroup Inc
+DWX - Spdr S & P International Dividend Etf
+GTS - Triple-S Management Corp
+YORW - York Water Co
+NAD - Nuveen Quality Muni Income Fund
+AER - AerCap Holdings NV
+VAR - Varian Medical Systems Inc
+D - Dominion Resources Inc
+G - Genpact Ltd
+FRDSY - F ALPHA INDEX
+DNI - Dividend and Income Fund
+SR - Spire Inc
+SJM - J M Smucker Co
+FAC - First Acceptance Corp
+GLT - P H Glatfelter Co
+HCKT - Hackett Group Inc
+DXLG - Destination XL Group Inc
+IVZ - Invesco Ltd
+YDKN - Yadkin Financial Corp
+DAKT - Daktronics Inc
+NAC - Nuveen California Quality Municipal Income Fund
+UBSI - United Bankshares Inc
+YRCW - YRC Worldwide Inc
+ZF - Zweig Fund
+CAL - Caleres Inc
+PLKI - Popeyes Louisiana Kitchen Inc
+SHLM - A Schulman Inc
+GIII - G-III Apparel Group Ltd
+IEP - Icahn Enterprises LP
+ECT - ECA Marcellus Trust I
+PAA - Plains All American Pipeline LP
+MTOR - Meritor Inc
+NEE - NextEra Energy Inc
+QDEL - Quidel Corp
+CSTE - Caesarstone Ltd
+MTSI - MACOM Technology Solutions Holdings Inc
+WPC - W. P. Carey Inc
+XBKS - Xenith Bankshares Inc
+AAP - Advance Auto Parts Inc
+RAD - Rite Aid Corp
+RHP - Ryman Hospitality Properties Inc
+CG - Carlyle Group LP
+BIL - SPDR Bloomberg Barclays 1-3 Month T-Bill ETF
+NAN - Nuveen New York Dividend Advantage Municipal Fund
+CASC - Cascadian Therapeutics Inc
+UBSH - Union Bankshares Corp
+W - Wayfair Inc
+ZBH - Zimmer Biomet Holdings Inc
+M - Macy's Inc
+INGR - Ingredion Inc
+PLD - Prologis Inc

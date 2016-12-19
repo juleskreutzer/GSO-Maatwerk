@@ -64,11 +64,12 @@ router.post('/register', function(req, res) {
   var password = req.body.password;
   var email = req.body.email;
 
+  console.log(req.body);
   var hashed = sha1(password);
 
   User.find({username: username}, function(err, result) {
 
-    if(result.length > 0) { res.end("User with username \"" + username + "\" already exists."); }
+    if(result.length > 0) { res.json({success: false, message: 'A user with the username \"' + username + '\" aready exists. Please login or choose another username.'}); }
   });
 
     // Store new user in database
@@ -80,8 +81,8 @@ router.post('/register', function(req, res) {
     });
 
     newUser.save(function(err) {
-      if(err) { res.send(err); }
-      else { res.json({ success: true }); }
+      if(err) { res.json({success: false, message: 'An database error occured. Please try again later.\n(' + err + ')'}); }
+      else { res.json({ success: true, message: 'A new user has been registered!'}); }
     });
 
 });

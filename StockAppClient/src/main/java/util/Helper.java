@@ -3,13 +3,8 @@ package util;
 import controllers.AlertMessage;
 import domain.User;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
 
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32,11 +27,13 @@ public class Helper {
     private String joinedGroup;
     private ArrayList<String> preferredStock;
     private Set<String> symbols;
+    private List<String> symbolsList;
     private final String tickerSymbolsFileName = "tickersymbols.txt";
 
     private Helper() {
         _instance = this;
-        this.symbols = new HashSet<>();
+        this.symbols = new TreeSet<>();
+        this.symbolsList = new ArrayList<>();
     }
 
     public static Helper getInstance() {
@@ -71,8 +68,34 @@ public class Helper {
         this.preferredStock.add(preferredStock);
     }
 
+    /**
+     * Returns all symbols as a set (HashSet)
+     * @return
+     */
     public Set<String> getSymbols() {
+        if(this.symbols.isEmpty()) {
+            // Try to read the symbols from file.
+            HashSet<String> symb = readTickerSymbolsFromFile(tickerSymbolsFileName);
+            this.symbols = symb;
+        }
+
         return symbols;
+    }
+
+    /**
+     * This method returns an ArrayList of all symbols that can be used in, for example, a choiseBox.
+     * @return
+     */
+    public ArrayList<String> getSymbolsAsList() {
+        if(this.symbolsList.isEmpty()) {
+            // SymbolsList is empty at this time. Try to get a list from the getSymbols() method
+            HashSet<String> temp = (HashSet<String>) this.getSymbols();
+            for (String symbol : temp) {
+                this.symbolsList.add(symbol);
+            }
+        }
+
+        return (ArrayList<String>) this.symbolsList;
     }
 
     public void setSymbols(Set<String> symbols) {
@@ -82,7 +105,7 @@ public class Helper {
 
     private void writeTickerSymblsToFile(String fileName, Set<String> data) {
         try {
-            BufferedWriter out =  new BufferedWriter(new FileWriter(tickerSymbolsFileName));
+            BufferedWriter out =  new BufferedWriter(new FileWriter(fileName));
             Iterator it = data.iterator();
             while(it.hasNext()) {
                 out.write(it.next() + "\n");
@@ -95,5 +118,24 @@ public class Helper {
             AlertMessage.showException("Unable to save the requested ticker symbols at this time. Please close this application and try again.", e);
         }
 
+    }
+
+    private HashSet<String> readTickerSymbolsFromFile(String fileName) {
+        try{
+            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+
+            HashSet<String> set = new HashSet<>();
+            while(in.readLine() != null) {
+                set.add(in.readLine());
+            }
+            in.close();
+
+            return set;
+        } catch (IOException e) {
+            AlertMessage.showException("Something went wrong while reading the tickers symbols from the file.", e);
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

@@ -7,16 +7,25 @@ import exceptions.GroupNameAlreadyExistsException;
 import exceptions.GroupNameNotFoundException;
 import interfaces.IStockSend;
 import interfaces.IUserHandling;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import util.Helper;
+import util.RequestStockObject;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,8 +61,14 @@ public class MainScreenController implements Initializable {
     @FXML
     TextArea taStockInfo;
 
+    //final NumberAxis xAxis = new NumberAxis();
+    final NumberAxis yAxis = new NumberAxis();
+    final CategoryAxis xAxis = new CategoryAxis();
+
     @FXML
-    LineChart<String, Double> lineChart;
+    LineChart<Number, Number> lineChart = new LineChart<Number, Number>(xAxis, yAxis);
+
+    XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
 
     private static Stage stage;
 
@@ -61,12 +76,34 @@ public class MainScreenController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         if(Helper.getInstance().getSymbols().isEmpty()) {
             SetupController.showMenu();
+        } else {
+            ObservableList<String> observableList = FXCollections.observableArrayList(Helper.getInstance().getSymbolsAsList());
+            cbStock.setItems(observableList);
         }
+
+        cbStock.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                System.out.println("cbStock change recognized!");
+                String value = cbStock.getValue();
+                if (value != null) {
+                    String[] args = splitArgs(value);
+
+                    try {
+                        Stock stock = RequestStockObject.requestStock(args[0]);
+                        draw(stock, args[0], args[1]);
+                    } catch (Exception e) {
+                        AlertMessage.showException("Something went wrong while fetching the latest info for the selected company. Please try again later.", e);
+                    }
+                }
+            }
+        });
 
     }
 
     public void addFavorite() {
         String value = cbStock.getValue();
+        String code = this.splitArgs(value)[0];
 
         //TODO: Add ticker symbol from selected value to list of preferred stock
     }
@@ -173,16 +210,35 @@ public class MainScreenController implements Initializable {
         stage.show();
     }
 
-    private void draw(Stock stockToDraw) {
+    private void draw(Stock stockToDraw, String code, String name) {
         /**
          * TODO: Probably create an observable list/map from stockToDraw.getValues() and display the values on the lineChart
          */
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                stockNameLabel.setText(name + " (" + code + ")");
+                taStockInfo.setText("Name: " + name + "\n" +
+                        "Code: " + code + "\n" +
+                        "Minumum: " + stockToDraw.getMinimum() + "\n" +
+                        "Maximum: " + stockToDraw.getMaximum() + "\n" +
+                        "Date: " + stockToDraw.getDate().toString() + "\n" +
+                        "Currency: " + stockToDraw.getCurrency());
+            }
+        });
+        series.setName(name + "\'s data");
+
+        int i = 1;
+        for(String key : stockToDraw.getValues().keySet()) {
+            series.getData().add(new XYChart.Data<Number, Number>(i, (Number) Double.valueOf(stockToDraw.getValues().get(key))));
+            i++;
+        }
+
+        lineChart.getData().add(series);
     }
 
-    public static void showMenu(Stock stockToDraw) {
-        showMenu();
-
-        MainScreenController controller = new MainScreenController();
-        controller.draw(stockToDraw);
+    private String[] splitArgs(String string) {
+        return string.split(" - ");
     }
 }
