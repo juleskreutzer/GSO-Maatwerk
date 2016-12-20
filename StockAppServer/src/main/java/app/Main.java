@@ -21,7 +21,7 @@ public class Main {
             System.setProperty("java.rmi.server.hostname", IP.getHostAddress());
         } else {
             System.out.println("rmi hostname is set to 37.97.223.70");
-            System.setProperty("java.rmi.server.hostname", "127.0.0.1");
+            System.setProperty("java.rmi.server.hostname", "37.97.223.70");
         }
 
         try {
