@@ -3,8 +3,7 @@ package controllers;
 import domain.Stock;
 import domain.StockApp;
 import domain.User;
-import exceptions.GroupNameAlreadyExistsException;
-import exceptions.GroupNameNotFoundException;
+import exceptions.*;
 import interfaces.IStockSend;
 import interfaces.IUserHandling;
 import javafx.application.Platform;
@@ -26,10 +25,15 @@ import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import util.Helper;
 import util.RequestStockObject;
+import util.listeners.IDraw;
+import util.listeners.ListenerManager;
 
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +48,7 @@ import java.util.logging.Logger;
  * | Project Package Name: controllers
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-public class MainScreenController implements Initializable {
+public class MainScreenController implements Initializable, IDraw {
 
     @FXML
     Label stockNameLabel;
@@ -60,6 +64,9 @@ public class MainScreenController implements Initializable {
 
     @FXML
     TextArea taStockInfo;
+
+    @FXML
+    DatePicker datePicker;
 
     //final NumberAxis xAxis = new NumberAxis();
     final NumberAxis yAxis = new NumberAxis();
@@ -91,13 +98,17 @@ public class MainScreenController implements Initializable {
 
                     try {
                         Stock stock = RequestStockObject.requestStock(args[0]);
-                        draw(stock, args[0], args[1]);
+                        stock.setName(args[1]);
+                        stock.setCode(args[0]);
+                        draw(stock);
                     } catch (Exception e) {
                         AlertMessage.showException("Something went wrong while fetching the latest info for the selected company. Please try again later.", e);
                     }
                 }
             }
         });
+
+        ListenerManager.getInstance().addListener(this);
 
     }
 
@@ -118,17 +129,29 @@ public class MainScreenController implements Initializable {
     public void sendStock() {
         String username = txtUsername.getText();
         String value = cbStock.getValue();
+        LocalDate selectedLocalDate = datePicker.getValue();
 
         if(username.isEmpty()) {
             AlertMessage.show("Please provide a username", "A username is required to send the stock's information to another user.", Alert.AlertType.ERROR);
+        } else if(selectedLocalDate == null) {
+            AlertMessage.show("Please select a date", "Please select a date so we know where to start searching.", Alert.AlertType.INFORMATION);
         } else {
             try {
                 IStockSend iStockSend = StockApp.getInstance().getIStockSendInterface();
-
-
-                // TODO: Check if user wants to send stock code or stock from history, call send method from iStockSend
+                Date currentDate = new Date();
+                Date selectedDate = Date.from(selectedLocalDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                LocalDate currentLocalDate = Helper.getInstance().convertDateToLocalDate(currentDate);
+                if(selectedLocalDate.isBefore(currentLocalDate)) {
+                    // Retrieve stock from history
+                    iStockSend.sendToUserFromHistory(selectedDate, this.splitArgs(value)[0], username, Helper.getInstance().getUser());
+                } else {
+                    // No stock from history
+                    iStockSend.sendToUserByStockCode(this.splitArgs(value)[0], username, Helper.getInstance().getUser());
+                }
             } catch (NullPointerException e) {
                 AlertMessage.showException("We couldn't reach the server. Please restart this application and try again.", e);
+            } catch (RemoteException | UserIsNullException | InvalidStockCodeException | StockNotFoundException e) {
+                AlertMessage.showException("Something went wrong when we tried to send the stock to \"" + username + "\". Please try again later.", e);
             }
         }
 
@@ -210,32 +233,34 @@ public class MainScreenController implements Initializable {
         stage.show();
     }
 
-    private void draw(Stock stockToDraw, String code, String name) {
+    private String[] splitArgs(String string) {
+        return string.split(" - ");
+    }
+
+    @Override
+    public void draw(Stock stockToDraw) {
         // Remove current data on line chart if set
-        //lineChart.getData().clear();
         series.getData().clear();
 
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                stockNameLabel.setText(name + " (" + code + ")");
-                taStockInfo.setText("Name: " + name + "\n" +
-                        "Code: " + code + "\n" +
+                stockNameLabel.setText(stockToDraw.getName() + " (" + stockToDraw.getCode() + ")");
+                taStockInfo.setText("Name: " + stockToDraw.getName() + "\n" +
+                        "Code: " + stockToDraw.getCode() + "\n" +
                         "Minumum: " + stockToDraw.getMinimum() + "\n" +
                         "Maximum: " + stockToDraw.getMaximum() + "\n" +
                         "Date: " + stockToDraw.getDate().toString() + "\n" +
                         "Currency: " + stockToDraw.getCurrency());
+
+                for(String key : stockToDraw.getValues().keySet()) {
+                    series.getData().add(new XYChart.Data<String, Double>(key, Double.valueOf(stockToDraw.getValues().get(key))));
+                }
+
+                lineChart.getData().clear();
+                lineChart.getData().add(series);
             }
         });
 
-        for(String key : stockToDraw.getValues().keySet()) {
-            series.getData().add(new XYChart.Data<String, Double>(key, Double.valueOf(stockToDraw.getValues().get(key))));
-        }
-
-        lineChart.getData().add(series);
-    }
-
-    private String[] splitArgs(String string) {
-        return string.split(" - ");
     }
 }

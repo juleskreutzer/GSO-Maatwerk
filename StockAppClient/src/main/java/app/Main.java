@@ -43,7 +43,7 @@ public class Main extends Application {
 
         if(args.length == 1 && args[0].toLowerCase().equals("local")) {
             // Program started with local command, expect that server is running on local host
-            reg = LocateRegistry.getRegistry("127.0.0.1", 1099);
+            reg = LocateRegistry.getRegistry(IP.getHostAddress(), 1099);
             System.out.println("Attempting to connect to RMI server over 127.0.0.1");
         } else {
             // Program started without additional commands. Except that "the server" is available;

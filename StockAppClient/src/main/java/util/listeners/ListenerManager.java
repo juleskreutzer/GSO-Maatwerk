@@ -1,5 +1,7 @@
 package util.listeners;
 
+import domain.Stock;
+
 import java.util.LinkedList;
 
 /**
@@ -15,10 +17,12 @@ import java.util.LinkedList;
 public class ListenerManager {
     private static ListenerManager _instance;
     private LinkedList<Update> updateListeners;
+    private LinkedList<IDraw> drawListeners;
 
     private ListenerManager() {
         _instance = this;
         updateListeners = new LinkedList<>();
+        drawListeners = new LinkedList<>();
     }
 
     public static ListenerManager getInstance() {
@@ -29,9 +33,17 @@ public class ListenerManager {
         updateListeners.add(listener);
     }
 
+    public void addListener(IDraw listener) { drawListeners.add(listener); }
+
     public void tickerSymbolsReceived() {
         for(Update listener : updateListeners) {
             listener.TickerSymbolsReceived();
+        }
+    }
+
+    public void sendDraw(Stock stockToDraw) {
+        for(IDraw listener : drawListeners) {
+            listener.draw(stockToDraw);
         }
     }
 }

@@ -63,5 +63,6 @@
             <Font name="Apple SD Gothic Neo UltraLight" size="18.0" />
          </font>
       </Label>
+      <DatePicker fx:id="datePicker" layoutX="396.0" layoutY="44.0" />
    </children>
 </Pane>
