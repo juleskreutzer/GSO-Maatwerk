@@ -31,7 +31,6 @@ public class StockAppServer extends UnicastRemoteObject implements IStockSend, I
     private List<Notification> registeredNotifications;
 
     private StockAppServer() throws IOException {
-        super(1099);
         _instance = this;
 
         this.loggedInUsers = new ArrayList<>();
