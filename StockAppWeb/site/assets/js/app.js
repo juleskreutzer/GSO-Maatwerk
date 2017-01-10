@@ -99,6 +99,7 @@ function getSymbols() {
       'content-type': 'application/json',
       'cache-control': 'no-cache'
     },
+    data: "{token: \"" + getJwtToken + "\"}",
     method: 'GET',
     success: function(response) {
       if(response['success']) {
