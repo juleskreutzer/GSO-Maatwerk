@@ -47,6 +47,7 @@ Get all ticket symbols known on the server
 */
 router.get('/tickerSymbols', function(req, res) {
   res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Access-Control-Allow-Origin', '*');
 
   Stock.find().distinct('code', function(err, codes) {
     if(err) {
