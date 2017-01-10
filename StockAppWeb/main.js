@@ -25,7 +25,12 @@ app.use('/stock', stockRoute);
 app.use('/user', userRoute);
 app.use('/info', infoRoute);
 //app.use('/notification', notificationRoute);
+app.use(function(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  return next();
+});
 
+app.use("/", express.static(__dirname + "/site"));
 
 
 var server = app.listen(8082, function() {
