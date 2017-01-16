@@ -2,6 +2,7 @@ package domain.database;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
 import domain.Stock;
 import domain.User;
@@ -30,6 +31,7 @@ public abstract class DatabaseHandler {
     private MongoClient client;
     private MongoDatabase db;
     private DB database;
+    private MongoClientURI uri = new MongoClientURI("mongodb://37.97.223.70:27017/StockApp");
     private Jongo jongo;
 
 
@@ -42,6 +44,7 @@ public abstract class DatabaseHandler {
             db = client.getDatabase("StockApp");
             database = client.getDB("StockApp");
             jongo = new Jongo(database);
+
         }
     }
 

@@ -6,7 +6,9 @@ import domain.StockApp;
 import interfaces.IStockSend;
 import interfaces.IUserHandling;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.net.InetAddress;
 import java.rmi.NotBoundException;
@@ -36,6 +38,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                System.exit(-1);
+            }
+        });
         InetAddress IP= InetAddress.getLocalHost();
         System.out.println("IP of my system is := "+IP.getHostAddress());
 

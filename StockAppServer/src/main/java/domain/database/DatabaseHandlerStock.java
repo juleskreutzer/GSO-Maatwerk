@@ -1,5 +1,6 @@
 package domain.database;
 
+import com.mongodb.util.JSONParseException;
 import domain.Stock;
 import exceptions.InvalidStockCodeException;
 import exceptions.StockAlreadyExistsException;
@@ -8,7 +9,12 @@ import exceptions.StockNotFoundException;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -55,15 +61,38 @@ public class DatabaseHandlerStock extends DatabaseHandler {
         if(date == null) { throw new IllegalArgumentException("Not allowed to provide empty date"); }
         if(code.equals("")) { throw new InvalidStockCodeException("How can we find a stock when we have an invalid stock code?"); }
 
-        MongoCursor<Stock> cursor = stockCollection.find("{code: #, date: # }", code, date).as(Stock.class);
+        //Because StockTask will be run at 23:00, we have to change the date object to have 23:00 as time.
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.HOUR, +24);
+        Date newDate = cal.getTime();
 
-        if(cursor.count() == 1) {
-            for(Stock s : cursor) {
+        TimeZone tz = TimeZone.getTimeZone("UTC");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'"); // Quoted "Z" to indicate UTC, no timezone offset
+        df.setTimeZone(tz);
+        String dateAsISO = df.format(newDate);
+
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        Date convertedDate = null;
+        try {
+            convertedDate = formatter.parse(dateAsISO);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        try {
+        MongoCursor<Stock> cursor = stockCollection.find("{code: #, date: { $lt: # } }", code.toLowerCase(), convertedDate).as(Stock.class);
+
+        if (cursor.count() >= 1) {
+            for (Stock s : cursor) {
                 return s;
             }
         } else {
             throw new StockNotFoundException("Couldn't find the requested stock.");
         }
+    } catch (JSONParseException e) {
+        e.printStackTrace();
+    }
 
         return null;
     }

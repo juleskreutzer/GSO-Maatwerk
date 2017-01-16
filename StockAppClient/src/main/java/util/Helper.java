@@ -4,8 +4,9 @@ import controllers.AlertMessage;
 import domain.User;
 
 import java.io.*;
+import java.time.Instant;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 import java.util.*;
 
 /**
@@ -107,8 +108,12 @@ public class Helper {
 
     private void writeTickerSymblsToFile(String fileName, Set<String> data) {
         try {
+            TreeSet<String> temp = new TreeSet<>();
+            for(String s : data) {
+                temp.add(s);
+            }
             BufferedWriter out =  new BufferedWriter(new FileWriter(fileName));
-            Iterator it = data.iterator();
+            Iterator it = temp.iterator();
             while(it.hasNext()) {
                 out.write(it.next() + "\n");
             }
@@ -143,24 +148,33 @@ public class Helper {
 
     /**
      * Convert a Date object to a LocalDate object.
-     *
-     * This method will create a new Calendar and set it's time to the provided dateToConvert object.
-     * It will then get the year, month and day of month to create a new LocalDate object
      * @param dateToConvert Date object to convert to LocalDate
      * @return LocalDate object based on provided dateToConvert object
      */
     public LocalDate convertDateToLocalDate(Date dateToConvert) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(dateToConvert);
+        return Instant.ofEpochMilli(dateToConvert.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+//        Calendar cal = Calendar.getInstance();
+//        cal.setTime(dateToConvert);
+//
+//        int year = cal.get(Calendar.YEAR);
+//        int month = cal.get(Calendar.MONTH) + 1; // without + 1, january would be 0
+//        int day = cal.get(Calendar.DAY_OF_MONTH);
+//
+//        LocalDate date = LocalDate.parse(String.format("%s-%s-%s", year, month, day));
+//
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//        formatter = formatter.withLocale(Locale.getDefault());  // Locale specifies human language for translating, and cultural norms for lowercase/uppercase and abbreviations and such. Example: Locale.US or Locale.CANADA_FRENCH
+//        LocalDate date = LocalDate.parse(String.format("%s-%s-%sT00:00:00", year, month, day), formatter);
+//
+//        return date;
+    }
 
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        formatter = formatter.withLocale(Locale.getDefault());  // Locale specifies human language for translating, and cultural norms for lowercase/uppercase and abbreviations and such. Example: Locale.US or Locale.CANADA_FRENCH
-        LocalDate date = LocalDate.parse(String.format("%s-%s-%s", year, month, day), formatter);
-
-        return date;
+    /**
+     * Convert a localDate object to a date object
+     * @param dateToConvert localDate object to convert to date object
+     * @return Date object converted from LocalDate
+     */
+    public Date convertLocalDateToDate(LocalDate dateToConvert) {
+        return Date.from(dateToConvert.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 }

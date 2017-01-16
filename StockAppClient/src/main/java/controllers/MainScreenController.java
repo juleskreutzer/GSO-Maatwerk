@@ -22,6 +22,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import util.Helper;
 import util.RequestStockObject;
@@ -33,8 +34,7 @@ import java.net.URL;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -69,15 +69,19 @@ public class MainScreenController implements Initializable, IDraw {
     DatePicker datePicker;
 
     //final NumberAxis xAxis = new NumberAxis();
-    final NumberAxis yAxis = new NumberAxis();
-    final CategoryAxis xAxis = new CategoryAxis();
+    //final NumberAxis yAxis = new NumberAxis();
+    //final CategoryAxis xAxis = new CategoryAxis();
 
     @FXML
-    LineChart<String, Double> lineChart;
+    LineChart<String, Number> lineChart;
 
-    XYChart.Series<String, Double> series = new XYChart.Series<String, Double>();
+    @FXML
+    private Pane chartPane;
+
+    XYChart.Series<String, Number> series = new XYChart.Series<>();
 
     private static Stage stage;
+    private LineChart<String, Number> chartToRemove;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -95,14 +99,30 @@ public class MainScreenController implements Initializable, IDraw {
                 String value = cbStock.getValue();
                 if (value != null) {
                     String[] args = splitArgs(value);
+                    if(datePicker.getValue() != null) {
+                        // retrieve stock from database
+                        LocalDate localDate = datePicker.getValue();
+                        Date date = Helper.getInstance().convertLocalDateToDate(localDate);
+                        try {
+                            StockApp.getInstance().getIStockSendInterface().sendToUserFromHistory(date, args[0], Helper.getInstance().getUser().getUsername(), Helper.getInstance().getUser());
+                        } catch (RemoteException | InvalidStockCodeException | UserIsNullException | StockNotFoundException e) {
+                            AlertMessage.showException("Something went wrong while retrieving the requested data from the database. Please try again later.", e);
+                        } catch (NullPointerException e) {
+                            AlertMessage.showException("We don't know how to connect to our server at this time. Please close this application and try again.", e);
+                        }
 
-                    try {
-                        Stock stock = RequestStockObject.requestStock(args[0]);
-                        stock.setName(args[1]);
-                        stock.setCode(args[0]);
-                        draw(stock);
-                    } catch (Exception e) {
-                        AlertMessage.showException("Something went wrong while fetching the latest info for the selected company. Please try again later.", e);
+                        datePicker.setValue(null);
+
+                    } else {
+                        // retrieve stock from Markit on Demand
+                        try {
+                            Stock stock = RequestStockObject.requestStock(args[0]);
+                            stock.setName(args[1]);
+                            stock.setCode(args[0]);
+                            draw(stock);
+                        } catch (Exception e) {
+                            AlertMessage.showException("Something went wrong while fetching the latest info for the selected company. Please try again later.", e);
+                        }
                     }
                 }
             }
@@ -121,9 +141,15 @@ public class MainScreenController implements Initializable, IDraw {
 
     public void addNotification() {
         String value = cbStock.getValue();
+        if(cbStock.getValue() == null || value.isEmpty()) {
+            AlertMessage.show("Please select a stock.", "Please select a stock first before you create a new notification.", Alert.AlertType.WARNING);
+        } else {
+            String[] array = this.splitArgs(value);
+            String code = array[0];
+            String name = array[1];
 
-        //TODO: show screen to create new notification
-
+            NotificationController.showMenu(name, code);
+        }
     }
 
     public void sendStock() {
@@ -240,11 +266,38 @@ public class MainScreenController implements Initializable, IDraw {
     @Override
     public void draw(Stock stockToDraw) {
         // Remove current data on line chart if set
-        series.getData().clear();
+//        series.getData().clear();
+//
+//        lineChart.setPickOnBounds(true);
+
+//        final CategoryAxis categoryAxis = new CategoryAxis();
+//        categoryAxis.setAutoRanging(false);
+//
+//        final NumberAxis numberAxis = new NumberAxis(stockToDraw.getMinimum() - 5, stockToDraw.getMaximum() + 5, 10);
+//        numberAxis.setMinorTickVisible(false);
+//
+//        final LineChart<String,Number> tempChart = new LineChart<String,Number>(categoryAxis, numberAxis);
+
 
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
+
+                chartPane.getChildren().remove(chartToRemove);
+
+                Set<String> keys = stockToDraw.getValues().keySet();
+                List<String> keysList = new ArrayList<>();
+                keysList.addAll(keys);
+
+                final CategoryAxis categoryAxis = new CategoryAxis(FXCollections.observableArrayList(keysList));
+                categoryAxis.setAutoRanging(false);
+
+                final NumberAxis numberAxis = new NumberAxis(stockToDraw.getMinimum() - 5, stockToDraw.getMaximum() + 5, 10);
+                numberAxis.setMinorTickVisible(false);
+
+                final LineChart<String,Number> tempChart = new LineChart<String,Number>(categoryAxis, numberAxis);
+
+
                 stockNameLabel.setText(stockToDraw.getName() + " (" + stockToDraw.getCode() + ")");
                 taStockInfo.setText("Name: " + stockToDraw.getName() + "\n" +
                         "Code: " + stockToDraw.getCode() + "\n" +
@@ -254,13 +307,14 @@ public class MainScreenController implements Initializable, IDraw {
                         "Currency: " + stockToDraw.getCurrency());
 
                 for(String key : stockToDraw.getValues().keySet()) {
-                    series.getData().add(new XYChart.Data<String, Double>(key, Double.valueOf(stockToDraw.getValues().get(key))));
+                    series.getData().add(new XYChart.Data<String, Number>(key, stockToDraw.getValues().get(key)));
                 }
 
-                lineChart.getData().clear();
-                lineChart.getData().add(series);
+                tempChart.getData().add(series);
+                chartToRemove = tempChart;
+
+                chartPane.getChildren().add(tempChart);
             }
         });
-
     }
 }
